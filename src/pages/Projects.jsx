@@ -1,4 +1,8 @@
 function Projects() {
+    const primaryGold = '#f7dab2'; 
+ const darkBackground = 'bg-gray-900'; 
+    const deepestBlack = 'bg-gray-950';
+
     const projects = [
       {
         title: 'E-commerce Platform',
@@ -36,11 +40,11 @@ function Projects() {
     ];
   
     return (
-      <div className="pt-16 min-h-screen bg-gray-50">
-        <section className="py-16 bg-white">
+      <div className={`pt-16 min-h-screen ${deepestBlack}`}>
+        <section className={`py-16 ${darkBackground} text-white`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Portfolio</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Portfolio</h1>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Explore some of our recent projects and see how we've helped clients achieve their goals.
             </p>
           </div>
@@ -50,25 +54,26 @@ function Projects() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-12">
               {projects.map((project, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div key={index} className={`bg-neutral-800 rounded-xl shadow-lg overflow-hidden`}>
                   <div className="md:flex">
                     <div className="md:w-1/2">
                       <img src={project.image} alt={project.title} className="w-full h-64 md:h-full object-cover" />
                     </div>
-                    <div className="md:w-1/2 p-8">
+                    <div className="md:w-1/2 p-8 text-white">
                       <div className="mb-4">
-                        <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
+                        {/* Using Primary Gold for category tag background/text contrast */}
+                        <span style={{ backgroundColor: primaryGold, color: '#171717' }} className="px-3 py-1 rounded-full text-sm font-semibold">
                           {project.category}
                         </span>
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{project.title}</h3>
-                      <p className="text-gray-600 mb-1">Client: {project.client}</p>
-                      <p className="text-gray-600 mb-4">{project.description}</p>
+                      <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                      <p className="text-gray-400 mb-1">Client: {project.client}</p>
+                      <p className="text-gray-400 mb-4">{project.description}</p>
                       <div className="mb-4">
-                        <h4 className="font-semibold text-gray-900 mb-2">Technologies:</h4>
+                        <h4 className="font-semibold text-white mb-2">Technologies:</h4>
                         <div className="flex flex-wrap gap-2">
                           {project.technologies.map((tech, techIndex) => (
-                            <span key={techIndex} className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">
+                            <span key={techIndex} className="bg-neutral-700 text-gray-300 px-2 py-1 rounded text-sm">
                               {tech}
                             </span>
                           ))}
@@ -76,19 +81,22 @@ function Projects() {
                       </div>
                       <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
                         <div>
-                          <span className="text-gray-500">Duration:</span>
-                          <div className="font-semibold">{project.duration}</div>
+                          <span className="text-gray-400">Duration:</span>
+                          <div className="font-semibold text-white">{project.duration}</div>
                         </div>
                         <div>
-                          <span className="text-gray-500">Team:</span>
-                          <div className="font-semibold">{project.teamMembers.join(', ')}</div>
+                          <span className="text-gray-400">Team:</span>
+                          <div className="font-semibold text-white">{project.teamMembers.join(', ')}</div>
                         </div>
                       </div>
                       <div className="mb-6">
-                        <span className="text-gray-500 text-sm">Results:</span>
-                        <div className="font-semibold text-green-600">{project.results}</div>
+                        <span className="text-gray-400 text-sm">Results:</span>
+                        <div className="font-semibold text-green-400">{project.results}</div>
                       </div>
-                      <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                       {/* Using Primary Gold for the button */}
+                      <button 
+                        style={{ backgroundColor: primaryGold, color: '#171717' }}
+                        className="px-6 py-2 rounded-lg transition-colors hover:opacity-80">
                         <i className="fas fa-external-link-alt mr-2"></i>
                         View Details
                       </button>

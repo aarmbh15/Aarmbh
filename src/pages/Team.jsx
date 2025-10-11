@@ -1,4 +1,9 @@
 function Team() {
+    const primaryGold = '#f7dab2'; 
+    const secondaryGold = '#d9b991'; 
+    const darkBackground = 'bg-gray-900'; 
+    const deepestBlack = 'bg-gray-950';
+
     const teamMembers = [
       {
         name: 'Alex Rodriguez',
@@ -58,11 +63,14 @@ function Team() {
     ];
   
     return (
-      <div className="pt-16 min-h-screen bg-gray-50">
-        <section className="py-16 bg-white">
+      // Main container with deepest black background
+      <div className={`pt-16 min-h-screen ${deepestBlack}`}>
+        <section className={`py-16 ${darkBackground}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Meet Our Expert Team</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            {/* Dark theme text color */}
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Meet Our Expert Team</h1>
+            {/* Dark theme text color */}
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Five seasoned professionals with diverse expertise, working together to deliver exceptional results for your projects.
             </p>
           </div>
@@ -72,23 +80,29 @@ function Team() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {teamMembers.map((member, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                // Dark theme card background
+                <div key={index} className={`bg-neutral-800 rounded-xl shadow-lg overflow-hidden card-hover`}>
                   <div className="relative">
                     <img src={member.image} alt={member.name} className="w-full h-64 object-cover" />
-                    <div className="absolute top-4 right-4 bg-white px-2 py-1 rounded-full flex items-center">
-                      <i className="fas fa-star text-yellow-400 mr-1"></i>
-                      <span className="text-sm font-semibold">{member.rating}</span>
+                    {/* Adjusted rating badge background and text */}
+                    <div className="absolute top-4 right-4 bg-neutral-700 px-2 py-1 rounded-full flex items-center">
+                      <i className="fas fa-star mr-1" style={{ color: primaryGold }}></i>
+                      <span className="text-sm font-semibold text-white">{member.rating}</span>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                    <p className="text-blue-600 font-semibold mb-3">{member.role}</p>
-                    <p className="text-gray-600 text-sm mb-4">{member.bio}</p>
+                    {/* Dark theme text color */}
+                    <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                    {/* Secondary Gold for the role */}
+                    <p className="font-semibold mb-3" style={{ color: secondaryGold }}>{member.role}</p>
+                    {/* Dark theme text color */}
+                    <p className="text-gray-400 text-sm mb-4">{member.bio}</p>
                     <div className="mb-4">
-                      <h4 className="font-semibold text-gray-900 mb-2">Specialties:</h4>
+                      {/* Dark theme text color */}
+                      <h4 className="font-semibold text-white mb-2">Specialties:</h4>
                       <div className="flex flex-wrap gap-2">
                         {member.specialties.map((skill, skillIndex) => (
-                          <span key={skillIndex} className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">
+                          <span key={skillIndex} className="bg-neutral-700 text-gray-300 px-2 py-1 rounded-full text-xs">
                             {skill}
                           </span>
                         ))}
@@ -96,20 +110,29 @@ function Team() {
                     </div>
                     <div className="grid grid-cols-2 gap-4 text-sm mb-4">
                       <div>
-                        <span className="text-gray-500">Experience:</span>
-                        <div className="font-semibold">{member.experience}</div>
+                        {/* Dark theme text color */}
+                        <span className="text-gray-400">Experience:</span>
+                        {/* Dark theme text color */}
+                        <div className="font-semibold text-white">{member.experience}</div>
                       </div>
                       <div>
-                        <span className="text-gray-500">Projects:</span>
-                        <div className="font-semibold">{member.completedProjects}</div>
+                        {/* Dark theme text color */}
+                        <span className="text-gray-400">Projects:</span>
+                        {/* Dark theme text color */}
+                        <div className="font-semibold text-white">{member.completedProjects}</div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-gray-500 text-sm">Rate:</span>
-                        <div className="font-bold text-green-600">{member.hourlyRate}/hr</div>
+                        {/* Dark theme text color */}
+                        <span className="text-gray-400 text-sm">Rate:</span>
+                        {/* Primary Gold for the rate */}
+                        <div className="font-bold" style={{ color: primaryGold }}>{member.hourlyRate}/hr</div>
                       </div>
-                      <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                      {/* Primary Gold for the button */}
+                      <button 
+                        style={{ backgroundColor: primaryGold, color: '#171717' }}
+                        className="px-4 py-2 rounded-lg transition-colors hover:opacity-80">
                         <i className="fas fa-message mr-2"></i>
                         Contact
                       </button>
@@ -121,29 +144,36 @@ function Team() {
           </div>
         </section>
   
-        <section className="py-16 bg-white">
+        {/* Dark theme for the collective expertise section */}
+        <section className={`py-16 ${darkBackground}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Collective Expertise</h2>
+            {/* Dark theme text color */}
+            <h2 className="text-3xl font-bold text-center mb-12 text-white">Our Collective Expertise</h2>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">20+</div>
-                <div className="text-gray-600">Years Combined Experience</div>
+                {/* Primary Gold for stats number */}
+                <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>20+</div>
+                <div className="text-gray-400">Years Combined Experience</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-green-600 mb-2">194</div>
-                <div className="text-gray-600">Total Projects</div>
+                {/* Primary Gold for stats number */}
+                <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>194</div>
+                <div className="text-gray-400">Total Projects</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-purple-600 mb-2">15+</div>
-                <div className="text-gray-600">Technologies</div>
+                {/* Primary Gold for stats number */}
+                <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>15+</div>
+                <div className="text-gray-400">Technologies</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-orange-600 mb-2">4.8</div>
-                <div className="text-gray-600">Average Rating</div>
+                {/* Primary Gold for stats number */}
+                <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>4.8</div>
+                <div className="text-gray-400">Average Rating</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-red-600 mb-2">100%</div>
-                <div className="text-gray-600">Client Retention</div>
+                {/* Primary Gold for stats number */}
+                <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>100%</div>
+                <div className="text-gray-400">Client Retention</div>
               </div>
             </div>
           </div>
