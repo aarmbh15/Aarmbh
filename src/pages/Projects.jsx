@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+// import Projects from './Projects';
 function Projects() {
     const primaryGold = '#f7dab2'; 
  const darkBackground = 'bg-gray-900'; 
@@ -19,7 +21,7 @@ function Projects() {
         title: 'Healthcare Mobile App',
         client: 'MedTech Solutions',
         category: 'Mobile Development',
-        image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop',
+        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop",
         description: 'HIPAA-compliant mobile app for patient management and telemedicine.',
         technologies: ['React Native', 'Firebase', 'WebRTC'],
         duration: '4 months',
@@ -41,14 +43,40 @@ function Projects() {
   
     return (
       <div className={`pt-16 min-h-screen ${deepestBlack}`}>
-        <section className={`py-16 ${darkBackground} text-white`}>
+        {/* <section className={`py-16 ${darkBackground} text-white`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Portfolio</h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Explore some of our recent projects and see how we've helped clients achieve their goals.
             </p>
           </div>
-        </section>
+        </section> */}
+         <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+                  <div
+                      className="absolute inset-0 bg-cover bg-center opacity-20"
+                      style={{
+                        backgroundImage:
+                          "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop')", // Code/technology theme
+                      }}
+                    ></div>
+          
+                    <div className="relative z-15 container mx-auto px-6 py-24 md:py-32">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center max-w-4xl mx-auto"
+                      >
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500 leading-tight">
+  Our Projects
+</h1>
+
+                        <p className="text-lg md:text-xl text-white leading-relaxed">
+                          Explore some of our recent projects and see how we've helped clients achieve their goals.
+                        </p>
+                      </motion.div>
+                    </div>
+                  </div>
   
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
