@@ -16,11 +16,6 @@ import {
   FiBarChart2,
   FiCheckCircle
 } from 'react-icons/fi';
-
-
-const geoUrl =
-  "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-
 // Add these missing icon components (kept for functionality)
 function FiCloud({ className }) {
   return (
@@ -85,109 +80,67 @@ function FiHome({ className }) {
 const AboutPage = () => {
   // Differentiators data
   const differentiators = [
-    { label: 'Projects Delivered', value: '100+', icon: <FiLayers className="w-8 h-8" /> },
-    { label: 'Average ROI Improvement', value: '45%', icon: <FiTrendingUp className="w-8 h-8" /> },
-    { label: 'Trainees Placed', value: '200+', icon: <FiUsers className="w-8 h-8" /> },
-    { label: 'Combined Expertise', value: '4 Domains', icon: <FiCode className="w-8 h-8" /> },
+    { label: 'Projects Delivered', value: '100+', icon: <FiLayers className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
+    { label: 'Average ROI Improvement', value: '45%', icon: <FiTrendingUp className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
+    { label: 'Trainees Placed', value: '200+', icon: <FiUsers className="w-8 h-8 bg-teal-500/20 p-1 rounded-full " /> },
+    { label: 'Combined Expertise', value: '4 Domains', icon: <FiCode className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
   ];
 
   // Values data
   const values = [
-    { title: 'Innovation-Driven', description: 'We constantly explore emerging technologies to deliver forward-thinking solutions', icon: <FiCode className="w-6 h-6" /> },
-    { title: 'Client-Centric', description: 'Every project is designed around measurable business impact', icon: <FiHeart className="w-6 h-6" /> },
-    { title: 'Integrity', description: 'We maintain transparency and ethical practices in every engagement', icon: <FiShield className="w-6 h-6" /> },
-    { title: 'Collaboration', description: 'Strong partnerships and cross-functional teamwork are our foundation', icon: <FiUsers className="w-6 h-6" /> },
-    { title: 'Excellence', description: 'We aim for the highest standards in performance, security, and usability', icon: <FiAward className="w-6 h-6" /> },
-    { title: 'Growth Mindset', description: 'We cultivate continuous learning for both our team and the talent we train', icon: <FiBarChart2 className="w-6 h-6" /> },
+    { title: 'Innovation-Driven', description: 'We embrace new technologies and creative problem-solving to deliver future-ready solutions', icon: <FiCode className="w-6 h-6" /> },
+    { title: 'Client-Centric', description: 'Every project begins and ends with your success. We focus on measurable outcomes and long-term value.', icon: <FiHeart className="w-6 h-6" /> },
+    { title: 'Integrity', description: 'We uphold transparency, honesty, and accountability in every partnership and project.', icon: <FiShield className="w-6 h-6" /> },
+    { title: 'Collaboration', description: 'We value teamwork and open communication — building strong relationships with clients and within our team.', icon: <FiUsers className="w-6 h-6" /> },
+    { title: 'Excellence', description: 'We are dedicated to achieving the highest standards in design, development, and user experience. ', icon: <FiAward className="w-6 h-6" /> },
+    { title: 'Growth Mindset', description: 'We continuously evolve, learn, and innovate — ensuring sustainable success for both our team and our clients.', icon: <FiBarChart2 className="w-6 h-6" /> },
   ];
 
   // Industries data
   const industries = [
-    { name: 'E-commerce', icon: <FiDollarSign className="w-5 h-5" /> },
+    { name: 'E-commerce', icon: <FiDollarSign className="w-5 h-5 " /> },
     { name: 'Healthcare', icon: <FiHeart className="w-5 h-5" /> },
     { name: 'Finance', icon: <FiBarChart2 className="w-5 h-5" /> },
     { name: 'SaaS', icon: <FiCloud className="w-5 h-5" /> },
     { name: 'Education', icon: <FiBook className="w-5 h-5" /> },
     { name: 'Real Estate', icon: <FiHome className="w-5 h-5" /> },
   ];
-
-  // Expanded data for global city markers (Not used in the final render, but kept in data)
-  const cityMarkers = [
-    // ... cityMarkers data is here ... (omitted for brevity)
-    { name: "New York", coordinates: [-74.006, 40.7128], color: "#14b8a6" },
-    { name: "Los Angeles", coordinates: [-118.2437, 34.0522], color: "#14b8a6" },
-    { name: "Toronto", coordinates: [-79.3832, 43.6532], color: "#fb923c" },
-    { name: "Mexico City", coordinates: [-99.1332, 19.4326], color: "#fb923c" },
-    { name: "Chicago", coordinates: [-87.6298, 41.8781], color: "#14b8a6" },
-    { name: "Vancouver", coordinates: [-123.1207, 49.2827], color: "#fb923c" },
-    { name: "Montreal", coordinates: [-73.5673, 45.5017], color: "#fb923c" },
-    { name: "Calgary", coordinates: [-114.0719, 51.0447], color: "#fb923c" },
-
-    // Europe
-    { name: "London", coordinates: [-0.1278, 51.5074], color: "#3b82f6" },
-    { name: "Berlin", coordinates: [13.4050, 52.5200], color: "#a855f7" },
-    { name: "Paris", coordinates: [2.3522, 48.8566], color: "#a855f7" },
-    { name: "Rome", coordinates: [12.4964, 41.9028], color: "#a855f7" },
-    { name: "Madrid", coordinates: [-3.7038, 40.4168], color: "#a855f7" },
-    { name: "Amsterdam", coordinates: [4.8952, 52.3702], color: "#3b82f6" },
-    { name: "Dublin", coordinates: [-6.2603, 53.3498], color: "#3b82f6" },
-    { name: "Stockholm", coordinates: [18.0686, 59.3293], color: "#3b82f6" },
-    { name: "Vienna", coordinates: [16.3738, 48.2082], color: "#3b82f6" },
-
-    // Asia
-    { name: "Tokyo", coordinates: [139.6917, 35.6895], color: "#f59e0b" },
-    { name: "Mumbai", coordinates: [72.8777, 19.0760], color: "#10b981" },
-    { name: "Shanghai", coordinates: [121.4737, 31.2304], color: "#ef4444" },
-    { name: "Seoul", coordinates: [126.9780, 37.5665], color: "#f59e0b" },
-    { name: "Singapore", coordinates: [103.8198, 1.3521], color: "#10b981" },
-    { name: "Dubai", coordinates: [55.2708, 25.2048], color: "#8b5cf6" },
-    { name: "Bangkok", coordinates: [100.5018, 13.7563], color: "#10b981" },
-    { name: "Jakarta", coordinates: [106.8456, -6.2088], color: "#10b981" },
-    { name: "Kuala Lumpur", coordinates: [101.6869, 3.1390], color: "#10b981" },
-
-    // Other continents
-    { name: "Sydney", coordinates: [151.2093, -33.8688], color: "#ef4444" },
-    { name: "Sao Paulo", coordinates: [-46.6333, -23.5505], color: "#6366f1" },
-    { name: "Johannesburg", coordinates: [28.0473, -26.2041], color: "#fcd34d" },
-    { name: "Cairo", coordinates: [31.2357, 30.0444], color: "#f59e0b" },
-    { name: "Moscow", coordinates: [37.6173, 55.7558], color: "#3b82f6" },
-    { name: "Buenos Aires", coordinates: [-58.3816, -34.6037], color: "#6366f1" },
-    { name: "Cape Town", coordinates: [18.4241, -33.9249], color: "#fcd34d" },
-    { name: "Tel Aviv", coordinates: [34.7818, 32.0853], color: "#8b5cf6" },
-    { name: "Melbourne", coordinates: [144.9631, -37.8136], color: "#ef4444" },
-    { name: "Perth", coordinates: [115.8605, -31.9505], color: "#ef4444" },
-    { name: "Brisbane", coordinates: [153.0251, -27.4698], color: "#ef4444" },
-  ];
-
-  return (
+return (
     <div className="min-h-screen bg-gray-950 text-white font-sans overflow-x-hidden">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800"> {/* Kept original gradient for the hero */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
-        <div className="relative z-10 container mx-auto px-6 py-24 md:py-32">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500">
-              Transforming Measurable Success
-            </h1>
-            <p className="text-lg md:text-xl text-white leading-relaxed">
-              H&amp;H Tech Solutions brings technology, strategy and execution under one roof working as one unified force to drive your business growth.
-            </p>
-          </motion.div>
-        </div>
-      </div>
+     <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+  {/* Kept original gradient for the hero */}
+  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
+  <div className="relative z-10 container mx-auto px-6 py-24 md:py-32">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-center max-w-4xl mx-auto"
+    >
+      <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-6 text-white">
+        Transforming Ideas Into
+        <br />
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500">
+          Real-World Impact
+        </span>
+      </h1>
 
-      {/* Vision & Mission - Section 1: Darker Gray */}
+      <p className="text-lg md:text-xl text-white leading-relaxed">
+        Where technology meets strategy, and execution transforms ideas into impact - Aarmbh powers the next chapter of business growth.
+      </p>
+    </motion.div>
+  </div>
+</div>
+
+
+      {/* Vision & Mission - Section 1: Darker Gray - HOVER EFFECT ADDED */}
       <section className="py-16 bg-gray-900 ">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white">What Drives Us</h2>
             <p className="text-gray-400 mt-4">
-              Our core principles and goals that guide everything we do.
+              Our core values shape every project we deliver. We’re driven by creativity, collaboration, and a deep commitment to building meaningful, long-term partnerships.
             </p>
           </div>
 
@@ -197,7 +150,8 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 shadow-xl"
+              // ADDED HOVER EFFECTS: scale and shadow
+              className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-400 shadow-xl transition-all duration-300 hover:border-amber-500/50 hover:shadow-sm hover:shadow-amber-500/50 hover:scale-[1.01]"
             >
               <div className="flex items-center mb-6">
                 <div className="bg-teal-500/20 p-3 rounded-full mr-4">
@@ -206,7 +160,7 @@ const AboutPage = () => {
                 <h3 className="text-2xl font-bold">Our Vision</h3>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                To reshape how businesses grow by eliminating fragmentation and empowering companies with unified, intelligent, and performance-driven solutions.
+               To revolutionize the digital landscape by empowering businesses with intelligent, innovative, and growth-focused technology solutions that inspire success.
               </p>
             </motion.div>
 
@@ -215,23 +169,24 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 shadow-xl"
+              // ADDED HOVER EFFECTS: scale and shadow
+              className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-400 shadow-xl transition-all duration-300 hover:border-amber-500/50 hover:shadow-sm hover:shadow-amber-500/50 hover:scale-[1.01]"
             >
               <div className="flex items-center mb-6">
-                <div className="bg-blue-500/20 p-3 rounded-full mr-4">
-                  <FiBriefcase className="w-8 h-8 text-blue-400" />
+                <div className="bg-teal-500/20 p-3 rounded-full mr-4">
+                  <FiBriefcase className="w-8 h-8 text-amber-400" />
                 </div>
                 <h3 className="text-2xl font-bold">Our Mission</h3>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                To become the most trusted growth partner for businesses by offering holistic, results-oriented solutions from audit to acquisition all delivered through expert teams.
+                To become a globally recognized freelance development partner — delivering top-tier digital products and strategies that accelerate business transformation, enhance efficiency, and create lasting impact.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Differentiators - Section 2: Slightly Lighter Background */}
+      {/* Differentiators - Section 2: Slightly Lighter Background - HOVER EFFECT ADDED */}
       <section className="py-16 bg-gray-950 ">
         <div className="container mx-auto px-6">
           <motion.div
@@ -242,10 +197,10 @@ const AboutPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What Makes Us <span className="text-amber-500">Different</span>
+              What Makes Us Different
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              We deliver results that matter through our unique approach
+             We combine deep industry experience with technical expertise to deliver results that go beyond expectations. Every solution we craft is designed to maximize performance, scalability, and ROI.
             </p>
           </motion.div>
 
@@ -257,7 +212,8 @@ const AboutPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-xl border border-gray-700 hover:border-teal-500/50 transition-all hover:shadow-lg"
+                // ADDED HOVER EFFECTS: scale and shadow
+                className="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-xl border border-gray-400 transition-all duration-300 hover:border-amber-500/50 hover:shadow-sm hover:shadow-amber-500/50 hover:scale-[1.01]"
               >
                 <div className="text-amber-500 mb-4">{item.icon}</div>
                 <h3 className="text-2xl font-bold mb-2">{item.value}</h3>
@@ -266,13 +222,14 @@ const AboutPage = () => {
             ))}
           </div>
 
-          {/* End-to-End Card */}
+          {/* End-to-End Card - HOVER EFFECT ADDED */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="mt-12 bg-gradient-to-r from-teal-500/10 to-blue-500/10 p-8 rounded-2xl border border-amber-500/30"
+            // ADDED HOVER EFFECTS: scale and shadow
+            className="mt-12 bg-gradient-to-r from-teal-500/10 to-blue-500/10 p-8 rounded-2xl border border-gray-400 transition-all duration-300 hover:border-amber-500/50 hover:shadow-sm hover:shadow-amber-500/50 hover:scale-[1.01]" 
           >
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:mr-8 mb-6 md:mb-0">
@@ -283,7 +240,7 @@ const AboutPage = () => {
               <div>
                 <h3 className="text-2xl font-bold mb-2">End-to-End Partnership</h3>
                 <p className="text-gray-300">
-                  From first consultation to full-scale deployment, we&apos;re with you at every step. Our comprehensive approach ensures seamless integration and continuous optimization.
+                  From consultation to deployment and ongoing optimization, we stay by your side at every stage. Our comprehensive approach ensures seamless integration, transparent communication, and continuous growth for your business.
                 </p>
               </div>
             </div>
@@ -291,7 +248,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Industries - Section 3: Slightly Darker Gray/Blue Hue */}
+      {/* Industries - Section 3: Slightly Darker Gray/Blue Hue - HOVER EFFECT ADDED */}
       <section className="py-16 bg-gray-900 ">
         <div className="container mx-auto px-6">
           <motion.div
@@ -302,10 +259,10 @@ const AboutPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Industries We <span className="text-amber-500">Serve</span>
+              Industries We Serve 
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Tailored solutions for diverse business needs
+             We provide tailored solutions across multiple industries, helping businesses adapt and thrive in a fast-changing digital world.
             </p>
           </motion.div>
 
@@ -317,7 +274,8 @@ const AboutPage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-center bg-gray-800/50 px-6 py-3 rounded-full border border-gray-700 hover:border-teal-500/50 transition-all"
+                // ADDED HOVER EFFECTS: scale and shadow
+                className="flex items-center bg-gray-800/50 px-6 py-3 rounded-full border border-gray-400 transition-all duration-300 hover:border-amber-500/50 hover:bg-gray-700/50 hover:scale-[1.05] cursor-pointer"
               >
                 <span className="text-amber-500 mr-2">{industry.icon}</span>
                 <span>{industry.name}</span>
@@ -327,46 +285,47 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Core Values & Culture - Section 4: Lighter Background again */}
-      <section className="py-16 bg-gray-950">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Core <span className="text-amber-500">Values &amp; Culture</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              At H&amp;H Tech Solutions, our values guide our partnerships and projects. Our culture blends professionalism with creativity, encouraging bold ideas, ownership, and a shared commitment to results.
-            </p>
-          </motion.div>
+      {/* Core Values & Culture - Section 4: Lighter Background again - HOVER EFFECT ADDED */}
+     <section className="py-16 bg-gray-950">
+  <div className="container mx-auto px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        Our Core Values &amp; Culture
+      </h2>
+      <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+        At Aarmbh, we believe success is built on trust, creativity, and collaboration. Our culture blends professionalism with innovation — encouraging every team member to deliver excellence and learn continuously.
+      </p>
+    </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-xl border border-gray-700 transition-all"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="bg-teal-500/20 p-2 rounded-full mr-4">
-                    <span className="text-amber-500">{value.icon}</span>
-                  </div>
-                  <h3 className="text-xl font-bold">{value.title}</h3>
-                </div>
-                <p className="text-gray-400">{value.description}</p>
-              </motion.div>
-            ))}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {values.map((value, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className="flex flex-col h-full bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-xl border border-gray-400 transition-all duration-300 hover:border-amber-500/50 hover:shadow-sm hover:shadow-amber-500/50 hover:scale-[1.01]"
+        >
+          <div className="flex items-center mb-4">
+            <div className="bg-teal-500/20 p-2 rounded-full mr-4">
+              <span className="text-amber-500">{value.icon}</span>
+            </div>
+            <h3 className="text-xl font-bold">{value.title}</h3>
           </div>
-        </div>
-      </section>
+          <p className="text-gray-400 mt-auto">{value.description}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
     </div>
   );
 };

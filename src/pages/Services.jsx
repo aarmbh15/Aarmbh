@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 
 function Services() {
     // Define the custom colors based on the original theme
-    const primaryGold = '#f7dab2'; 
-    const secondaryGold = '#d9b991'; 
+    // Removed: primaryGold and secondaryGold
     const deepestBlack = 'bg-gray-950';
 
     // The services list, now filtered to include only the first four
@@ -41,7 +40,6 @@ function Services() {
         startingPrice: '$1,500',
         deliveryTime: '1-3 weeks',
       },
-      // The other two services were removed here
     ];
 
     // Animation variants for card staggering
@@ -74,14 +72,13 @@ function Services() {
 
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
-          {/* New Unsplash Background Image: A clean, technical image */}
-          <div9 
+          <div
             className="absolute inset-0 bg-cover bg-center opacity-20"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop')", // Code/technology theme
+                "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop')",
             }}
-          ></div9>
+          ></div>
 
           <div className="relative z-10 container mx-auto px-6 py-24 md:py-32">
             <motion.div
@@ -109,21 +106,21 @@ function Services() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.1 }}
-              // Modified to grid-cols-2 on medium screens and up
               className="grid grid-cols-1 md:grid-cols-2 gap-10" 
             >
               {services.map((service, index) => (
                 <motion.div 
                   key={index} 
                   variants={itemVariants}
-                  className={`bg-neutral-800 rounded-2xl shadow-2xl p-8 transition-transform duration-300 hover:scale-[1.02] border border-gray-700`}
-                  style={{ borderBottom: `5px solid ${primaryGold}` }} // Gold accent border
+                  // Updated card border and added hover shadow
+                  className={`bg-neutral-800 rounded-2xl shadow-2xl p-8 transition-transform duration-300 hover:scale-[1.02] border border-gray-400  cursor-pointer border-b-4`}
+                  // Removed inline style border
                 >
-                  {/* Primary Gold for icon */}
-                  <div className="text-5xl mb-6" style={{ color: primaryGold }}>
+                  {/* Icon - Updated to use text-amber-500 class */}
+                  <div className="text-5xl mb-6 text-amber-400">
                     <i className={service.icon}></i>
                   </div>
-                  <h3 className="text-3xl font-bold mb-4">{service.title}</h3>
+                  <h3 className="text-3xl text-white font-bold mb-4">{service.title}</h3>
                   <p className="text-gray-400 mb-6 min-h-[60px]">{service.description}</p>
                   
                   <div className="mb-6">
@@ -131,8 +128,8 @@ function Services() {
                     <ul className="space-y-3">
                       {service.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center text-base text-gray-300">
-                          {/* Secondary Gold for checkmarks */}
-                          <i className="fas fa-check-circle mr-3" style={{ color: secondaryGold }}></i>
+                          {/* Checkmark - Updated to use text-amber-500 class */}
+                          <i className="fas fa-check-circle mr-3 text-amber-500"></i>
                           {feature}
                         </li>
                       ))}
@@ -143,8 +140,8 @@ function Services() {
                     <div className="flex justify-between items-center mb-5">
                       <div>
                         <span className="text-gray-400 text-sm block">Starting at</span>
-                        {/* Primary Gold for price */}
-                        <div className="text-3xl font-extrabold" style={{ color: primaryGold }}>{service.startingPrice}</div>
+                        {/* Price - Updated to use text-amber-500 class */}
+                        <div className="text-3xl font-extrabold text-amber-500">{service.startingPrice}</div>
                       </div>
                       <div className="text-right">
                         <span className="text-gray-400 text-sm block">Estimated Delivery</span>
@@ -152,16 +149,17 @@ function Services() {
                       </div>
                     </div>
                     
-                    {/* Primary Gold for button */}
-                    <motion.button 
-                      whileHover={{ scale: 1.05, boxShadow: `0 0 20px ${primaryGold}40` }}
-                      whileTap={{ scale: 0.98 }}
-                      style={{ backgroundColor: primaryGold, color: '#171717' }}
-                      className="w-full py-3 rounded-xl font-bold text-lg transition-all"
-                    >
-                      <i className="fas fa-arrow-right mr-2"></i>
-                      Start Project
-                    </motion.button>
+                    {/* Button - Updated to use bg-amber-500 and simplified whileHover */}
+                   <motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.98 }}
+  className="w-3/4 sm:w-2/3 md:w-1/2 lg:w-1/3 ml-auto py-3 rounded-xl font-bold text-lg transition-all cursor-pointer bg-amber-400 text-gray-950 hover:bg-amber-400 flex items-center justify-center"
+>
+  <span>Start Project</span>
+  <i className="fas fa-arrow-right ml-2"></i>
+</motion.button>
+
+
                   </div>
                 </motion.div>
               ))}
@@ -169,12 +167,12 @@ function Services() {
           </div>
         </section>
 
-        {/* Development Process Section */}
+        {/* Development Process Section - UPDATED TO CARDS */}
         <section className={`py-20 bg-gray-950 text-white`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-bold text-center mb-16 text-amber-500">Our Seamless Process</h2>
+            <h2 className="text-4xl font-bold text-center mb-16 text-white">Our Seamless Process</h2>
             
-            <div className="grid md:grid-cols-4 gap-12">
+            <div className="grid md:grid-cols-4 gap-8">
               {[
                 {
                   step: '01',
@@ -205,25 +203,25 @@ function Services() {
                   key={index} 
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                   viewport={{ once: true }}
-                  className="text-center"
+                  className="bg-neutral-800 rounded-xl p-6 shadow-xl border border-gray-700 transition-all duration-300 hover:border-amber-500 cursor-pointer"
                 >
-                  {/* Step Number Badge */}
+                  {/* Step Number Badge - Already using bg-amber-500 */}
                   <div 
-                    style={{ backgroundColor: primaryGold, color: deepestBlack.replace('bg-', '#') }} 
-                    className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-extrabold shadow-lg"
+                    className="w-12 h-12 bg-amber-500 text-gray-950 rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-extrabold shadow-lg"
                   >
                     {process.step}
                   </div>
                   
-                  {/* Icon */}
-                  <div className="text-4xl mb-4" style={{ color: secondaryGold }}>
+                  {/* Icon - Updated to use text-amber-500 class */}
+                  <div className="text-4xl mb-4 text-center text-amber-500">
                     <i className={process.icon}></i>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-white mb-3">{process.title}</h3>
-                  <p className="text-gray-400">{process.description}</p>
+                  <h3 className="text-xl font-bold text-white mb-3 text-center">{process.title}</h3>
+                  <p className="text-gray-400 text-center">{process.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -234,4 +232,3 @@ function Services() {
   }
   
   export default Services;
-  

@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 function Home() {
   const navigate = useNavigate();
 
-  // New Gold/Bronze Colors from user request
+  // NOTE: The primaryGold and secondaryGold variables are still defined
+  // but the CTA buttons below will now use the bg-amber-500 theme
+  // as requested by the user.
   // #f7dab2 is the lighter, more prominent gold for main text/accents
   const primaryGold = '#f7dab2'; 
   // #d9b991 is the darker gold for borders, secondary accents, and hover effects
@@ -14,6 +16,9 @@ function Home() {
   const darkBackground = 'bg-gray-950'; 
   // Using 'bg-black' for the deepest black elements
   const deepestBlack = 'bg-gray-900';
+
+  // New Requested Button Style Classes
+  const amberButtonClasses = "bg-amber-500 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg hover:bg-amber-400 cursor-pointer transition-transform hover:scale-105";
 
   return (
     <div className={`pt-16 ${deepestBlack}`}> {/* Main background set to black */}
@@ -60,6 +65,7 @@ function Home() {
     {/* Heading */}
     <h1 className="text-5xl md:text-6xl font-extrabold mb-6 animate-fade-in-up">
       Expert Development Team
+      {/* Retained the amber-400 color for the heading accent as it fits the new theme */}
       <span className="block text-amber-400 animate-text-glow">
         Ready to Build Your Vision
       </span>
@@ -71,14 +77,13 @@ function Home() {
       From concept to deployment, we deliver high-quality, scalable, and reliable solutions.
     </p>
 
-    {/* CTA Buttons */}
+    {/* CTA Buttons - UPDATED */}
     <div className="flex flex-col sm:flex-row gap-5 justify-center animate-fade-in-up">
       <button
         onClick={() => navigate('/team')}
-        style={{ backgroundColor: primaryGold, color: '#171717' }}
-        className="px-8 py-4 rounded-lg text-lg font-semibold transition-transform hover:scale-105 hover:shadow-[0_0_15px_#f7dab2]"
-        onMouseOver={(e) => e.currentTarget.style.backgroundColor = secondaryGold}
-        onMouseOut={(e) => e.currentTarget.style.backgroundColor = primaryGold}
+        // Applying the new amber button classes
+        className={amberButtonClasses}
+        // Removed inline styles and mouse event handlers
       >
         <i className="fas fa-users mr-2"></i>
         Meet Our Team
@@ -86,18 +91,10 @@ function Home() {
 
       <button
         onClick={() => navigate('/projects')}
-        style={{ borderColor: secondaryGold, color: secondaryGold }}
-        className="border-2 px-8 py-4 rounded-lg text-lg font-semibold transition-transform hover:scale-105 hover:shadow-[0_0_15px_#f7dab2]"
-        onMouseOver={(e) => {
-          e.currentTarget.style.backgroundColor = primaryGold; 
-          e.currentTarget.style.borderColor = primaryGold;
-          e.currentTarget.style.color = '#171717';
-        }}
-        onMouseOut={(e) => {
-          e.currentTarget.style.backgroundColor = 'transparent';
-          e.currentTarget.style.borderColor = secondaryGold;
-          e.currentTarget.style.color = secondaryGold;
-        }}
+        // Applying the new amber button classes. For the secondary button, 
+        // I'm applying the same style for visual consistency and to meet the request.
+        className={amberButtonClasses}
+        // Removed inline styles and mouse event handlers
       >
         <i className="fas fa-eye mr-2"></i>
         View Projects
@@ -233,6 +230,7 @@ function Home() {
     {/* Stats Grid */}
    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
   <div className="fade-in transform transition duration-500 hover:scale-105 bg-gray-800 rounded-xl p-6 shadow-lg">
+    {/* Kept the custom gold color for the stat numbers for contrast */}
     <div className="text-4xl font-bold mb-2" style={{ color: primaryGold }}>10+</div>
     <div className="text-gray-400">Projects Completed</div>
   </div>

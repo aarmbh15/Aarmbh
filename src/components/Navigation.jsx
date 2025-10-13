@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AarambhLogo from '../assets/AarambhLogo.png'; // Adjust the path as needed
-import { FaHome, FaInfoCircle, FaCogs, FaUsers, FaBriefcase, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaCogs, FaUsers, FaBriefcase, FaEnvelope,FaPhoneAlt } from 'react-icons/fa';
+
 
 // Animated Hamburger Component
 const AnimatedHamburger = ({ isMenuOpen, setIsMenuOpen }) => (
@@ -79,11 +80,12 @@ function Navigation() {
 
             {/* Desktop Contact Button */}
             <button
-              onClick={() => navigate('/contact')}
-              className="bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold hover:bg-amber-400 transition-colors shadow-lg"
-            >
-              Contact Us
-            </button>
+  onClick={() => navigate('/contact')}
+  className="bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold hover:bg-amber-400 transition-colors shadow-lg flex items-center gap-2"
+>
+  Contact Us
+  <FaPhoneAlt className="text-gray-900" />
+</button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -115,13 +117,13 @@ function Navigation() {
             <div className="border-t border-gray-700 my-4"></div>
 
             {/* Mobile Contact Button */}
-            <button
-              onClick={() => handleNavigation(contactItem.path)}
-              className="w-full mt-2 flex items-center justify-center bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold hover:bg-amber-400 transition-colors shadow-lg text-base"
-            >
-              <span className="mr-2">{contactItem.icon}</span>
-              Contact Us
-            </button>
+          <button
+  onClick={() => navigate('/contact')}
+  className="bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold hover:bg-amber-400 transition-colors shadow-lg flex items-center gap-2"
+>
+  Contact Us
+  <FaPhoneAlt className="text-gray-900" />
+</button>
           </div>
         </div>
       )}
