@@ -172,7 +172,7 @@ const AboutPage = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500">
-              Transforming Ambition Into Measurable Success
+              Transforming Measurable Success
             </h1>
             <p className="text-lg md:text-xl text-white leading-relaxed">
               H&amp;H Tech Solutions brings technology, strategy and execution under one roof working as one unified force to drive your business growth.
