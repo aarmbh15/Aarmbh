@@ -86,7 +86,7 @@ function Team() {
                           Meet Our Expert Team
                         </h1>
                         <p className="text-lg md:text-xl text-white leading-relaxed">
-                         Five seasoned professionals with diverse expertise, working together to deliver exceptional results for your projects.
+                         Five seasoned working together to deliver exceptional results for your projects.
                         </p>
                       </motion.div>
                     </div>
