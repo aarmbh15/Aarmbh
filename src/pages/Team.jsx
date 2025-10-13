@@ -1,4 +1,8 @@
 import { motion } from "framer-motion";
+import shwetaImg from '../assets/shweta.jpg';
+import Snigdha from '../assets/Snigdhaa.jpg';
+import Mahesha from '../assets/Mahesh.jpg';
+import Param from '../assets/Veer.jpg';
 
 function Team() {
     const primaryGold = '#f7dab2'; 
@@ -8,49 +12,50 @@ function Team() {
 
     const teamMembers = [
       {
-        name: 'Alex Rodriguez',
-        role: 'Full-Stack Developer & Team Lead',
-        specialties: ['React', 'Node.js', 'MongoDB', 'AWS'],
-        experience: '5+ years',
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
+        name: 'Paramveer Patil',
+        role: 'Full-Stack Developer & Database Admin ',
+        specialties: ['React.js','Node.js', 'SQL', 'Firebase'],
+        experience: '+ years',
+        image: Param,
         rating: 4.9,
         completedProjects: 45,
         bio: 'Passionate about creating scalable web applications and leading development teams to success.',
         hourlyRate: '$75-95',
       },
       {
-        name: 'Sarah Chen',
-        role: 'Frontend Developer & UI/UX Designer',
-        specialties: ['React', 'Vue.js', 'Figma', 'Tailwind CSS'],
-        experience: '4+ years',
-        image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
+        name: 'Snigdha Roy',
+        role: 'App & Backend Devloper ,team Co-Ordinator',
+        specialties: ['Data Analytics','Flutter', 'PHP(Laravel)','GoLang'],
+        experience: '3+ years',
+        image:Snigdha,
         rating: 4.8,
         completedProjects: 38,
-        bio: 'Specialized in creating beautiful, user-friendly interfaces that convert visitors into customers.',
+        bio: 'Expert in building robust backend systems and cloud infrastructure for enterprise applications.',
         hourlyRate: '$65-85',
       },
       {
-        name: 'Marcus Johnson',
-        role: 'Backend Developer & DevOps Engineer',
-        specialties: ['Python', 'Django', 'Docker', 'Kubernetes'],
-        experience: '6+ years',
-        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
+        name: 'Shweta Gangurde',
+        role: 'Full stack devloper & Technical Expert',
+        specialties: ['React.js','Python','MongoDB','C++'],
+        experience: '3+ years',
+        image:shwetaImg,
         rating: 4.9,
         completedProjects: 52,
         bio: 'Expert in building robust backend systems and cloud infrastructure for enterprise applications.',
         hourlyRate: '$80-100',
       },
       {
-        name: 'Elena Vasquez',
-        role: 'Mobile App Developer',
-        specialties: ['React Native', 'Flutter', 'iOS', 'Android'],
-        experience: '4+ years',
-        image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
+        name: 'Mahesh Gunwant',
+        role: 'Frontend Developer & UI/UX Designer',
+        specialties: ['Canva', 'Bootsrap', 'Figma', 'Tailwind CSS','SEO'],
+        experience: '3+ years',
+        image:Mahesha,
         rating: 4.7,
         completedProjects: 31,
-        bio: 'Creating cross-platform mobile applications that deliver exceptional user experiences.',
+        bio:'Specialized in creating beautiful, user-friendly interfaces that convert visitors into customers.' ,
         hourlyRate: '$70-90',
       },
+
       // {
       //   name: 'David Kim',
       //   role: 'Data Scientist & AI Developer',
@@ -62,11 +67,13 @@ function Team() {
       //   bio: 'Transforming data into insights and building intelligent solutions with machine learning.',
       //   hourlyRate: '$85-110',
       // },
+
     ];
   
     return (
       <div className={`pt-16 min-h-screen ${darkBackground}`}>
-          <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+          {/* ... (Hero section remains the same) */}
+                    <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
                     <div
                       className="absolute inset-0 bg-cover bg-center opacity-20"
                       style={{
@@ -96,26 +103,29 @@ function Team() {
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
       {teamMembers.map((member, index) => (
-        // Dark theme card background with hover effect
         <div
           key={index}
           className={`bg-neutral-800 rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl`}
         >
-          <div className="relative">
+          {/* Change 1: Added a new div for the image container */}
+          <div className="flex justify-center p-6 bg-neutral-900">
+            {/* Change 2: Applied 'rounded-full', 'w-48', 'h-48', and 'ring-4' to the image */}
             <img
               src={member.image}
               alt={member.name}
-              className="w-full h-64 object-cover"
+              className="w-75 h-75 object-cover rounded-full ring-4 ring-amber-500/50 shadow-xl"
             />
-            {/* Rating badge */}
-            <div className="absolute top-4 right-4 bg-neutral-700 px-2 py-1 rounded-full flex items-center">
+          </div>
+
+          <div className="relative p-6">
+             {/* Change 3: Moved the rating badge here for better placement with a circular image */}
+            <div className="absolute top-0 right-6 -mt-4 bg-neutral-700 px-3 py-1 rounded-full flex items-center shadow-lg border border-amber-500/50">
               <i className="fas fa-star mr-1" style={{ color: primaryGold }}></i>
               <span className="text-sm font-semibold text-white">
                 {member.rating}
               </span>
             </div>
-          </div>
-          <div className="p-6">
+
             <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
             <p className="font-semibold mb-3" style={{ color: secondaryGold }}>
               {member.role}
@@ -169,40 +179,34 @@ function Team() {
 </section>
 
   
-        {/* Dark theme for the collective expertise section */}
+        {/* ... (Collective expertise section remains the same) */}
         <section className={`py-16 ${deepestBlack}`}>
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Dark theme text color */}
     <h2 className="text-3xl font-bold text-center mb-12 text-white">
       Our Collective Expertise
     </h2>
     <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
       
-      {/* Card 1 */}
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
         <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>20+</div>
         <div className="text-gray-400">Years Combined Experience</div>
       </div>
       
-      {/* Card 2 */}
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
         <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>194</div>
         <div className="text-gray-400">Total Projects</div>
       </div>
       
-      {/* Card 3 */}
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
         <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>15+</div>
         <div className="text-gray-400">Technologies</div>
       </div>
       
-      {/* Card 4 */}
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
         <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>4.8</div>
         <div className="text-gray-400">Average Rating</div>
       </div>
       
-      {/* Card 5 */}
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
         <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>100%</div>
         <div className="text-gray-400">Client Retention</div>

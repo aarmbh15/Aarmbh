@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 // import Projects from './Projects';
 function Projects() {
     const primaryGold = '#f7dab2'; 
- const darkBackground = 'bg-gray-900'; 
+    const darkBackground = 'bg-gray-900'; 
     const deepestBlack = 'bg-gray-950';
 
     const projects = [
@@ -43,92 +43,85 @@ function Projects() {
   
     return (
       <div className={`pt-16 min-h-screen ${deepestBlack}`}>
-        {/* <section className={`py-16 ${darkBackground} text-white`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Portfolio</h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Explore some of our recent projects and see how we've helped clients achieve their goals.
-            </p>
-          </div>
-        </section> */}
-         <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
-                  <div
-                      className="absolute inset-0 bg-cover bg-center opacity-20"
-                      style={{
-                        backgroundImage:
-                          "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop')", // Code/technology theme
-                      }}
-                    ></div>
-          
-                    <div className="relative z-15 container mx-auto px-6 py-24 md:py-32">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-center max-w-4xl mx-auto"
-                      >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500 leading-tight">
-  Our Projects
-</h1>
-
-                        <p className="text-lg md:text-xl text-white leading-relaxed">
-                          Explore some of our recent projects and see how we've helped clients achieve their goals.
-                        </p>
-                      </motion.div>
-                    </div>
-                  </div>
+        {/* Hero Section */}
+           <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+                     <div
+                        className="absolute inset-0 bg-cover bg-center opacity-20"
+                        style={{
+                          backgroundImage:
+                            "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop')", // Code/technology theme
+                        }}
+                      ></div>
+            
+                      <div className="relative z-15 container mx-auto px-6 py-24 md:py-32">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.8 }}
+                          className="text-center max-w-4xl mx-auto"
+                        >
+                          <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500 leading-tight">
+                              Our Projects
+                          </h1>
   
+                          <p className="text-lg md:text-xl text-white leading-relaxed">
+                            Explore some of our recent projects and see how we've helped clients achieve their goals.
+                          </p>
+                        </motion.div>
+                      </div>
+                    </div>
+  
+        {/* Project Grid Section */}
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="space-y-12">
+            {/* Reduced gap from gap-8 to gap-6 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> 
               {projects.map((project, index) => (
-                <div key={index} className={`bg-neutral-800 rounded-xl shadow-lg overflow-hidden`}>
-                  <div className="md:flex">
-                    <div className="md:w-1/2">
-                      <img src={project.image} alt={project.title} className="w-full h-64 md:h-full object-cover" />
+                <div key={index} className={`bg-neutral-800 rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-[1.02]`}>
+                  
+                  {/* Reduced image height from h-56 to h-48 */}
+                  <img src={project.image} alt={project.title} className="w-full h-48 object-cover" /> 
+                  
+                  {/* Reduced content padding from p-6 to p-4 */}
+                  <div className="p-4 text-white"> 
+                    <div className="mb-3"> {/* Reduced margin bottom */}
+                      <span style={{ backgroundColor: primaryGold, color: '#171717' }} className="px-3 py-1 rounded-full text-sm font-semibold">
+                        {project.category}
+                      </span>
                     </div>
-                    <div className="md:w-1/2 p-8 text-white">
-                      <div className="mb-4">
-                        {/* Using Primary Gold for category tag background/text contrast */}
-                        <span style={{ backgroundColor: primaryGold, color: '#171717' }} className="px-3 py-1 rounded-full text-sm font-semibold">
-                          {project.category}
-                        </span>
+                    <h3 className="text-xl font-bold mb-2">{project.title}</h3> {/* Reduced title size from text-2xl to text-xl */}
+                    <p className="text-gray-400 mb-1 text-sm">Client: {project.client}</p> {/* Reduced text size */}
+                    <p className="text-gray-400 mb-3 text-sm line-clamp-2">{project.description}</p> {/* Reduced margin bottom and text size */}
+                    <div className="mb-3"> {/* Reduced margin bottom */}
+                      <h4 className="font-semibold text-white mb-1 text-sm">Technologies:</h4> {/* Reduced text size and margin bottom */}
+                      <div className="flex flex-wrap gap-1"> {/* Reduced gap */}
+                        {project.technologies.map((tech, techIndex) => (
+                          <span key={techIndex} className="bg-neutral-700 text-gray-300 px-2 py-0.5 rounded text-xs"> {/* Reduced padding and text size */}
+                            {tech}
+                          </span>
+                        ))}
                       </div>
-                      <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                      <p className="text-gray-400 mb-1">Client: {project.client}</p>
-                      <p className="text-gray-400 mb-4">{project.description}</p>
-                      <div className="mb-4">
-                        <h4 className="font-semibold text-white mb-2">Technologies:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech, techIndex) => (
-                            <span key={techIndex} className="bg-neutral-700 text-gray-300 px-2 py-1 rounded text-sm">
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 mb-3 text-xs"> {/* Reduced gap and text size */}
+                      <div>
+                        <span className="text-gray-400">Duration:</span>
+                        <div className="font-semibold text-white">{project.duration}</div>
                       </div>
-                      <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
-                        <div>
-                          <span className="text-gray-400">Duration:</span>
-                          <div className="font-semibold text-white">{project.duration}</div>
-                        </div>
-                        <div>
-                          <span className="text-gray-400">Team:</span>
-                          <div className="font-semibold text-white">{project.teamMembers.join(', ')}</div>
-                        </div>
+                      <div>
+                        <span className="text-gray-400">Team:</span>
+                        <div className="font-semibold text-white truncate">{project.teamMembers.join(', ')}</div>
                       </div>
-                      <div className="mb-6">
-                        <span className="text-gray-400 text-sm">Results:</span>
-                        <div className="font-semibold text-green-400">{project.results}</div>
-                      </div>
-                       {/* Using Primary Gold for the button */}
-                      <button 
+                    </div>
+                    <div className="mb-4"> {/* Reduced margin bottom */}
+                      <span className="text-gray-400 text-xs">Results:</span> {/* Reduced text size */}
+                      <div className="font-semibold text-green-400 text-sm">{project.results}</div>
+                    </div>
+                     <button 
                         style={{ backgroundColor: primaryGold, color: '#171717' }}
-                        className="px-6 py-2 rounded-lg transition-colors hover:opacity-80">
+                        className="px-4 py-2 rounded-lg transition-colors hover:opacity-80 w-full text-sm"> {/* Reduced padding and text size */}
                         <i className="fas fa-external-link-alt mr-2"></i>
                         View Details
                       </button>
-                    </div>
                   </div>
                 </div>
               ))}
@@ -140,3 +133,4 @@ function Projects() {
   }
   
   export default Projects;
+  
