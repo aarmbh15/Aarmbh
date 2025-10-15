@@ -7,8 +7,8 @@ function Footer() {
   const navigate = useNavigate();
 
   // Define your color constants (still here but CTA buttons will use amber classes)
-  const primaryGold = "#f7dab2";
-  const secondaryGold = "#d9b991";
+  // const primaryGold = "#f7dab2";
+  // const secondaryGold = "#d9b991";
    const deepestBlack = 'bg-gray-900';
   // Deep black background class
 
@@ -44,7 +44,7 @@ function Footer() {
             </button>
 
             {/* Secondary Button - UPDATED */}
-            <button
+            {/* <button
               onClick={() => navigate("/team")}
               // Applying the new amber button classes for consistent look
               className={amberButtonClasses}
@@ -52,7 +52,7 @@ function Footer() {
             >
               <i className="fas fa-calendar mr-2"></i>
               Schedule a Call
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
@@ -60,112 +60,96 @@ function Footer() {
       {/* ============================= */}
       {/* FOOTER SECTION */}
       {/* ============================= */}
-     <footer className="bg-black text-white py-10">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Grid: 1 column on mobile, 4 columns on md+ */}
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
-      
-      {/* Column 1: Logo and Description */}
-      <div>
+    <footer className="bg-black text-white py-12">
+  <div className="max-w-7xl mx-auto px-6">
+    {/* Grid layout: 1 column on mobile, 3 columns on md+ */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+
+      {/* Column 1: Logo + Description */}
+      <div className="space-y-4 flex flex-col items-center md:items-start">
         <div
-          className="flex justify-center md:justify-start items-center cursor-pointer mb-4"
+          className="flex justify-center md:justify-start items-center cursor-pointer"
           onClick={() => navigate('/')}
         >
-          <img src={AarambhLogo} alt="Aarambh Logo" className="h-25 w-35" />
+          <img
+            src={AarambhLogo}
+            alt="Aarambh Logo"
+            className="h-20 w-auto hover:scale-105 transition-transform duration-300"
+          />
         </div>
-        <p className="text-gray-400">
-          Professional freelance development team delivering
-          high-quality solutions worldwide.
+        <p className="text-gray-400 text-sm max-w-xs">
+          Professional freelance development team delivering high-quality web solutions worldwide.
         </p>
       </div>
 
-      {/* Column 2: Services */}
-      <div className="md:ml-15 space-y-2">
-        <h3 className="text-lg font-semibold mb-4 text-white">Services</h3>
-        <ul className="space-y-2 text-gray-400">
-          <li className="hover:text-amber-400 transition-colors">
-            <a href="/Services">Web Development</a>
-          </li>
-          <li className="hover:text-amber-400 transition-colors">
-            <a href="/Services">Mobile Apps</a>
-          </li>
-          <li className="hover:text-amber-400 transition-colors">
-            <a href="/Services">Backend Systems</a>
-          </li>
-          <li className="hover:text-amber-400 transition-colors">
-            <a href="/Services">UI/UX Design</a>
-          </li>
-        </ul>
-      </div>
-
-      {/* Column 3: Company */}
-      <div className="md:ml-15 space-y-2">
-        <h3 className="text-lg font-semibold mb-4 text-white">Company</h3>
-        <ul className="space-y-2 text-gray-400">
-          <li className="hover:text-amber-400 transition-colors">
-            <a href="/Team">Our Team</a>
-          </li>
-          <li className="hover:text-amber-400 transition-colors">
-            <a href="/Services">Services</a>
-          </li>
-          <li className="hover:text-amber-400 transition-colors">
-            <a href="/Projects">Projects</a>
-          </li>
-          <li className="hover:text-amber-400 transition-colors">
-            <a href="/Dashboard">Dashboard</a>
-          </li>
-          <li className="hover:text-amber-400 transition-colors">
-            <a href="/Contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-
-      {/* Column 4: Connect */}
+      {/* Column 2: Company Links */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-white">Connect</h3>
+        <h3 className="text-lg font-semibold mb-4 text-white tracking-wide">Company</h3>
+        <ul className="space-y-2 text-gray-400 text-sm">
+          {[
+            { name: 'Our Team', link: '/Team' },
+            { name: 'Services', link: '/Services' },
+            { name: 'Projects', link: '/Projects' },
+            { name: 'Dashboard', link: '/Dashboard' },
+            { name: 'Contact', link: '/Contact' },
+          ].map((item, i) => (
+            <li key={i}>
+              <a
+                href={item.link}
+                className="hover:text-amber-400 transition-colors duration-200"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Column 3: Connect */}
+      <div className="flex flex-col items-center md:items-start">
+        <h3 className="text-lg font-semibold mb-4 text-white tracking-wide">Connect</h3>
         <div className="flex justify-center md:justify-start space-x-6 text-2xl">
-          {/* LinkedIn */}
           <a
-            href="https://linkedin.com/company/freelanceteam"
+            href="https://www.linkedin.com/company/aarmbh/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 transition-colors"
-            aria-label="LinkedIn Profile"
+            className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+            aria-label="LinkedIn"
           >
             <i className="fab fa-linkedin"></i>
           </a>
-
-          {/* GitHub */}
           <a
-            href="https://github.com/freelanceteam"
+            href="https://github.com/aarmbh15"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors"
-            aria-label="GitHub Repository"
+            className="text-gray-400 hover:text-white transition-colors duration-200"
+            aria-label="GitHub"
           >
             <i className="fab fa-github"></i>
           </a>
+        <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=aarmbh15@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-gray-400 hover:text-white transition-colors duration-200"
+  aria-label="Email"
+>
+  <i className="fas fa-envelope"></i>
+</a>
 
-          {/* Email */}
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=aarmbh15@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors"
-            aria-label="Send Email via Gmail"
-          >
-            <i className="fas fa-envelope"></i>
-          </a>
         </div>
       </div>
     </div>
 
     {/* Copyright */}
-    <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-      <p>&copy; 2025 FreelanceTeam Pro. All rights reserved.</p>
+    <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
+      <p>
+        &copy; {new Date().getFullYear()} <span className="text-amber-400 font-semibold">FreelanceTeam</span>. All rights reserved.
+      </p>
     </div>
   </div>
 </footer>
+
 
     </>
   );

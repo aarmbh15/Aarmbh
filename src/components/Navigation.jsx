@@ -58,7 +58,7 @@ function Navigation() {
         <div className="flex justify-between items-center h-20">
           {/* Logo Section */}
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            <img src={AarambhLogo} alt="Aarambh Logo" className="h-25 w-35 mt-6" />
+            <img src={AarambhLogo} alt="Aarambh Logo" className="h-15 w-15 " />
           </div>
 
           {/* Desktop Navigation Links */}
@@ -119,7 +119,7 @@ function Navigation() {
             {/* Mobile Contact Button */}
           <button
   onClick={() => navigate('/contact')}
-  className="bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold hover:bg-amber-400 transition-colors shadow-lg flex items-center gap-2"
+  className="bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold cursor-pointer hover:bg-amber-400 transition-colors shadow-lg flex items-center gap-2"
 >
   Contact Us
   <FaPhoneAlt className="text-gray-900" />
