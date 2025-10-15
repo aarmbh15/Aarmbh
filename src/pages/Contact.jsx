@@ -1,21 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Contact() {
   const navigate = useNavigate();
+  const formRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone:'',
     subject: '',
+    service:'',
     message: '',
+    honeypot: '', // Honeypot field (hidden from real users)
   });
   const [formStatus, setFormStatus] = useState(null);
+  const [statusMessage, setStatusMessage] = useState('');
+  const [errors, setErrors] = useState({});
 
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prev) => ({ ...prev, [name]: value }));
-  // };
-    const handleChange = (e) => {
+  // Reset form on component mount (handles reloads)
+  useEffect(() => {
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      service: '',
+      message: '',
+      honeypot: '',
+    });
+    setFormStatus(null);
+    setStatusMessage('');
+    setErrors({});
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+  }, []);
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -23,20 +44,119 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simulating form submission (replace with actual API call in production)
-    setTimeout(() => {
-      setFormStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setFormStatus(null), 3000);
-    }, 1000);
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Name: required, min 2 chars
+    if (!formData.name.trim()) {
+      newErrors.name = 'Full name is required.';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters long.';
+    }
+
+    // Email: required, valid format
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email address is required.';
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+
+    // Phone: required, valid international format (e.g., +91 followed by 10 digits, or similar)
+    const phoneRegex = /^\+?[1-9]\d{1,14}$/; // E.164 format basic check
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required.';
+    } else if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+      newErrors.phone = 'Please enter a valid phone number (e.g., +919881033442).';
+    }
+
+    // Subject: required, min 5 chars
+    // if (!formData.subject.trim()) {
+    //   newErrors.subject = 'Subject is required.';
+    // } else if (formData.subject.trim().length < 5) {
+    //   newErrors.subject = 'Subject must be at least 5 characters long.';
+    // }
+     if (!formData.subject) {
+      newErrors.subject = 'Please enter subject.';
+    }
+
+    // Service: required
+    if (!formData.service) {
+      newErrors.service = 'Please select a service.';
+    }
+
+    // Message: required, min 10 chars
+    // if (!formData.message.trim()) {
+    //   newErrors.message = 'Message is required.';
+    // } else if (formData.message.trim().length < 10) {
+    //   newErrors.message = 'Message must be at least 10 characters long.';
+    // }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus(null); // Reset previous status
+    setStatusMessage('');
+    setErrors({});
+
+    if (!validateForm()) {
+      return; // Stop submission if validation fails
+    }
+
+    // Honeypot check: If filled, it's likely a bot (silent fail or ignore)
+    if (formData.honeypot) {
+      // Silent ignore for bots - pretend success or do nothing
+      setFormStatus('success');
+      setStatusMessage('Message sent successfully!');
+      setTimeout(() => {
+        setFormStatus(null);
+        setStatusMessage('');
+      }, 5000);
+      return;
+    }
+
+    // Create payload from state (ensures controlled values)
+    const payload = new FormData();
+    payload.append('name', formData.name);
+    payload.append('email', formData.email);
+    payload.append('phone', formData.phone);
+    payload.append('subject', formData.subject);
+    payload.append('service', formData.service);
+    payload.append('message', formData.message);
+    payload.append('honeypot', formData.honeypot); // Send to server for extra check if needed
+
+    try {
+      const response = await fetch('contact.php', {
+        method: 'POST',
+        body: payload,
+      });
+      const data = await response.json();
+      setFormStatus(data.status); // 'success' or 'error'
+      setStatusMessage(data.message || (data.status === 'success' ? 'Message sent successfully!' : 'An error occurred.'));
+      
+      if (data.status === 'success') {
+        setFormData({ name: '', email: '', phone: '', subject: '', service: '', message: '', honeypot: '' });
+      }
+    } catch (error) {
+      setFormStatus('error');
+      setStatusMessage('Network error: Failed to connect to server. Please try again.');
+      console.error('Submission error:', error);
+    }
+
+    // Auto-clear status after 5 seconds
+    setTimeout(() => {
+      setFormStatus(null);
+      setStatusMessage('');
+    }, 5000);
+  };
+  
   return (
     <div className="pt-16 min-h-screen bg-gray-800">
  <section
-  className="relative h-[60vh] flex items-center justify-center text-center overflow-hidden"
+  className="relative h-[60vh584] flex items-center justify-center text-center overflow-hidden"
 >
   {/* Background Image */}
   <div
@@ -132,7 +252,20 @@ function Contact() {
 
             <div className="bg-gray-900 p-8 rounded-xl shadow-lg card-hover">
               <h2 className="text-2xl font-bold text-white mb-6">Contact Form</h2>
-              <form className="space-y-6" onSubmit={handleSubmit}>
+              
+              <form ref={formRef} className="space-y-6" onSubmit={handleSubmit} noValidate>
+                {/* Honeypot field - Hidden from users via CSS and accessibility attributes */}
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleChange}
+                  style={{ display: 'none' }}
+                  tabIndex="-1"
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+
                 {/* Full Name */}
                 <div>
                   <label htmlFor="fullName" className="block text-white text-sm font-medium mb-2">
@@ -140,14 +273,16 @@ function Contact() {
                   </label>
                   <input
                     id="fullName"
-                    name="fullName"
+                    name="name"
                     type="text"
-                    value={formData.fullName}
+                    value={formData.name}
                     onChange={handleChange}
+                    autoComplete="off"
                     className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-white transition-colors"
                     placeholder="Your full name"
                     required
                   />
+                  {errors.name && <p className="mt-1 text-red-400 text-sm">{errors.name}</p>}
                 </div>
 
                 {/* Email */}
@@ -161,10 +296,12 @@ function Contact() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
+                    autoComplete="off"
                     className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-white transition-colors"
                     placeholder="your.email@example.com"
                     required
                   />
+                  {errors.email && <p className="mt-1 text-red-400 text-sm">{errors.email}</p>}
                 </div>
 
                 {/* Phone */}
@@ -178,10 +315,12 @@ function Contact() {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
+                    autoComplete="off"
                     className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-white transition-colors"
                     placeholder="+44 123 456 7890"
                     required
                   />
+                  {errors.phone && <p className="mt-1 text-red-400 text-sm">{errors.phone}</p>}
                 </div>
 
                 {/* Subject */}
@@ -195,10 +334,12 @@ function Contact() {
                     type="text"
                     value={formData.subject}
                     onChange={handleChange}
+                    autoComplete="off"
                     className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-white transition-colors"
                     placeholder="Project subject"
                     required
                   />
+                  {errors.subject && <p className="mt-1 text-red-400 text-sm">{errors.subject}</p>}
                 </div>
 
                 {/* Service Dropdown */}
@@ -211,6 +352,7 @@ function Contact() {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
+                    autoComplete="off"
                     className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:border-white transition-colors"
                     required
                   >
@@ -218,6 +360,7 @@ function Contact() {
                     <option value="web" className="text-black">Web Development</option>
                     <option value="software" className="text-black">Software Development</option>
                   </select>
+                  {errors.service && <p className="mt-1 text-red-400 text-sm">{errors.service}</p>}
                 </div>
 
                 {/* Message */}
@@ -231,10 +374,12 @@ function Contact() {
                     rows="4"
                     value={formData.message}
                     onChange={handleChange}
+                    autoComplete="off"
                     className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-white transition-colors"
                     placeholder="Tell us about your project requirements..."
                     required
                   ></textarea>
+                  {errors.message && <p className="mt-1 text-red-400 text-sm">{errors.message}</p>}
                 </div>
 
                 {/* Submit */}
@@ -248,6 +393,17 @@ function Contact() {
 </div>
 
               </form>
+              {/* Dynamic Status Message */}
+              {formStatus === 'success' && (
+                <div className="mb-4 p-4 bg-green-800 text-green-200 rounded-lg border border-green-600">
+                  {statusMessage}
+                </div>
+              )}
+              {formStatus === 'error' && (
+                <div className="mb-4 p-4 bg-red-800 text-red-200 rounded-lg border border-red-600">
+                  {statusMessage}
+                </div>
+              )}
             </div>
           </div>
         </div>
