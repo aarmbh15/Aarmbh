@@ -10,7 +10,7 @@ function Home() {
   // #f7dab2 is the lighter, more prominent gold for main text/accents
   const primaryGold = '#f7dab2'; 
   // #d9b991 is the darker gold for borders, secondary accents, and hover effects
-  const secondaryGold = '#d9b991'; 
+  // const secondaryGold = '#d9b991'; 
   
   // Using 'bg-neutral-900' for the dark navy/nearly black background, which is close to the logo's background
   const darkBackground = 'bg-gray-950'; 
@@ -236,12 +236,12 @@ function Home() {
   </div>
 
   <div className="fade-in transform transition duration-500 hover:scale-105 bg-gray-800 rounded-xl p-6 shadow-lg">
-    <div className="text-4xl font-bold mb-2" style={{ color: primaryGold }}>98%</div>
+    <div className="text-4xl font-bold mb-2" style={{ color: primaryGold }}>90%</div>
     <div className="text-gray-400">Client Satisfaction</div>
   </div>
 
   <div className="fade-in transform transition duration-500 hover:scale-105 bg-gray-800 rounded-xl p-6 shadow-lg">
-    <div className="text-4xl font-bold mb-2" style={{ color: primaryGold }}>5+</div>
+    <div className="text-4xl font-bold mb-2" style={{ color: primaryGold }}>4+</div>
     <div className="text-gray-400">Expert Developers</div>
   </div>
 

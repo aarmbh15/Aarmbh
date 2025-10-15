@@ -2,42 +2,50 @@ import { motion } from "framer-motion";
 // import Projects from './Projects';
 function Projects() {
     const primaryGold = '#f7dab2'; 
-    const darkBackground = 'bg-gray-900'; 
+    // const darkBackground = 'bg-gray-900'; 
     const deepestBlack = 'bg-gray-950';
 
     const projects = [
       {
-        title: 'E-commerce Platform',
-        client: 'RetailCorp',
+        title: 'H&H TECH SOLUTIONS',
+        client: 'IT Consultany & Services',
         category: 'Web Development',
-        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-        description: 'Full-stack e-commerce solution with payment integration and inventory management.',
-        technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-        duration: '3 months',
-        teamMembers: ['Alex Rodriguez', 'Sarah Chen'],
-        results: '+150% sales increase, 40% faster load times',
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80',
+        description: 'Full-stack e-commerce platform built with modern web technologies, featuring a responsive design,and seamless user experience across devices.',
+        technologies: ['React.js', 'PHP', 'My SQL'],
       },
       {
-        title: 'Healthcare Mobile App',
-        client: 'MedTech Solutions',
-        category: 'Mobile Development',
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop",
-        description: 'HIPAA-compliant mobile app for patient management and telemedicine.',
-        technologies: ['React Native', 'Firebase', 'WebRTC'],
-        duration: '4 months',
-        teamMembers: ['Elena Vasquez', 'Marcus Johnson'],
-        results: '10K+ active users, 99.9% uptime',
-      },
+  title: "Ambition Let's Move",
+  client: "Transportation App",
+  category: "Mobile Development",
+  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop",
+  description: "Ambition Let's Move is a mobile transportation app built with Flutter, Firebase, and MongoDB. It features real-time ride tracking, seamless booking, and efficient route management, providing users with a smooth and reliable transportation experience.",
+  technologies: ['Flutter', 'Firebase', 'MongoDB'],
+},
+
       {
-        title: 'AI Analytics Dashboard',
-        client: 'DataInsights Inc',
+        title: 'Telegram chatbot',
+        client: 'Telegram chatbot',
         category: 'AI & Data Science',
+        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+        description: 'Developed an intelligent Telegram chatbot with machine learning capabilities for predictive analytics and interactive data visualization.',
+        technologies: ['Python', 'Machine Learning' ],
+      },
+      {
+        title: 'Upscale Sugar Fatory Solution',
+        client: 'Sugar Fatory',
+        category: 'Web Development',
         image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-        description: 'Machine learning dashboard for predictive analytics and data visualization.',
-        technologies: ['Python', 'TensorFlow', 'React', 'D3.js'],
-        duration: '5 months',
-        teamMembers: ['David Kim', 'Sarah Chen'],
-        results: '60% improvement in prediction accuracy',
+        description: 'Developed a comprehensive web solution for sugar factory operations, enabling efficient production tracking, inventory management, and process optimization.',
+        technologies: ['HTML','CSS','JavaSript','Python','Postgre SQL',],
+      },
+      {
+        title: 'Deldex',
+        client: 'DataInsights Inc',
+        category: 'Web Development',
+        image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=800&q=80',
+        description: 'A full-featured online marketplace platform for buying and selling products, with a responsive design, real-time listings, and secure user interactions.',
+        technologies: ['React.js', 'Firebase'],
       },
     ];
   
@@ -102,26 +110,6 @@ function Projects() {
                         ))}
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-3 mb-3 text-xs"> {/* Reduced gap and text size */}
-                      <div>
-                        <span className="text-gray-400">Duration:</span>
-                        <div className="font-semibold text-white">{project.duration}</div>
-                      </div>
-                      <div>
-                        <span className="text-gray-400">Team:</span>
-                        <div className="font-semibold text-white truncate">{project.teamMembers.join(', ')}</div>
-                      </div>
-                    </div>
-                    <div className="mb-4"> {/* Reduced margin bottom */}
-                      <span className="text-gray-400 text-xs">Results:</span> {/* Reduced text size */}
-                      <div className="font-semibold text-green-400 text-sm">{project.results}</div>
-                    </div>
-                     <button 
-                        style={{ backgroundColor: primaryGold, color: '#171717' }}
-                        className="px-4 py-2 rounded-lg transition-colors hover:opacity-80 w-full text-sm"> {/* Reduced padding and text size */}
-                        <i className="fas fa-external-link-alt mr-2"></i>
-                        View Details
-                      </button>
                   </div>
                 </div>
               ))}

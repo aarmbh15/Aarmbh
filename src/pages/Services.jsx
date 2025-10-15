@@ -11,34 +11,26 @@ function Services() {
       {
         icon: 'fas fa-globe',
         title: 'Web Development',
-        description: 'Custom web applications using modern technologies like React, Vue.js, and Node.js. Optimized for performance and scale.',
+        description: 'Custom web applications using modern technologies like HTML,CSS,Javasript, & Framework like PHP, React.js and Node.js. Optimized for performance and scale.',
         features: ['Responsive Design', 'SEO Optimized', 'Fast Performance', 'Security Focused'],
-        startingPrice: '$2,500',
-        deliveryTime: '2-4 weeks',
       },
       {
         icon: 'fas fa-mobile-alt',
         title: 'Mobile App Development',
-        description: 'Cross-platform mobile applications for iOS and Android using React Native and Flutter for maximum reach.',
+        description: 'Cross-platform mobile applications for iOS and Android using Flutter for maximum reach.',
         features: ['Cross-platform', 'Native Performance', 'App Store Ready', 'Push Notifications'],
-        startingPrice: '$5,000',
-        deliveryTime: '4-8 weeks',
       },
       {
         icon: 'fas fa-server',
         title: 'Backend Development',
-        description: 'Robust backend systems and APIs using Python, Node.js, and scalable cloud infrastructure.',
+        description: 'Robust backend systems and APIs using Python, Node.js,PHP-Laravel,C,C++,Golang and scalable cloud infrastructure.',
         features: ['RESTful APIs', 'Database Design', 'Cloud Integration', 'Security & Auth'],
-        startingPrice: '$3,000',
-        deliveryTime: '3-6 weeks',
       },
       {
         icon: 'fas fa-paint-brush',
         title: 'UI/UX Design',
-        description: 'Creating beautiful, user-friendly interfaces that drive engagement and improve conversion rates.',
+        description: 'Creating beautiful,user-friendly interfaces using Figma,Canva,Adobe-that drive engagement and improve conversion rates.',
         features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
-        startingPrice: '$1,500',
-        deliveryTime: '1-3 weeks',
       },
     ];
 
@@ -138,17 +130,7 @@ function Services() {
 
                   <div className="border-t border-neutral-700 pt-6 mt-6">
                     <div className="flex justify-between items-center mb-5">
-                      <div>
-                        <span className="text-gray-400 text-sm block">Starting at</span>
-                        {/* Price - Updated to use text-amber-500 class */}
-                        <div className="text-3xl font-extrabold text-amber-500">{service.startingPrice}</div>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-gray-400 text-sm block">Estimated Delivery</span>
-                        <div className="text-xl font-semibold text-white">{service.deliveryTime}</div>
-                      </div>
                     </div>
-                    
                     {/* Button - Updated to use bg-amber-500 and simplified whileHover */}
                    <motion.button
   whileHover={{ scale: 1.05 }}

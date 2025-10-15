@@ -10,65 +10,52 @@ function Team() {
     const darkBackground = 'bg-gray-900'; 
     const deepestBlack = 'bg-gray-950';
 
-    const teamMembers = [
-      {
-        name: 'Paramveer Patil',
-        role: 'Full-Stack Developer & Database Admin ',
-        specialties: ['React.js','Node.js', 'SQL', 'Firebase'],
-        experience: '+ years',
-        image: Param,
-        rating: 4.9,
-        completedProjects: 45,
-        bio: 'Passionate about creating scalable web applications and leading development teams to success.',
-        hourlyRate: '$75-95',
-      },
-      {
-        name: 'Snigdha Roy',
-        role: 'App & Backend Devloper ,team Co-Ordinator',
-        specialties: ['Data Analytics','Flutter', 'PHP(Laravel)','GoLang'],
-        experience: '3+ years',
-        image:Snigdha,
-        rating: 4.8,
-        completedProjects: 38,
-        bio: 'Expert in building robust backend systems and cloud infrastructure for enterprise applications.',
-        hourlyRate: '$65-85',
-      },
-      {
-        name: 'Shweta Gangurde',
-        role: 'Full stack devloper & Technical Expert',
-        specialties: ['React.js','Python','MongoDB','C++'],
-        experience: '3+ years',
-        image:shwetaImg,
-        rating: 4.9,
-        completedProjects: 52,
-        bio: 'Expert in building robust backend systems and cloud infrastructure for enterprise applications.',
-        hourlyRate: '$80-100',
-      },
-      {
-        name: 'Mahesh Gunwant',
-        role: 'Frontend Developer & UI/UX Designer',
-        specialties: ['Canva', 'Bootsrap', 'Figma', 'Tailwind CSS','SEO'],
-        experience: '3+ years',
-        image:Mahesha,
-        rating: 4.7,
-        completedProjects: 31,
-        bio:'Specialized in creating beautiful, user-friendly interfaces that convert visitors into customers.' ,
-        hourlyRate: '$70-90',
-      },
+const teamMembers = [     
+  {
+    name: 'Paramveer Patil',
+    role: 'Full-Stack Developer & Database Administrator',
+    specialties: ['React.js','Node.js', 'SQL', 'Firebase'],
+    experience: '3+ years',
+    image: Param,
+    rating: 4.9,
+    completedProjects: '10+',
+    bio: 'Passionate about creating scalable web applications and leading development teams to success.',
+    portfolioUrl: 'https://paramveer-portfolio.vercel.app/',
+  },
+  {
+    name: 'Snigdha Kamble',
+    role: 'App & Backend Developer, Team Co-Ordinator',
+    specialties: ['Data Analytics','Flutter', 'PHP (Laravel)','GoLang'],
+    experience: '3+ years',
+    image: Snigdha,
+    rating: 4.8,
+    completedProjects: '10+',
+    bio: 'Expert in building robust backend systems and cloud infrastructure for enterprise applications.',
+    portfolioUrl: 'https://snigdha-portfolio.vercel.app/',
+  },
+  {
+  name: 'Shweta Gangurde',
+  role: 'Full Stack Developer & Technical Expert',
+  specialties: ['React.js', 'Python', 'MongoDB', 'C++'],
+  experience: '3+ years',
+  image: shwetaImg,
+  rating: 4.9,
+  completedProjects: '10+',
+  bio: 'Passionate Full Stack Developer with over 3 years of experience in designing and developing scalable web applications.'
+},
 
-      // {
-      //   name: 'David Kim',
-      //   role: 'Data Scientist & AI Developer',
-      //   specialties: ['Python', 'TensorFlow', 'Machine Learning', 'Data Analysis'],
-      //   experience: '5+ years',
-      //   image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face',
-      //   rating: 4.8,
-      //   completedProjects: 28,
-      //   bio: 'Transforming data into insights and building intelligent solutions with machine learning.',
-      //   hourlyRate: '$85-110',
-      // },
-
-    ];
+  {
+    name: 'Mahesh Gunwant',
+    role: 'Frontend Developer & UI/UX Designer',
+    specialties: ['Canva', 'Bootstrap', 'Figma', 'Tailwind CSS', 'SEO'],
+    experience: '3+ years',
+    image: Mahesha,
+    rating: 4.7,
+    completedProjects: '10+',
+    bio: 'Specialized in creating beautiful, user-friendly interfaces that convert visitors into customers.',
+    portfolioUrl: 'https://mahesh-portfolio.vercel.app/',
+  },
+];
   
     return (
       <div className={`pt-16 min-h-screen ${darkBackground}`}>
@@ -93,7 +80,7 @@ function Team() {
                           Meet Our Expert Team
                         </h1>
                         <p className="text-lg md:text-xl text-white leading-relaxed">
-                         Five seasoned working together to deliver exceptional results for your projects.
+                         Four seasoned working together to deliver exceptional results for your projects.
                         </p>
                       </motion.div>
                     </div>
@@ -157,20 +144,21 @@ function Team() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-gray-400 text-sm">Rate:</span>
-                <div className="font-bold" style={{ color: primaryGold }}>
-                  {member.hourlyRate}/hr
-                </div>
-              </div>
-              <button
-                style={{ backgroundColor: primaryGold, color: '#171717' }}
-                className="px-4 py-2 rounded-lg transition-colors hover:opacity-80">
-                <i className="fas fa-message mr-2"></i>
-                Contact
-              </button>
-            </div>
+            <div className="relative"> 
+  {/* Card Content Above */}
+  
+  {/* Contact Button - Bottom Right */}
+  <button
+    onClick={() => window.open(member.portfolioUrl, '_blank')}
+    style={{ backgroundColor: primaryGold, color: '#171717' }}
+    className="absolute bottom-4 right-4 px-4 py-2 rounded-lg shadow-md transition-transform hover:scale-105 hover:opacity-85"
+  >
+    <i className="fas fa-message mr-2"></i>
+    Contact
+  </button>
+</div>
+
+
           </div>
         </div>
       ))}
@@ -188,12 +176,12 @@ function Team() {
     <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
       
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
-        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>20+</div>
+        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>10+</div>
         <div className="text-gray-400">Years Combined Experience</div>
       </div>
       
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
-        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>194</div>
+        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>40+</div>
         <div className="text-gray-400">Total Projects</div>
       </div>
       

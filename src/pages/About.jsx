@@ -80,9 +80,8 @@ function FiHome({ className }) {
 const AboutPage = () => {
   // Differentiators data
   const differentiators = [
-    { label: 'Projects Delivered', value: '100+', icon: <FiLayers className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
+    { label: 'Projects Delivered', value: '10+', icon: <FiLayers className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
     { label: 'Average ROI Improvement', value: '45%', icon: <FiTrendingUp className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
-    { label: 'Trainees Placed', value: '200+', icon: <FiUsers className="w-8 h-8 bg-teal-500/20 p-1 rounded-full " /> },
     { label: 'Combined Expertise', value: '4 Domains', icon: <FiCode className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
   ];
 
@@ -204,7 +203,7 @@ return (
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {differentiators.map((item, index) => (
               <motion.div
                 key={index}
