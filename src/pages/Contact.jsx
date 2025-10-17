@@ -96,29 +96,83 @@ function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setFormStatus(null); // Reset previous status
+  //   setStatusMessage('');
+  //   setErrors({});
+
+  //   if (!validateForm()) {
+  //     return; // Stop submission if validation fails
+  //   }
+
+  //   // Honeypot check: If filled, it's likely a bot (silent fail or ignore)
+  //   if (formData.honeypot) {
+  //     // Silent ignore for bots - pretend success or do nothing
+  //     setFormStatus('success');
+  //     setStatusMessage('Message sent successfully!');
+  //     setTimeout(() => {
+  //       setFormStatus(null);
+  //       setStatusMessage('');
+  //     }, 5000);
+  //     return;
+  //   }
+
+  //   // Create payload from state (ensures controlled values)
+  //   const payload = new FormData();
+  //   payload.append('name', formData.name);
+  //   payload.append('email', formData.email);
+  //   payload.append('phone', formData.phone);
+  //   payload.append('subject', formData.subject);
+  //   payload.append('service', formData.service);
+  //   payload.append('message', formData.message);
+  //   payload.append('honeypot', formData.honeypot); // Send to server for extra check if needed
+
+  //   try {
+  //     const response = await fetch('contact.php', {
+  //       method: 'POST',
+  //       body: payload,
+  //     });
+  //     const data = await response.json();
+  //     setFormStatus(data.status); // 'success' or 'error'
+  //     setStatusMessage(data.message || (data.status === 'success' ? 'Message sent successfully!' : 'An error occurred.'));
+      
+  //     if (data.status === 'success') {
+  //       setFormData({ name: '', email: '', phone: '', subject: '', service: '', message: '', honeypot: '' });
+  //     }
+  //   } catch (error) {
+  //     setFormStatus('error');
+  //     setStatusMessage('Network error: Failed to connect to server. Please try again.');
+  //     console.error('Submission error:', error);
+  //   }
+
+  //   // Auto-clear status after 5 seconds
+  //   setTimeout(() => {
+  //     setFormStatus(null);
+  //     setStatusMessage('');
+  //   }, 5000);
+  // };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormStatus(null); // Reset previous status
+    setFormStatus(null);
     setStatusMessage('');
     setErrors({});
 
     if (!validateForm()) {
-      return; // Stop submission if validation fails
+        return;
     }
 
-    // Honeypot check: If filled, it's likely a bot (silent fail or ignore)
     if (formData.honeypot) {
-      // Silent ignore for bots - pretend success or do nothing
-      setFormStatus('success');
-      setStatusMessage('Message sent successfully!');
-      setTimeout(() => {
-        setFormStatus(null);
-        setStatusMessage('');
-      }, 5000);
-      return;
+        setFormStatus('success');
+        setStatusMessage('Message sent successfully!');
+        setTimeout(() => {
+            setFormStatus(null);
+            setStatusMessage('');
+        }, 5000);
+        return;
     }
 
-    // Create payload from state (ensures controlled values)
     const payload = new FormData();
     payload.append('name', formData.name);
     payload.append('email', formData.email);
@@ -126,35 +180,42 @@ function Contact() {
     payload.append('subject', formData.subject);
     payload.append('service', formData.service);
     payload.append('message', formData.message);
-    payload.append('honeypot', formData.honeypot); // Send to server for extra check if needed
+    payload.append('honeypot', formData.honeypot);
 
     try {
-      const response = await fetch('contact.php', {
-        method: 'POST',
-        body: payload,
-      });
-      const data = await response.json();
-      setFormStatus(data.status); // 'success' or 'error'
-      setStatusMessage(data.message || (data.status === 'success' ? 'Message sent successfully!' : 'An error occurred.'));
-      
-      if (data.status === 'success') {
-        setFormData({ name: '', email: '', phone: '', subject: '', service: '', message: '', honeypot: '' });
-      }
+        const response = await fetch('https://aarmbh15.42web.io/contact.php', {
+            method: 'POST',
+            body: payload,
+        });
+        const text = await response.text();
+        console.log('Raw response:', text);
+        try {
+            const data = JSON.parse(text);
+            setFormStatus(data.status);
+            setStatusMessage(data.message || (data.status === 'success' ? 'Message sent successfully!' : 'An error occurred.'));
+            if (data.status === 'success') {
+                setFormData({ name: '', email: '', phone: '', subject: '', service: '', message: '', honeypot: '' });
+                formRef.current.reset();
+            }
+        } catch (jsonError) {
+            console.error('JSON parse error:', jsonError, 'Raw response:', text);
+            setFormStatus('error');
+            setStatusMessage('Invalid server response. Please try again.');
+        }
     } catch (error) {
-      setFormStatus('error');
-      setStatusMessage('Network error: Failed to connect to server. Please try again.');
-      console.error('Submission error:', error);
+        console.error('Submission error:', error);
+        setFormStatus('error');
+        setStatusMessage('Network error: Failed to connect to server. Please try again.');
     }
 
-    // Auto-clear status after 5 seconds
     setTimeout(() => {
-      setFormStatus(null);
-      setStatusMessage('');
+        setFormStatus(null);
+        setStatusMessage('');
     }, 5000);
-  };
-  
+};
+
   return (
-    <div className="pt-16 min-h-screen bg-gray-800">
+    <div className="pt-25 min-h-screen bg-gray-800">
  <section
   className="relative h-[60vh584] flex items-center justify-center text-center overflow-hidden"
 >

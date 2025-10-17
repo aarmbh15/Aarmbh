@@ -90,8 +90,8 @@ function Footer() {
             { name: 'Our Team', link: '/Team' },
             { name: 'Services', link: '/Services' },
             { name: 'Projects', link: '/Projects' },
-            { name: 'Dashboard', link: '/Dashboard' },
-            { name: 'Contact', link: '/Contact' },
+            
+            { name: 'Contact', link: '/contact' },
           ].map((item, i) => (
             <li key={i}>
               <a
@@ -144,7 +144,7 @@ function Footer() {
     {/* Copyright */}
     <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
       <p>
-        &copy; {new Date().getFullYear()} <span className="text-amber-400 font-semibold">FreelanceTeam</span>. All rights reserved.
+        &copy; {new Date().getFullYear()}. All rights reserved.
       </p>
     </div>
   </div>
