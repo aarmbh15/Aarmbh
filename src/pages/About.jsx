@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { Helmet } from 'react-helmet-async';
+
 import {
   FiGlobe,
   FiTrendingUp,
@@ -161,6 +163,22 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans overflow-x-hidden">
+      <Helmet>
+        <title>About Aarmbh | Transforming Ideas Into Real-World Impact</title>
+        <meta name="description" content="Discover Aarmbh's vision, mission, core values, and expertise in delivering innovative technology solutions across industries like E-commerce, Healthcare, and Finance." />
+        <meta name="keywords" content="Aarmbh, about us, technology solutions, freelance development, innovation, client-centric, digital transformation" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="About Aarmbh | Empowering Business Growth with Technology" />
+        <meta property="og:description" content="Where technology meets strategy. Learn about our vision to revolutionize the digital landscape and our mission to deliver top-tier digital products." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yourdomain.com/about" /> {/* Replace with actual URL */}
+        <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2940&auto=format&fit=crop" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Aarmbh | Transforming Ideas Into Impact" />
+        <meta name="twitter:description" content="Empowering businesses with intelligent solutions. Explore our values, industries, and differentiators." />
+        <meta name="twitter:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2940&auto=format&fit=crop" />
+        <link rel="canonical" href="https://yourdomain.com/about" /> {/* Replace with actual URL */}
+      </Helmet>
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800"> {/* Kept original gradient for the hero */}
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>

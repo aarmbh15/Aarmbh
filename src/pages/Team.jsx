@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Helmet } from 'react-helmet-async';
+
 import shwetaImg from '../assets/shweta.jpg';
 import Snigdha from '../assets/Snigdhaa.jpg';
 import Mahesha from '../assets/Mahesh.jpg';
@@ -10,6 +12,7 @@ function Team() {
     const darkBackground = 'bg-gray-900'; 
     const deepestBlack = 'bg-gray-950';
 
+<<<<<<< Updated upstream
     const teamMembers = [
       {
         name: 'Paramveer Patil',
@@ -69,9 +72,73 @@ function Team() {
       // },
 
     ];
+=======
+const teamMembers = [     
+  {
+    name: 'Paramveer Patil',
+    role: 'Full-Stack Developer & Database Administrator',
+    specialties: ['React.js','Node.js', 'SQL', 'Firebase'],
+    experience: '1+ years',
+    image: Param,
+    rating: 4.9,
+    completedProjects: '5+',
+    bio: 'Passionate about creating scalable web applications and leading development teams to success.',
+    portfolioUrl: 'https://paramveer-portfolio.vercel.app/',
+  },
+  {
+    name: 'Snigdha Kamble',
+    role: 'App & Backend Developer, Team Co-Ordinator',
+    specialties: ['Data Analytics','Flutter', 'PHP (Laravel)','GoLang'],
+    experience: '1+ years',
+    image: Snigdha,
+    rating: 4.8,
+    completedProjects: '5+',
+    bio: 'Expert in building robust backend systems and cloud infrastructure for enterprise applications.',
+    portfolioUrl: 'https://snigdha-portfolio.vercel.app/',
+  },
+  {
+  name: 'Shweta Gangurde',
+  role: 'Full Stack Developer & Technical Expert',
+  specialties: ['React.js', 'Python', 'MongoDB', 'C++'],
+  experience: '1+ years',
+  image: shwetaImg,
+  rating: 4.9,
+  completedProjects: '5+',
+  bio: 'Passionate Full Stack Developer with over 3 years of experience in designing and developing scalable web applications.'
+},
+
+  {
+    name: 'Mahesh Gunwant',
+    role: 'Frontend Developer & UI/UX Designer',
+    specialties: ['Canva', 'Bootstrap', 'Figma', 'Tailwind CSS', 'SEO'],
+    experience: '1+ years',
+    image: Mahesha,
+    rating: 4.7,
+    completedProjects: '5+',
+    bio: 'Specialized in creating beautiful, user-friendly interfaces that convert visitors into customers.',
+    portfolioUrl: 'https://mahesh-portfolio.vercel.app/',
+  },
+];
+>>>>>>> Stashed changes
   
     return (
       <div className={`pt-16 min-h-screen ${darkBackground}`}>
+        <Helmet>
+          <title>Meet Our Team | Expert Developers at Aarmbh</title>
+          <meta name="description" content="Get to know our skilled team of full-stack developers, backend experts, and UI/UX designers specializing in React.js, Node.js, Flutter, and more. Delivering scalable solutions with 1+ years experience." />
+          <meta name="keywords" content="team, developers, full-stack, backend, UI/UX, React.js, Node.js, Flutter, PHP Laravel, freelance team" />
+          <meta name="robots" content="index, follow" />
+          <meta property="og:title" content="Our Expert Team | Aarmbh Development Professionals" />
+          <meta property="og:description" content="Four talented professionals combining expertise in web, mobile, backend, and design to bring your projects to life." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://yourdomain.com/team" /> {/* Replace with actual URL */}
+          <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2940&auto=format&fit=crop" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Meet the Aarmbh Team | Skilled Developers & Designers" />
+          <meta name="twitter:description" content="Expert team with specialties in React, Node, Flutter, and UI/UX. 10+ projects, 4.8 average rating." />
+          <meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2940&auto=format&fit=crop" />
+          <link rel="canonical" href="https://yourdomain.com/team" /> {/* Replace with actual URL */}
+        </Helmet>
           {/* ... (Hero section remains the same) */}
                     <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
                     <div
@@ -188,12 +255,21 @@ function Team() {
     <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
       
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
+<<<<<<< Updated upstream
         <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>20+</div>
         <div className="text-gray-400">Years Combined Experience</div>
       </div>
       
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
         <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>194</div>
+=======
+        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>24/7</div>
+        <div className="text-gray-400">Support</div>
+      </div>
+      
+      <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
+        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>10+</div>
+>>>>>>> Stashed changes
         <div className="text-gray-400">Total Projects</div>
       </div>
       

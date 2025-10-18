@@ -1,6 +1,13 @@
 import React from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+<<<<<<< Updated upstream
 import { useNavigate } from "react-router-dom"; // Make sure React Router is installed
+=======
+import AarambhLogo from '../assets/AarambhLogo.png';
+import { useNavigate } from "react-router-dom"; 
+import { Helmet } from 'react-helmet-async';
+// Make sure React Router is installed
+>>>>>>> Stashed changes
 
 function Footer() {
   const navigate = useNavigate();
@@ -13,6 +20,38 @@ function Footer() {
 
   return (
     <>
+      {/* ============================= */}
+      {/* Helmet for SEO and Performance */}
+      {/* ============================= */}
+      <Helmet>
+        <title>Aarambh - Professional Freelance Development Team</title>
+        <meta name="description" content="Aarambh is a professional freelance development team delivering high-quality web solutions worldwide. Contact us to start your project today." />
+        <meta name="keywords" content="freelance development, web solutions, software development, Aarambh, projects, services" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.youraaram bhdomain.com/" /> {/* Replace with your actual domain */}
+        
+        {/* Open Graph / Social Media Tags for Better Sharing */}
+        <meta property="og:title" content="Aarambh - Start Your Project with Expert Developers" />
+        <meta property="og:description" content="Let's discuss your requirements and bring your ideas to life with our expert development team." />
+        <meta property="og:image" content={AarambhLogo} /> {/* Use the logo as OG image */}
+        <meta property="og:url" content="https://www.youraaram bhdomain.com/" /> {/* Replace with actual URL */}
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Aarambh - Professional Web Development Services" />
+        <meta name="twitter:description" content="High-quality freelance development solutions. Get started today!" />
+        <meta name="twitter:image" content={AarambhLogo} />
+        
+        {/* Preload critical assets if needed (e.g., logo for faster rendering) */}
+        <link rel="preload" href={AarambhLogo} as="image" />
+        
+        {/* Optional: DNS Prefetch for external links to improve performance */}
+        <link rel="dns-prefetch" href="https://www.linkedin.com" />
+        <link rel="dns-prefetch" href="https://github.com" />
+        <link rel="dns-prefetch" href="https://mail.google.com" />
+      </Helmet>
+
       {/* ============================= */}
       {/* CTA SECTION (Before Footer) */}
       {/* ============================= */}
@@ -177,3 +216,7 @@ function Footer() {
 }
 
 export default Footer;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes

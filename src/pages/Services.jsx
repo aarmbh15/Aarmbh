@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Helmet } from 'react-helmet-async';
 
 function Services() {
     // Define the custom colors based on the original theme
@@ -71,6 +72,22 @@ function Services() {
   
     return (
       <div className={`pt-16 min-h-screen ${deepestBlack}`}>
+        <Helmet>
+          <title>Our Services | Web, Mobile, Backend & UI/UX Development at Aarmbh</title>
+          <meta name="description" content="Expert services in Web Development, Mobile Apps, Backend Systems, and UI/UX Design. We deliver custom, scalable solutions using React, Node.js, Flutter, and more to bring your ideas to life." />
+          <meta name="keywords" content="web development, mobile app development, backend development, UI/UX design, React.js, Node.js, Flutter, PHP Laravel, freelance development services" />
+          <meta name="robots" content="index, follow" />
+          <meta property="og:title" content="Services | Aarmbh Expert Development Solutions" />
+          <meta property="og:description" content="Comprehensive development services from concept to deployment. Specializing in web, mobile, backend, and design for optimal performance and user engagement." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://yourdomain.com/services" /> {/* Replace with actual URL */}
+          <meta property="og:image" content="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Our Services | Custom Development at Aarmbh" />
+          <meta name="twitter:description" content="From web and mobile apps to backend and UI/UX – we offer end-to-end solutions for your business needs." />
+          <meta name="twitter:image" content="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop" />
+          <link rel="canonical" href="https://yourdomain.com/services" /> {/* Replace with actual URL */}
+        </Helmet>
 
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">

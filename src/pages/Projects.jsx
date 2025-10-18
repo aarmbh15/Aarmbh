@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from 'react-helmet-async';
 // import Projects from './Projects';
 function Projects() {
     const primaryGold = '#f7dab2'; 
@@ -43,6 +44,22 @@ function Projects() {
   
     return (
       <div className={`pt-16 min-h-screen ${deepestBlack}`}>
+        <Helmet>
+          <title>Our Projects | Web, Mobile & AI Solutions at Aarmbh</title>
+          <meta name="description" content="Explore our portfolio of projects including web development with React.js, mobile apps in Flutter, AI chatbots, and industry solutions like e-commerce and transportation apps." />
+          <meta name="keywords" content="projects, portfolio, web development, mobile development, AI chatbot, React.js, Flutter, Python, freelance projects" />
+          <meta name="robots" content="index, follow" />
+          <meta property="og:title" content="Projects Portfolio | Aarmbh Development Showcase" />
+          <meta property="og:description" content="Discover recent projects: e-commerce platforms, transportation apps, Telegram bots, and more built with modern technologies for real-world impact." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://aarmbh15.42web.io/" /> {/* Replace with actual URL */}
+          <meta property="og:image" content="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Our Projects | Innovative Solutions by Aarmbh" />
+          <meta name="twitter:description" content="From web and mobile to AI: View our case studies in React, Flutter, Python, and more." />
+          <meta name="twitter:image" content="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop" />
+          <link rel="canonical" href="https://aarmbh15.42web.io/" /> {/* Replace with actual URL */}
+        </Helmet>
         {/* Hero Section */}
            <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
                      <div
@@ -133,4 +150,3 @@ function Projects() {
   }
   
   export default Projects;
-  
