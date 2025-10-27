@@ -15,10 +15,10 @@ const teamMembers = [
     name: 'Paramveer Patil',
     role: 'Full-Stack Developer & Database Administrator',
     specialties: ['React.js','Node.js', 'SQL', 'Firebase'],
-    experience: '3+ years',
+    experience: '1+ years',
     image: Param,
     rating: 4.9,
-    completedProjects: '10+',
+    completedProjects: '5+',
     bio: 'Passionate about creating scalable web applications and leading development teams to success.',
     portfolioUrl: 'https://paramveer-portfolio.vercel.app/',
   },
@@ -26,10 +26,10 @@ const teamMembers = [
     name: 'Snigdha Kamble',
     role: 'App & Backend Developer, Team Co-Ordinator',
     specialties: ['Data Analytics','Flutter', 'PHP (Laravel)','GoLang'],
-    experience: '3+ years',
+    experience: '1+ years',
     image: Snigdha,
     rating: 4.8,
-    completedProjects: '10+',
+    completedProjects: '5+',
     bio: 'Expert in building robust backend systems and cloud infrastructure for enterprise applications.',
     portfolioUrl: 'https://snigdha-portfolio.vercel.app/',
   },
@@ -37,10 +37,10 @@ const teamMembers = [
   name: 'Shweta Gangurde',
   role: 'Full Stack Developer & Technical Expert',
   specialties: ['React.js', 'Python', 'MongoDB', 'C++'],
-  experience: '3+ years',
+  experience: '1+ years',
   image: shwetaImg,
   rating: 4.9,
-  completedProjects: '10+',
+  completedProjects: '5+',
   bio: 'Passionate Full Stack Developer with over 3 years of experience in designing and developing scalable web applications.'
 },
 
@@ -48,10 +48,10 @@ const teamMembers = [
     name: 'Mahesh Gunwant',
     role: 'Frontend Developer & UI/UX Designer',
     specialties: ['Canva', 'Bootstrap', 'Figma', 'Tailwind CSS', 'SEO'],
-    experience: '3+ years',
+    experience: '1+ years',
     image: Mahesha,
     rating: 4.7,
-    completedProjects: '10+',
+    completedProjects: '5+',
     bio: 'Specialized in creating beautiful, user-friendly interfaces that convert visitors into customers.',
     portfolioUrl: 'https://mahesh-portfolio.vercel.app/',
   },
@@ -176,12 +176,12 @@ const teamMembers = [
     <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
       
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
-        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>10+</div>
+        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>5+</div>
         <div className="text-gray-400">Years Combined Experience</div>
       </div>
       
       <div className="bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-105 transform transition duration-300">
-        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>40+</div>
+        <div className="text-3xl font-bold mb-2" style={{ color: primaryGold }}>10+</div>
         <div className="text-gray-400">Total Projects</div>
       </div>
       

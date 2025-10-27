@@ -1,8 +1,4 @@
 import { useState } from 'react';
-import DashboardOverview from './DashboardOverview';
-import DashboardProjects from './DashboardProjects';
-import DashboardMessages from './DashboardMessages';
-import DashboardPayments from './DashboardPayments';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
