@@ -60,95 +60,96 @@ function Footer() {
       {/* ============================= */}
       {/* FOOTER SECTION */}
       {/* ============================= */}
-    <footer className="bg-black text-white py-12">
-  <div className="max-w-7xl mx-auto px-6">
-    {/* Grid layout: 1 column on mobile, 3 columns on md+ */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+<footer className="bg-black text-white py-12">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Grid layout: 1 column on mobile, 3 columns on md+ */}
+        {/* Added 'justify-items-center' to ensure all content blocks are centered on small screens. */}
+        {/* Added 'md:justify-items-start' to reset alignment for desktop view. */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center justify-items-center md:justify-items-start md:text-left">
 
-      {/* Column 1: Logo + Description */}
-      <div className="space-y-4 flex flex-col items-center md:items-start">
-        <div
-          className="flex justify-center md:justify-start items-center cursor-pointer"
-          onClick={() => navigate('/')}
-        >
-          <img
-            src={AarambhLogo}
-            alt="Aarambh Logo"
-            className="h-20 w-auto hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-        <p className="text-gray-400 text-sm max-w-xs">
-          Professional freelance development team delivering high-quality web solutions worldwide.
-        </p>
-      </div>
+          {/* Column 1: Logo + Description */}
+          {/* Changed items-center to flex-col for better vertical structure */}
+          <div className="space-y-4 flex flex-col items-center md:items-start">
+            <div
+              className="flex justify-center md:justify-start items-center cursor-pointer"
+              onClick={() => navigate('/')}
+            >
+              <img
+                src={AarambhLogo}
+                alt="Aarambh Logo"
+                className="h-20 w-auto hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <p className="text-gray-400 text-sm max-w-xs">
+              Professional freelance development team delivering high-quality web solutions worldwide.
+            </p>
+          </div>
 
-      {/* Column 2: Company Links */}
-      <div>
-        <h3 className="text-lg font-semibold mb-4 text-white tracking-wide">Company</h3>
-        <ul className="space-y-2 text-gray-400 text-sm">
-          {[
-            { name: 'Our Team', link: '/Team' },
-            { name: 'Services', link: '/Services' },
-            { name: 'Projects', link: '/Projects' },
-            
-            { name: 'Contact', link: '/contact' },
-          ].map((item, i) => (
-            <li key={i}>
+          {/* Column 2: Company Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 text-white tracking-wide">Company</h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              {[
+                { name: 'Our Team', link: '/team' }, // Changed to lowercase for consistency
+                { name: 'Services', link: '/services' }, // Changed to lowercase for consistency
+                { name: 'Projects', link: '/projects' }, // Changed to lowercase for consistency
+                { name: 'Contact', link: '/contact' },
+              ].map((item, i) => (
+                <li key={i}>
+                  <a
+                    href={item.link}
+                    className="hover:text-amber-400 transition-colors duration-200"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Connect */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-lg font-semibold mb-4 text-white tracking-wide">Connect</h3>
+            <div className="flex justify-center md:justify-start space-x-6 text-2xl">
               <a
-                href={item.link}
-                className="hover:text-amber-400 transition-colors duration-200"
+                href="https://www.linkedin.com/company/aarmbh/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                aria-label="LinkedIn"
               >
-                {item.name}
+                <i className="fab fa-linkedin"></i>
               </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+              <a
+                href="https://github.com/aarmbh15"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+                aria-label="GitHub"
+              >
+                <i className="fab fa-github"></i>
+              </a>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=aarmbh15@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+                aria-label="Email"
+              >
+                <i className="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
 
-      {/* Column 3: Connect */}
-      <div className="flex flex-col items-center md:items-start">
-        <h3 className="text-lg font-semibold mb-4 text-white tracking-wide">Connect</h3>
-        <div className="flex justify-center md:justify-start space-x-6 text-2xl">
-          <a
-            href="https://www.linkedin.com/company/aarmbh/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
-            aria-label="LinkedIn"
-          >
-            <i className="fab fa-linkedin"></i>
-          </a>
-          <a
-            href="https://github.com/aarmbh15"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors duration-200"
-            aria-label="GitHub"
-          >
-            <i className="fab fa-github"></i>
-          </a>
-        <a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=aarmbh15@gmail.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-gray-400 hover:text-white transition-colors duration-200"
-  aria-label="Email"
->
-  <i className="fas fa-envelope"></i>
-</a>
-
+        {/* Copyright */}
+        <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
+          <p>
+            &copy; {new Date().getFullYear()}. All rights reserved.
+          </p>
         </div>
       </div>
-    </div>
-
-    {/* Copyright */}
-    <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
-      <p>
-        &copy; {new Date().getFullYear()}. All rights reserved.
-      </p>
-    </div>
-  </div>
-</footer>
+    </footer>
 
 
     </>

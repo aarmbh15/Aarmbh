@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 function Contact() {
   const navigate = useNavigate();
@@ -70,12 +71,6 @@ function Contact() {
       newErrors.phone = 'Please enter a valid phone number (e.g., +919881033442).';
     }
 
-    // Subject: required, min 5 chars
-    // if (!formData.subject.trim()) {
-    //   newErrors.subject = 'Subject is required.';
-    // } else if (formData.subject.trim().length < 5) {
-    //   newErrors.subject = 'Subject must be at least 5 characters long.';
-    // }
      if (!formData.subject) {
       newErrors.subject = 'Please enter subject.';
     }
@@ -84,75 +79,9 @@ function Contact() {
     if (!formData.service) {
       newErrors.service = 'Please select a service.';
     }
-
-    // Message: required, min 10 chars
-    // if (!formData.message.trim()) {
-    //   newErrors.message = 'Message is required.';
-    // } else if (formData.message.trim().length < 10) {
-    //   newErrors.message = 'Message must be at least 10 characters long.';
-    // }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setFormStatus(null); // Reset previous status
-  //   setStatusMessage('');
-  //   setErrors({});
-
-  //   if (!validateForm()) {
-  //     return; // Stop submission if validation fails
-  //   }
-
-  //   // Honeypot check: If filled, it's likely a bot (silent fail or ignore)
-  //   if (formData.honeypot) {
-  //     // Silent ignore for bots - pretend success or do nothing
-  //     setFormStatus('success');
-  //     setStatusMessage('Message sent successfully!');
-  //     setTimeout(() => {
-  //       setFormStatus(null);
-  //       setStatusMessage('');
-  //     }, 5000);
-  //     return;
-  //   }
-
-  //   // Create payload from state (ensures controlled values)
-  //   const payload = new FormData();
-  //   payload.append('name', formData.name);
-  //   payload.append('email', formData.email);
-  //   payload.append('phone', formData.phone);
-  //   payload.append('subject', formData.subject);
-  //   payload.append('service', formData.service);
-  //   payload.append('message', formData.message);
-  //   payload.append('honeypot', formData.honeypot); // Send to server for extra check if needed
-
-  //   try {
-  //     const response = await fetch('contact.php', {
-  //       method: 'POST',
-  //       body: payload,
-  //     });
-  //     const data = await response.json();
-  //     setFormStatus(data.status); // 'success' or 'error'
-  //     setStatusMessage(data.message || (data.status === 'success' ? 'Message sent successfully!' : 'An error occurred.'));
-      
-  //     if (data.status === 'success') {
-  //       setFormData({ name: '', email: '', phone: '', subject: '', service: '', message: '', honeypot: '' });
-  //     }
-  //   } catch (error) {
-  //     setFormStatus('error');
-  //     setStatusMessage('Network error: Failed to connect to server. Please try again.');
-  //     console.error('Submission error:', error);
-  //   }
-
-  //   // Auto-clear status after 5 seconds
-  //   setTimeout(() => {
-  //     setFormStatus(null);
-  //     setStatusMessage('');
-  //   }, 5000);
-  // };
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus(null);
@@ -215,36 +144,50 @@ function Contact() {
 };
 
   return (
-    <div className="pt-25 min-h-screen bg-gray-800">
- <section
-  className="relative h-[60vh584] flex items-center justify-center text-center overflow-hidden"
->
-  {/* Background Image */}
-  <div
-    className="absolute inset-0 bg-cover bg-center"
-    style={{
-      backgroundImage:
-        "url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
-    }}
-  ></div>
+    // FIX: Removed 'pt-25' class from the main div to allow the hero section to start at the very top.
+    <div className="min-h-screen bg-gray-800"> 
+        
+      {/* Hero Section:
+        - The `h-[60vh]` ensures it takes up 60% of the viewport height.
+        - `relative` is for positioning the overlay and content.
+      */}
+      <section
+        className="relative h-[60vh] flex items-center justify-center text-center overflow-hidden"
+      >
+        {/* Background Image Container */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+            // Ensures the image covers the entire container and is centered.
+            backgroundPosition: 'center center',
+          }}
+        ></div>
 
-  {/* Overlay for dark effect */}
-  <div className="absolute inset-0 bg-black/70"></div>
+        {/* Overlay for dark effect */}
+        <div className="absolute inset-0 bg-black/70"></div>
 
-  {/* Content */}
-  <div className="relative z-10 max-w-4xl px-6">
-    <h1 className="text-4xl md:text-6xl font-bold text-amber-400 mb-4">
-      Get in Touch
-    </h1>
-    <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-      Have a project in mind or need assistance? Contact our team, and let's
-      bring your vision to life.
-    </p>
-  </div>
-</section>
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl px-6">
+           <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center max-w-4xl mx-auto"
+            >
+          <h1 className="text-4xl md:text-6xl font-bold text-amber-400 mb-4">
+            Get in Touch
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+            Have a project in mind or need assistance? Contact our team, and let's
+            bring your vision to life.
+          </p>
+          </motion.div>
+        </div>
+      </section>
 
-
-
+      {/* Main Content Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">

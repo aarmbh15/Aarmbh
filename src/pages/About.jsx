@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { motion } from "framer-motion";
 import {
   FiGlobe,
@@ -16,6 +16,7 @@ import {
   FiBarChart2,
   FiCheckCircle
 } from 'react-icons/fi';
+
 // Add these missing icon components (kept for functionality)
 function FiCloud({ className }) {
   return (
@@ -77,16 +78,14 @@ function FiHome({ className }) {
 }
 // End of missing icon components
 
-const AboutPage = () => {
-  // Differentiators data
-  const differentiators = [
+// Constants for Image and Data
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2940&auto=format&fit=crop';
+const D_DATA = [
     { label: 'Projects Delivered', value: '10+', icon: <FiLayers className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
     { label: 'Average ROI Improvement', value: '45%', icon: <FiTrendingUp className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
     { label: 'Combined Expertise', value: '4 Domains', icon: <FiCode className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
   ];
-
-  // Values data
-  const values = [
+const V_DATA = [
     { title: 'Innovation-Driven', description: 'We embrace new technologies and creative problem-solving to deliver future-ready solutions', icon: <FiCode className="w-6 h-6" /> },
     { title: 'Client-Centric', description: 'Every project begins and ends with your success. We focus on measurable outcomes and long-term value.', icon: <FiHeart className="w-6 h-6" /> },
     { title: 'Integrity', description: 'We uphold transparency, honesty, and accountability in every partnership and project.', icon: <FiShield className="w-6 h-6" /> },
@@ -94,9 +93,7 @@ const AboutPage = () => {
     { title: 'Excellence', description: 'We are dedicated to achieving the highest standards in design, development, and user experience. ', icon: <FiAward className="w-6 h-6" /> },
     { title: 'Growth Mindset', description: 'We continuously evolve, learn, and innovate — ensuring sustainable success for both our team and our clients.', icon: <FiBarChart2 className="w-6 h-6" /> },
   ];
-
-  // Industries data
-  const industries = [
+const I_DATA = [
     { name: 'E-commerce', icon: <FiDollarSign className="w-5 h-5 " /> },
     { name: 'Healthcare', icon: <FiHeart className="w-5 h-5" /> },
     { name: 'Finance', icon: <FiBarChart2 className="w-5 h-5" /> },
@@ -104,33 +101,102 @@ const AboutPage = () => {
     { name: 'Education', icon: <FiBook className="w-5 h-5" /> },
     { name: 'Real Estate', icon: <FiHome className="w-5 h-5" /> },
   ];
+
+
+const AboutPageComponent = () => {
+  // Memoize data arrays for performance
+  const differentiators = useMemo(() => D_DATA, []);
+  const values = useMemo(() => V_DATA, []);
+  const industries = useMemo(() => I_DATA, []);
+
+
+  // PERFORMANCE & SEO IMPROVEMENT: Set metadata, preload LCP image, and ensure mobile viewport
+  useEffect(() => {
+    // 1. CRITICAL Mobile Performance: Ensure Viewport Meta Tag is present
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      viewportMeta = document.createElement('meta');
+      viewportMeta.setAttribute('name', 'viewport');
+      document.head.appendChild(viewportMeta);
+    }
+    viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1');
+
+    // 2. SEO: Set Document Title
+    const prevTitle = document.title;
+    document.title = "Aarmbh — About Us | Vision, Mission, and Values";
+
+    // 3. SEO: Set Meta Description
+    let meta = document.querySelector('meta[name="description"]');
+    const prevDescription = meta ? meta.getAttribute('content') : null;
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'description');
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute(
+      'content',
+      'Discover the vision, mission, and core values that drive Aarmbh. We are a team of expert freelance developers delivering innovative, growth-focused technology solutions.'
+    );
+
+    // 4. LCP Optimization: Preload hero image (LCP element)
+    const preloadId = 'preload-about-hero-img';
+    if (!document.querySelector(`link[id="${preloadId}"]`)) {
+      const link = document.createElement('link');
+      link.id = preloadId;
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = HERO_IMAGE; // Use the URL constant
+      document.head.appendChild(link);
+    }
+
+    return () => {
+      // Cleanup effect
+      document.title = prevTitle;
+      if (meta) {
+        if (prevDescription) meta.setAttribute('content', prevDescription);
+        else meta.remove();
+      }
+    };
+  }, []);
+
 return (
     <div className="min-h-screen bg-gray-950 text-white font-sans overflow-x-hidden">
       {/* Hero Section */}
      <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
-  {/* Kept original gradient for the hero */}
-  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
-  <div className="relative z-10 container mx-auto px-6 py-24 md:py-32">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="text-center max-w-4xl mx-auto"
-    >
-      <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-6 text-white">
-        Transforming Ideas Into
-        <br />
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500">
-          Real-World Impact
-        </span>
-      </h1>
+        
+        {/* LCP & CLS FIX: Replaced CSS background with an <img> tag for better prioritization */}
+        <img 
+          src={HERO_IMAGE}
+          alt="Technology background with blue light" // Added alt for SEO
+          fetchPriority="high" // High priority for LCP
+          decoding="async"
+          // Explicit dimensions for CLS prevention (ratio of 2940 wide is approx 3:2 height)
+          width="2940" 
+          height="1960" 
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-20" // Replicates original CSS classes
+        />
 
-      <p className="text-lg md:text-xl text-white leading-relaxed">
-        Where technology meets strategy, and execution transforms ideas into impact - Aarmbh powers the next chapter of business growth.
-      </p>
-    </motion.div>
-  </div>
-</div>
+        <div className="relative z-10 container mx-auto px-6 py-24 md:py-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-6 text-white">
+              Transforming Ideas Into
+              <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500">
+                Real-World Impact
+              </span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-white leading-relaxed">
+              Where technology meets strategy, and execution transforms ideas into impact - Aarmbh powers the next chapter of business growth.
+            </p>
+          </motion.div>
+        </div>
+      </div>
 
 
       {/* Vision & Mission - Section 1: Darker Gray - HOVER EFFECT ADDED */}
@@ -329,4 +395,6 @@ return (
   );
 };
 
+// PERFORMANCE Improvement: Export as a memoized component to prevent unnecessary re-renders
+const AboutPage = React.memo(AboutPageComponent);
 export default AboutPage;

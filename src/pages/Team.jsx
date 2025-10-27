@@ -20,7 +20,7 @@ const teamMembers = [
     rating: 4.9,
     completedProjects: '5+',
     bio: 'Passionate about creating scalable web applications and leading development teams to success.',
-    portfolioUrl: 'https://paramveer-portfolio.vercel.app/',
+    portfolioUrl: 'https://paramportfolio-112ac.web.app',
   },
   {
     name: 'Snigdha Kamble',
@@ -31,7 +31,7 @@ const teamMembers = [
     rating: 4.8,
     completedProjects: '5+',
     bio: 'Expert in building robust backend systems and cloud infrastructure for enterprise applications.',
-    portfolioUrl: 'https://snigdha-portfolio.vercel.app/',
+    portfolioUrl: 'https://snigdhaportfolio-d038d.web.app/',
   },
   {
   name: 'Shweta Gangurde',
@@ -41,7 +41,8 @@ const teamMembers = [
   image: shwetaImg,
   rating: 4.9,
   completedProjects: '5+',
-  bio: 'Passionate Full Stack Developer with over 3 years of experience in designing and developing scalable web applications.'
+  bio: 'Passionate Full Stack Developer with over 3 years of experience in designing and developing scalable web applications.',
+  portfolioUrl:'https://shwetaportfolio-f96eb.web.app/',
 },
 
   {
