@@ -17,7 +17,6 @@ import {
   FiCheckCircle
 } from 'react-icons/fi';
 
-// Add these missing icon components (kept for functionality)
 function FiCloud({ className }) {
   return (
     <svg
@@ -80,6 +79,8 @@ function FiHome({ className }) {
 
 // Constants for Image and Data
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2940&auto=format&fit=crop';
+// Re-adding STORY_IMAGE constant
+const STORY_IMAGE = 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80'; 
 const D_DATA = [
     { label: 'Projects Delivered', value: '10+', icon: <FiLayers className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
     { label: 'Average ROI Improvement', value: '45%', icon: <FiTrendingUp className="w-8 h-8 bg-teal-500/20 p-1 rounded-full" /> },
@@ -149,6 +150,18 @@ const AboutPageComponent = () => {
       document.head.appendChild(link);
     }
 
+    // 5. Preload Story Image for the new section
+    const preloadStoryId = 'preload-about-story-img';
+    if (!document.querySelector(`link[id="${preloadStoryId}"]`)) {
+      const link = document.createElement('link');
+      link.id = preloadStoryId;
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = STORY_IMAGE; // Use the new URL constant
+      document.head.appendChild(link);
+    }
+
+
     return () => {
       // Cleanup effect
       document.title = prevTitle;
@@ -156,6 +169,8 @@ const AboutPageComponent = () => {
         if (prevDescription) meta.setAttribute('content', prevDescription);
         else meta.remove();
       }
+      // Cleanup preload link if added
+      document.querySelector(`link[id="${preloadStoryId}"]`)?.remove();
     };
   }, []);
 
@@ -176,7 +191,8 @@ return (
           className="absolute inset-0 w-full h-full object-cover object-center opacity-20" // Replicates original CSS classes
         />
 
-        <div className="relative z-10 container mx-auto px-6 py-24 md:py-32">
+        {/* Applied max-w-7xl mx-auto px-6 lg:px-8 */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -198,10 +214,57 @@ return (
         </div>
       </div>
 
+      {/* RE-ADDED: Our Story/About Section (This was missing from your last provided code) */}
+      <section className="py-20 bg-gray-950">
+        {/* Applied max-w-7xl mx-auto px-6 lg:px-8 */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Image Side with Animation */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <img 
+                src={STORY_IMAGE}
+                alt="A collaborative team working on a digital strategy" 
+                loading="lazy"
+                width="2940" 
+                height="1960" 
+                className="w-full h-auto object-cover aspect-video lg:aspect-square"
+              />
+              <div className="absolute inset-0 bg-teal-500/10 mix-blend-multiply"></div>
+            </motion.div>
+
+            {/* Content Side with Animation - MODIFIED FOR HEIGHT MATCHING */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-white h-full flex flex-col justify-center" // Added h-full, flex, flex-col, justify-center
+            >
+              <h2 className="text-4xl font-bold mb-6 text-white border-b-2 border-amber-500/50 pb-2 inline-block">
+                Our Story: Blending Trust with Creativity
+              </h2>
+              <p className="text-lg text-gray-300 leading-relaxed space-y-4">
+                <span className='block'>Aarmbh IT blends creativity with trust, delivering web and software solutions that turn ideas into digital success stories for businesses of all sizes.</span>
+                <span className='block'>Driven by a team of dedicated professionals, we fuse strategic thinking with the latest technologies to design platforms and experiences that inspire confidence and growth.</span>
+                <span className='block'>With a strong focus on understanding client needs, our commitment ensures reliable, scalable products and long-lasting partnerships that empower your journey in the digital world.</span>
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
 
       {/* Vision & Mission - Section 1: Darker Gray - HOVER EFFECT ADDED */}
       <section className="py-16 bg-gray-900 ">
-        <div className="container mx-auto px-6">
+        {/* Applied max-w-7xl mx-auto px-6 lg:px-8 */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white">What Drives Us</h2>
             <p className="text-gray-400 mt-4">
@@ -253,7 +316,8 @@ return (
 
       {/* Differentiators - Section 2: Slightly Lighter Background - HOVER EFFECT ADDED */}
       <section className="py-16 bg-gray-950 ">
-        <div className="container mx-auto px-6">
+        {/* Applied max-w-7xl mx-auto px-6 lg:px-8 */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -315,7 +379,8 @@ return (
 
       {/* Industries - Section 3: Slightly Darker Gray/Blue Hue - HOVER EFFECT ADDED */}
       <section className="py-16 bg-gray-900 ">
-        <div className="container mx-auto px-6">
+        {/* Applied max-w-7xl mx-auto px-6 lg:px-8 */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -352,44 +417,45 @@ return (
 
       {/* Core Values & Culture - Section 4: Lighter Background again - HOVER EFFECT ADDED */}
      <section className="py-16 bg-gray-950">
-  <div className="container mx-auto px-6">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className="text-center mb-16"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Our Core Values &amp; Culture
-      </h2>
-      <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-        At Aarmbh, we believe success is built on trust, creativity, and collaboration. Our culture blends professionalism with innovation — encouraging every team member to deliver excellence and learn continuously.
-      </p>
-    </motion.div>
+        {/* Applied max-w-7xl mx-auto px-6 lg:px-8 */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Our Core Values &amp; Culture
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              At Aarmbh, we believe success is built on trust, creativity, and collaboration. Our culture blends professionalism with innovation — encouraging every team member to deliver excellence and learn continuously.
+            </p>
+          </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {values.map((value, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          viewport={{ once: true }}
-          className="flex flex-col h-full bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-xl border border-gray-400 transition-all duration-300 hover:border-amber-500/50 hover:shadow-sm hover:shadow-amber-500/50 hover:scale-[1.01]"
-        >
-          <div className="flex items-center mb-4">
-            <div className="bg-teal-500/20 p-2 rounded-full mr-4">
-              <span className="text-amber-500">{value.icon}</span>
-            </div>
-            <h3 className="text-xl font-bold">{value.title}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex flex-col h-full bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-xl border border-gray-400 transition-all duration-300 hover:border-amber-500/50 hover:shadow-sm hover:shadow-amber-500/50 hover:scale-[1.01]"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="bg-teal-500/20 p-2 rounded-full mr-4">
+                    <span className="text-amber-500">{value.icon}</span>
+                  </div>
+                  <h3 className="text-xl font-bold">{value.title}</h3>
+                </div>
+                <p className="text-gray-400 mt-auto">{value.description}</p>
+              </motion.div>
+            ))}
           </div>
-          <p className="text-gray-400 mt-auto">{value.description}</p>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
     </div>
   );

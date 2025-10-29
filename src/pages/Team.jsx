@@ -60,7 +60,7 @@ const teamMembers = [
   
     return (
       <div className={`pt-16 min-h-screen ${darkBackground}`}>
-          {/* ... (Hero section remains the same) */}
+          {/* Hero Section */}
                     <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
                     <div
                       className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -87,6 +87,7 @@ const teamMembers = [
                     </div>
                   </div>
   
+      {/* Team Member Cards Section */}
        <section className="py-16">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -95,9 +96,8 @@ const teamMembers = [
           key={index}
           className={`bg-neutral-800 rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl`}
         >
-          {/* Change 1: Added a new div for the image container */}
+          {/* Image Container */}
           <div className="flex justify-center p-6 bg-neutral-900">
-            {/* Change 2: Applied 'rounded-full', 'w-48', 'h-48', and 'ring-4' to the image */}
             <img
               src={member.image}
               alt={member.name}
@@ -106,7 +106,7 @@ const teamMembers = [
           </div>
 
           <div className="relative p-6">
-             {/* Change 3: Moved the rating badge here for better placement with a circular image */}
+             {/* Rating Badge */}
             <div className="absolute top-0 right-6 -mt-4 bg-neutral-700 px-3 py-1 rounded-full flex items-center shadow-lg border border-amber-500/50">
               <i className="fas fa-star mr-1" style={{ color: primaryGold }}></i>
               <span className="text-sm font-semibold text-white">
@@ -120,6 +120,7 @@ const teamMembers = [
             </p>
             <p className="text-gray-400 text-sm mb-4">{member.bio}</p>
 
+            {/* Specialties */}
             <div className="mb-4">
               <h4 className="font-semibold text-white mb-2">Specialties:</h4>
               <div className="flex flex-wrap gap-2">
@@ -134,7 +135,8 @@ const teamMembers = [
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 text-sm mb-4">
+            {/* Experience/Projects Grid */}
+            <div className="grid grid-cols-2 gap-4 text-sm mb-6"> {/* Increased mb to mb-6 for spacing */}
               <div>
                 <span className="text-gray-400">Experience:</span>
                 <div className="font-semibold text-white">{member.experience}</div>
@@ -145,21 +147,17 @@ const teamMembers = [
               </div>
             </div>
 
-            <div className="relative"> 
-  {/* Card Content Above */}
-  
-  {/* Contact Button - Bottom Right */}
-  <button
-    onClick={() => window.open(member.portfolioUrl, '_blank')}
-    style={{ backgroundColor: primaryGold, color: '#171717' }}
-    className="absolute bottom-4 right-4 px-4 py-2 rounded-lg shadow-md transition-transform hover:scale-105 hover:opacity-85"
-  >
-    <i className="fas fa-message mr-2"></i>
-    Contact
-  </button>
-</div>
-
-
+            {/* FIX: Contact Button - Now full width and block element */}
+            <button
+              onClick={() => window.open(member.portfolioUrl, '_blank')}
+              style={{ backgroundColor: primaryGold, color: '#171717' }}
+              // Removed absolute positioning (absolute bottom-4 right-4)
+              // Added w-full and mt-4 for proper block-level flow
+              className="w-full mt-4 px-4 py-3 rounded-lg shadow-md transition-transform hover:scale-105 hover:opacity-85 text-center font-bold"
+            >
+              <i className="fas fa-message mr-2"></i>
+              Contact
+            </button>
           </div>
         </div>
       ))}
@@ -168,7 +166,7 @@ const teamMembers = [
 </section>
 
   
-        {/* ... (Collective expertise section remains the same) */}
+        {/* Collective Expertise Section */}
         <section className={`py-16 ${deepestBlack}`}>
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 className="text-3xl font-bold text-center mb-12 text-white">

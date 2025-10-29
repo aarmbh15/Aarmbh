@@ -1,329 +1,13 @@
-// import { Suspense, lazy } from "react";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import { Helmet, HelmetProvider } from "react-helmet-async";
-// import Navigation from "./components/Navigation";
-// import Footer from "./components/Footer";
-// import LoadingSpinner from "./components/LoadingSpinner";
-
-// // Lazy load pages
-// const Home = lazy(() => import("./pages/Home"));
-// const About = lazy(() => import("./pages/About"));
-// const Team = lazy(() => import("./pages/Team"));
-// const Dashboard = lazy(() => import("./pages/Dashboard"));
-// const Services = lazy(() => import("./pages/Services"));
-// const Projects = lazy(() => import("./pages/Projects"));
-// const Contact = lazy(() => import("./pages/Contact"));
-
-// /**
-//  * Master keyword groups delivered by senior — consolidated and de-duplicated-ish.
-//  * You can tweak these strings if you want shorter or different ordering per page.
-//  */
-// const GENERAL_KEYWORDS = [
-//   "IT services",
-//   "software development",
-//   "web development",
-//   "mobile app development",
-//   "IT consulting",
-//   "cloud solutions",
-//   "digital transformation",
-//   "custom software",
-//   "enterprise software",
-//   "IT support",
-//   "technology services",
-//   "managed IT",
-//   "IT infrastructure",
-//   "cybersecurity",
-//   "software maintenance",
-//   "data analytics",
-//   "AI solutions",
-//   "automation",
-//   "tech support"
-// ].join(", ");
-
-// const WEB_APP_KEYWORDS = [
-//   "web design",
-//   "website development",
-//   "full stack development",
-//   "frontend development",
-//   "backend development",
-//   "React development",
-//   "Node.jsx development",
-//   "mobile app development",
-//   "cross platform apps",
-//   "UI UX design",
-//   "responsive website",
-//   "eCommerce website development"
-// ].join(", ");
-
-// const SEO_DIGITAL_KEYWORDS = [
-//   "digital marketing",
-//   "SEO optimization",
-//   "website performance",
-//   "technical SEO",
-//   "content optimization",
-//   "website analytics",
-//   "page speed optimization",
-//   "keyword research",
-//   "online branding",
-//   "website visibility",
-//   "google ranking"
-// ].join(", ");
-
-// const BUSINESS_KEYWORDS = [
-//   "enterprise IT services",
-//   "ERP solutions",
-//   "CRM development",
-//   "SaaS development",
-//   "business automation",
-//   "IT strategy",
-//   "digital solutions for business",
-//   "startup IT support",
-//   "IT outsourcing",
-//   "business growth technology"
-// ].join(", ");
-
-// function App() {
-//   // Per-route short keywords (kept concise) — merged with general groups below.
-//   const homeKeywords = `Aarmbh, IT solutions, web & app development, digital services`;
-//   const aboutKeywords = `Aarmbh about, company profile, mission vision, tech team`;
-//   const teamKeywords = `Aarmbh team, software engineers, developers, designers`;
-//   const dashboardKeywords = `project dashboard, client dashboard, project management`;
-//   const servicesKeywords = `web development services, app development services, software services`;
-//   const projectsKeywords = `portfolio, case studies, software projects, web projects`;
-//   const contactKeywords = `contact Aarmbh, IT enquiries, request a quote`;
-
-//   // Helper to combine a page's keywords with the large keyword groups
-//   const combine = (pageKeywords, extras = "") =>
-//     `${pageKeywords}, ${extras ? extras + ", " : ""}${WEB_APP_KEYWORDS}, ${SEO_DIGITAL_KEYWORDS}, ${BUSINESS_KEYWORDS}, ${GENERAL_KEYWORDS}`;
-
-//   return (
-//     <HelmetProvider>
-//       <Router>
-//         <div className="min-h-screen bg-gray-50 flex flex-col">
-//           <Navigation />
-
-//           <main className="flex-grow">
-//             <Suspense fallback={<LoadingSpinner />}>
-//               <Routes>
-//                 {/* ------------------ Home ------------------ */}
-//                 <Route
-//                   path="/"
-//                   element={
-//                     <>
-//                       <Helmet>
-//                         <title>Home - Aarmbh IT Solutions</title>
-//                         <meta
-//                           name="description"
-//                           content="Aarmbh IT Solutions offers innovative web and software development services."
-//                         />
-//                         <meta
-//                           name="keywords"
-//                           content={combine(homeKeywords)}
-//                         />
-//                         <meta property="og:title" content="Home - Aarmbh IT Solutions" />
-//                         <meta property="og:description" content="Discover cutting-edge IT solutions for your business." />
-//                         <meta property="og:type" content="website" />
-//                         <meta property="og:url" content="https://aarmbh15.42web.io/" />
-//                         <meta property="og:image" content="https://aarmbh15.42web.io/images/og-home.jpg" />
-//                         <meta name="robots" content="index, follow" />
-//                         <link rel="canonical" href="https://aarmbh15.42web.io/" />
-//                       </Helmet>
-//                       <Home />
-//                     </>
-//                   }
-//                 />
-
-//                 {/* ------------------ About ------------------ */}
-//                 <Route
-//                   path="/about"
-//                   element={
-//                     <>
-//                       <Helmet>
-//                         <title>About Us - Aarmbh IT Solutions</title>
-//                         <meta
-//                           name="description"
-//                           content="Learn more about Aarmbh IT Solutions — our mission, vision, and expertise in IT services."
-//                         />
-//                         <meta
-//                           name="keywords"
-//                           content={combine(aboutKeywords)}
-//                         />
-//                         <meta property="og:title" content="About Us - Aarmbh IT Solutions" />
-//                         <meta property="og:description" content="Empowering businesses with cutting-edge IT and digital solutions." />
-//                         <meta property="og:type" content="website" />
-//                         <meta property="og:url" content="https://aarmbh15.42web.io/about" />
-//                         <meta property="og:image" content="https://aarmbh15.42web.io/images/og-about.jpg" />
-//                         <meta name="robots" content="index, follow" />
-//                         <link rel="canonical" href="https://aarmbh15.42web.io/about" />
-//                       </Helmet>
-//                       <About />
-//                     </>
-//                   }
-//                 />
-
-//                 {/* ------------------ Team ------------------ */}
-//                 <Route
-//                   path="/team"
-//                   element={
-//                     <>
-//                       <Helmet>
-//                         <title>Our Team - Aarmbh IT Solutions</title>
-//                         <meta
-//                           name="description"
-//                           content="Meet Aarmbh's expert team in web and software development."
-//                         />
-//                         <meta
-//                           name="keywords"
-//                           content={combine(teamKeywords)}
-//                         />
-//                         <meta property="og:title" content="Our Team - Aarmbh IT Solutions" />
-//                         <meta property="og:description" content="Our skilled professionals drive IT innovation." />
-//                         <meta property="og:type" content="website" />
-//                         <meta property="og:url" content="https://aarmbh15.42web.io/team" />
-//                         <meta property="og:image" content="https://aarmbh15.42web.io/images/og-team.jpg" />
-//                         <meta name="robots" content="index, follow" />
-//                         <link rel="canonical" href="https://aarmbh15.42web.io/team" />
-//                       </Helmet>
-//                       <Team />
-//                     </>
-//                   }
-//                 />
-
-//                 {/* ------------------ Dashboard ------------------ */}
-//                 <Route
-//                   path="/dashboard"
-//                   element={
-//                     <>
-//                       <Helmet>
-//                         <title>Dashboard - Aarmbh IT Solutions</title>
-//                         <meta
-//                           name="description"
-//                           content="Manage your IT projects with Aarmbh's dashboard."
-//                         />
-//                         <meta
-//                           name="keywords"
-//                           content={combine(dashboardKeywords)}
-//                         />
-//                         <meta property="og:title" content="Dashboard - Aarmbh IT Solutions" />
-//                         <meta property="og:description" content="Track and manage your IT projects efficiently." />
-//                         <meta property="og:type" content="website" />
-//                         <meta property="og:url" content="https://aarmbh15.42web.io/dashboard" />
-//                         <meta property="og:image" content="https://aarmbh15.42web.io/images/og-dashboard.jpg" />
-//                         <meta name="robots" content="index, follow" />
-//                         <link rel="canonical" href="https://aarmbh15.42web.io/dashboard" />
-//                       </Helmet>
-//                       <Dashboard />
-//                     </>
-//                   }
-//                 />
-
-//                 {/* ------------------ Services ------------------ */}
-//                 <Route
-//                   path="/services"
-//                   element={
-//                     <>
-//                       <Helmet>
-//                         <title>Services - Aarmbh IT Solutions</title>
-//                         <meta
-//                           name="description"
-//                           content="Explore Aarmbh's IT services: web, app, and software development."
-//                         />
-//                         <meta
-//                           name="keywords"
-//                           content={combine(servicesKeywords)}
-//                         />
-//                         <meta property="og:title" content="Services - Aarmbh IT Solutions" />
-//                         <meta property="og:description" content="Comprehensive IT solutions for modern businesses." />
-//                         <meta property="og:type" content="website" />
-//                         <meta property="og:url" content="https://aarmbh15.42web.io/services" />
-//                         <meta property="og:image" content="https://aarmbh15.42web.io/images/og-services.jpg" />
-//                         <meta name="robots" content="index, follow" />
-//                         <link rel="canonical" href="https://aarmbh15.42web.io/services" />
-//                       </Helmet>
-//                       <Services />
-//                     </>
-//                   }
-//                 />
-
-//                 {/* ------------------ Projects ------------------ */}
-//                 <Route
-//                   path="/projects"
-//                   element={
-//                     <>
-//                       <Helmet>
-//                         <title>Projects - Aarmbh IT Solutions</title>
-//                         <meta
-//                           name="description"
-//                           content="View Aarmbh's portfolio of IT and software projects."
-//                         />
-//                         <meta
-//                           name="keywords"
-//                           content={combine(projectsKeywords)}
-//                         />
-//                         <meta property="og:title" content="Projects - Aarmbh IT Solutions" />
-//                         <meta property="og:description" content="Showcasing our innovative IT project portfolio." />
-//                         <meta property="og:type" content="website" />
-//                         <meta property="og:url" content="https://aarmbh15.42web.io/projects" />
-//                         <meta property="og:image" content="https://aarmbh15.42web.io/images/og-projects.jpg" />
-//                         <meta name="robots" content="index, follow" />
-//                         <link rel="canonical" href="https://aarmbh15.42web.io/projects" />
-//                       </Helmet>
-//                       <Projects />
-//                     </>
-//                   }
-//                 />
-
-//                 {/* ------------------ Contact ------------------ */}
-//                 <Route
-//                   path="/contact"
-//                   element={
-//                     <>
-//                       <Helmet>
-//                         <title>Contact Us - Aarmbh IT Solutions</title>
-//                         <meta
-//                           name="description"
-//                           content="Contact Aarmbh for IT and software development inquiries."
-//                         />
-//                         <meta
-//                           name="keywords"
-//                           content={combine(contactKeywords)}
-//                         />
-//                         <meta property="og:title" content="Contact Us - Aarmbh IT Solutions" />
-//                         <meta property="og:description" content="Reach out for expert IT and software solutions." />
-//                         <meta property="og:type" content="website" />
-//                         <meta property="og:url" content="https://aarmbh15.42web.io/contact" />
-//                         <meta property="og:image" content="https://aarmbh15.42web.io/images/og-contact.jpg" />
-//                         <meta name="robots" content="index, follow" />
-//                         <link rel="canonical" href="https://aarmbh15.42web.io/contact" />
-//                       </Helmet>
-//                       <Contact />
-//                     </>
-//                   }
-//                 />
-//               </Routes>
-//             </Suspense>
-//           </main>
-
-//           <Footer />
-//         </div>
-//       </Router>
-//     </HelmetProvider>
-//   );
-// }
-// export default App;
-
-
 import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-// FIX: Changing file extensions to .jsx for compatibility with the module resolver.
 import Navigation from "./components/Navigation.jsx";
 import Footer from "./components/Footer.jsx";
 import LoadingSpinner from "./components/LoadingSpinner.jsx";
 import FloatingWhatsApp from "./components/FloatingWhatsApp.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 // Lazy load pages
-// FIX: Changing file extensions to .jsx for pages.
 const Home = lazy(() => import("./pages/Home.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
 const Team = lazy(() => import("./pages/Team.jsx"));
@@ -332,60 +16,90 @@ const Services = lazy(() => import("./pages/Services.jsx"));
 const Projects = lazy(() => import("./pages/Projects.jsx"));
 const Contact = lazy(() => import("./pages/Contact.jsx"));
 
-// --- Consolidated Keywords for better SEO ---
+// --- Consolidated Keyword Groups for Targeted SEO ---
 
-// General IT Services Keywords
+// General IT Services Keywords (Base relevance)
 const GENERAL_IT_KEYWORDS =
-  "IT services, software development, web development, mobile app development, IT consulting, cloud solutions, digital transformation, custom software, enterprise software, IT support, technology services, managed IT, IT infrastructure, cybersecurity, software maintenance, data analytics, AI solutions, automation, tech support, Aarmbh IT Solutions";
+  "IT services, software development, web development, mobile app development, IT consulting, cloud solutions, digital transformation, custom software, enterprise software, IT support, technology services, managed IT, IT infrastructure, cybersecurity, software maintenance, data analytics, AI solutions, automation, tech support";
 
-// Web & App Development Focused Keywords
+// Web & App Development Focused Keywords (Strongest for Home, Services, Projects)
 const WEB_APP_KEYWORDS =
-  "web design, website development, full stack development, frontend development, backend development, React development, Node.jsx development, Java development, Python development, mobile app development, Android app development, iOS app development, cross platform apps, UI UX design, responsive website, eCommerce website development";
+  "web design, website development, full stack development, frontend development, backend development, React development, Node.js development, Java development, Python development, mobile app development, Android app development, iOS app development, cross platform apps, UI UX design, responsive website, eCommerce website development";
 
-// SEO & Digital Presence Keywords
+// SEO & Digital Presence Keywords (Good for Home, Services, Contact)
 const SEO_KEYWORDS =
-  "digital marketing, SEO optimization, website performance, technical SEO, content optimization, website analytics, page speed optimization, keyword research, online branding, website visibility, google ranking";
+  "digital marketing, SEO optimization, website performance, technical SEO, content optimization, website visibility, google ranking, page speed optimization, keyword research, online branding, website analytics";
 
-// Business & Enterprise Solutions Keywords
+// Business & Enterprise Solutions Keywords (Strongest for About, Services)
 const BUSINESS_KEYWORDS =
   "enterprise IT services, ERP solutions, CRM development, SaaS development, business automation, IT strategy, digital solutions for business, startup IT support, IT outsourcing, business growth technology";
 
-// A good balance for all pages is a mix of all relevant categories.
-// We'll use a combination of all of them for a broad catch, and only slightly
-// adjust the description/title for context.
-const ALL_KEYWORDS = [
-  GENERAL_IT_KEYWORDS,
-  WEB_APP_KEYWORDS,
-  SEO_KEYWORDS,
-  BUSINESS_KEYWORDS,
-].join(", ");
+// --- Per-Route Short Keywords (Specific targeting) ---
+const pageSpecificKeywords = {
+  home: "Aarmbh InfoTech, web & app development, digital services",
+  about: "Aarmbh about, company profile, mission vision, tech team, corporate identity",
+  team: "Aarmbh team, software engineers, developers, designers, IT experts",
+  dashboard: "project dashboard, client portal, project management, Aarmbh client access", 
+  services: "web development services, app development services, software services, custom IT solutions",
+  projects: "portfolio, case studies, software projects, web projects, completed IT solutions",
+  contact: "contact Aarmbh, IT enquiries, request a quote, sales support",
+};
 
+/**
+ * Helper to combine a page's specific keywords with relevant general groups.
+ * This ensures the most relevant keywords are listed first.
+ */
+const combineKeywords = (page) => {
+  let groups = [GENERAL_IT_KEYWORDS];
+  
+  if (["home", "services", "projects"].includes(page)) {
+    groups.push(WEB_APP_KEYWORDS);
+    groups.push(SEO_KEYWORDS);
+  }
+  
+  if (["about", "services"].includes(page)) {
+    groups.push(BUSINESS_KEYWORDS);
+  }
+  
+  if (["contact"].includes(page)) {
+    groups.push(SEO_KEYWORDS);
+  }
+  
+  // Start with the most specific keywords, followed by relevant general groups
+  const combined = `${pageSpecificKeywords[page]}, ${groups.join(", ")}`;
+  
+  // Basic deduplication and cleanup (optional but good practice)
+  return Array.from(new Set(combined.split(',').map(s => s.trim()))).join(', ');
+};
+
+
+// --- WhatsApp FAB component (kept as is) ---
 function WhatsAppFabRouterAware() {
   const { pathname } = useLocation();
-
-  // Add paths where the FAB should NOT appear
   const hideOn = ["/login", "/checkout", "/careers"];
-
   if (hideOn.includes(pathname)) return null;
 
-  // Note: FloatingWhatsApp component is assumed to handle styling and placement (position="br" - bottom right)
   return (
     <FloatingWhatsApp
-      phone="9423512942"           // countrycode + number, no "+" or spaces
+      phone="9423512942"
       message="Hello! I’m interested in your services."
       label="WhatsApp us"
-      position="br"                // br | bl | tr | tl
-      showLabel={false}            // icon-only; tooltip/hover text handled inside component
-      showOnScroll={false}         // set true to show after scrolling
-      size={56}                    // outer circle size
+      position="br"
+      showLabel={false}
+      showOnScroll={false}
+      size={56}
     />
   );
 }
 
+// --- Main App Component (Updated with Targeted Keywords & ScrollToTop placement) ---
 function App() {
   return (
     <HelmetProvider>
       <Router>
+        {/* ScrollToTop component MUST be inside the Router to use useLocation */}
+        <ScrollToTop /> 
+
         <div className="min-h-screen bg-gray-50 flex flex-col">
           <Navigation />
 
@@ -398,18 +112,18 @@ function App() {
                   element={
                     <>
                       <Helmet>
-                        <title>Home - Aarmbh IT Solutions</title>
+                        <title>Aarmbh InfoTech | Web, Mobile & Custom Software Development</title>
                         <meta
                           name="description"
-                          content="Aarmbh IT Solutions offers innovative web, mobile, and custom software development services along with expert IT consulting and digital transformation strategies."
+                          content="Aarmbh InfoTech offers innovative web, mobile, and custom software development services along with expert IT consulting and digital transformation strategies to scale your business."
                         />
                         <meta
                           name="keywords"
-                          content={ALL_KEYWORDS}
+                          content={combineKeywords("home")} // Targeted Keywords
                         />
                         <meta
                           property="og:title"
-                          content="Home - Aarmbh IT Solutions"
+                          content="Aarmbh InfoTech | Web, Mobile & Custom Software"
                         />
                         <meta
                           property="og:description"
@@ -441,18 +155,18 @@ function App() {
                   element={
                     <>
                       <Helmet>
-                        <title>About Us - Aarmbh IT Solutions</title>
+                        <title>About Aarmbh InfoTech | Mission, Vision & Expertise</title>
                         <meta
                           name="description"
-                          content="Learn more about Aarmbh IT Solutions—our mission, vision, and expertise in IT services, dedicated to driving digital growth for businesses."
+                          content="Learn more about Aarmbh InfoTech—our mission, vision, and expertise in IT services, dedicated to driving digital growth for businesses and enterprise clients."
                         />
                         <meta
                           name="keywords"
-                          content={ALL_KEYWORDS}
+                          content={combineKeywords("about")} // Targeted Keywords
                         />
                         <meta
                           property="og:title"
-                          content="About Us - Aarmbh IT Solutions"
+                          content="About Us - Aarmbh InfoTech"
                         />
                         <meta
                           property="og:description"
@@ -484,18 +198,18 @@ function App() {
                   element={
                     <>
                       <Helmet>
-                        <title>Our Expert Team - Aarmbh IT Solutions</title>
+                        <title>Our Expert Team - Aarmbh Developers & IT Consultants</title>
                         <meta
                           name="description"
-                          content="Meet Aarmbh's expert team of full-stack developers, IT consultants, and digital specialists who build and manage innovative solutions."
+                          content="Meet Aarmbh's expert team of full-stack developers, IT consultants, and digital specialists who build and manage innovative web and software solutions."
                         />
                         <meta
                           name="keywords"
-                          content={ALL_KEYWORDS}
+                          content={combineKeywords("team")} // Targeted Keywords
                         />
                         <meta
                           property="og:title"
-                          content="Our Team - Aarmbh IT Solutions"
+                          content="Our Team - Aarmbh InfoTech"
                         />
                         <meta
                           property="og:description"
@@ -527,18 +241,18 @@ function App() {
                   element={
                     <>
                       <Helmet>
-                        <title>Dashboard - Aarmbh IT Solutions</title>
+                        <title>Dashboard - Aarmbh InfoTech (Client Area)</title>
                         <meta
                           name="description"
                           content="Securely manage your ongoing IT projects, track development progress, and view analytics with Aarmbh's client dashboard."
                         />
                         <meta
                           name="keywords"
-                          content={ALL_KEYWORDS}
+                          content={combineKeywords("dashboard")}
                         />
                         <meta
                           property="og:title"
-                          content="Dashboard - Aarmbh IT Solutions"
+                          content="Dashboard - Aarmbh InfoTech"
                         />
                         <meta
                           property="og:description"
@@ -553,7 +267,7 @@ function App() {
                           property="og:image"
                           content="https://aarmbh15.42web.io/images/og-dashboard.jpg"
                         />
-                        <meta name="robots" content="noindex, nofollow" /> {/* Changed to noindex/nofollow as this is likely a private/client area */}
+                        <meta name="robots" content="noindex, nofollow" /> {/* Correctly set to noindex/nofollow for a private area */}
                         <link
                           rel="canonical"
                           href="https://aarmbh15.42web.io/dashboard"
@@ -570,18 +284,18 @@ function App() {
                   element={
                     <>
                       <Helmet>
-                        <title>IT Services & Solutions - Aarmbh</title>
+                        <title>IT Services: Web, Mobile App & Custom Software Development | Aarmbh</title>
                         <meta
                           name="description"
-                          content="Explore Aarmbh's comprehensive IT services: custom web and mobile app development, cloud solutions, IT consulting, and digital transformation strategy."
+                          content="Explore Aarmbh's comprehensive IT services: custom web development, mobile app development (iOS/Android), full-stack engineering, cloud solutions, and strategic IT consulting."
                         />
                         <meta
                           name="keywords"
-                          content={ALL_KEYWORDS}
+                          content={combineKeywords("services")} // Targeted Keywords
                         />
                         <meta
                           property="og:title"
-                          content="Services - Aarmbh IT Solutions"
+                          content="Services - Aarmbh InfoTech"
                         />
                         <meta
                           property="og:description"
@@ -613,18 +327,18 @@ function App() {
                   element={
                     <>
                       <Helmet>
-                        <title>IT & Software Portfolio - Aarmbh Solutions</title>
+                        <title>IT & Software Development Portfolio | Aarmbh Projects</title>
                         <meta
                           name="description"
-                          content="View Aarmbh's portfolio of successful IT projects, including custom software, e-commerce platforms, and advanced mobile applications."
+                          content="View Aarmbh's portfolio of successful IT projects, including custom enterprise software, e-commerce platforms, and advanced mobile applications built with modern frameworks."
                         />
                         <meta
                           name="keywords"
-                          content={ALL_KEYWORDS}
+                          content={combineKeywords("projects")} // Targeted Keywords
                         />
                         <meta
                           property="og:title"
-                          content="Projects - Aarmbh IT Solutions"
+                          content="Projects - Aarmbh InfoTech"
                         />
                         <meta
                           property="og:description"
@@ -656,18 +370,18 @@ function App() {
                   element={
                     <>
                       <Helmet>
-                        <title>Contact Aarmbh IT Solutions</title>
+                        <title>Contact Aarmbh InfoTech for Web & App Development Quote</title>
                         <meta
                           name="description"
-                          content="Contact Aarmbh for IT and software development inquiries, sales, and support. Let's start your next digital project."
+                          content="Contact Aarmbh for IT and software development inquiries, sales, and support. Reach out to start your next digital project or request a free consultation."
                         />
                         <meta
                           name="keywords"
-                          content={ALL_KEYWORDS}
+                          content={combineKeywords("contact")} // Targeted Keywords
                         />
                         <meta
                           property="og:title"
-                          content="Contact Us - Aarmbh IT Solutions"
+                          content="Contact Us - Aarmbh InfoTech"
                         />
                         <meta
                           property="og:description"
@@ -706,4 +420,3 @@ function App() {
 }
 
 export default App;
-

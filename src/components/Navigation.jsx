@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AarambhLogo from '../assets/AarambhLogo.png'; // Adjust the path as needed
-import { FaHome, FaInfoCircle, FaCogs, FaUsers, FaBriefcase, FaEnvelope,FaPhoneAlt } from 'react-icons/fa';
-
+import { FaHome, FaInfoCircle, FaCogs, FaUsers, FaBriefcase, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 
 // Animated Hamburger Component
 const AnimatedHamburger = ({ isMenuOpen, setIsMenuOpen }) => (
@@ -80,12 +79,12 @@ function Navigation() {
 
             {/* Desktop Contact Button */}
             <button
-  onClick={() => navigate('/contact')}
-  className="bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold hover:bg-amber-400 transition-colors shadow-lg flex items-center gap-2"
->
-  Contact Us
-  <FaPhoneAlt className="text-gray-900" />
-</button>
+              onClick={() => navigate(contactItem.path)}
+              className="bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold hover:bg-amber-400 transition-colors shadow-lg flex items-center gap-2"
+            >
+              Contact Us
+              <FaPhoneAlt className="text-gray-900" />
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -99,7 +98,7 @@ function Navigation() {
       {isMenuOpen && (
         <div className="md:hidden bg-gray-900 border-t border-gray-700 pb-4">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
+            {mainNavItems.map((item) => (
               <button
                 key={item.key}
                 onClick={() => handleNavigation(item.path)}
@@ -114,16 +113,14 @@ function Navigation() {
               </button>
             ))}
 
-            <div className="border-t border-gray-700 my-4"></div>
-
             {/* Mobile Contact Button */}
-          <button
-  onClick={() => navigate('/contact')}
-  className="bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold cursor-pointer hover:bg-amber-400 transition-colors shadow-lg flex items-center gap-2"
->
-  Contact Us
-  <FaPhoneAlt className="text-gray-900" />
-</button>
+            <button
+              onClick={() => handleNavigation(contactItem.path)}
+              className="bg-amber-500 text-gray-900 px-5 py-2 rounded-lg font-semibold cursor-pointer hover:bg-amber-400 transition-colors shadow-lg flex items-center gap-2 w-40"
+            >
+              Contact Us
+              <FaPhoneAlt className="text-gray-900" />
+            </button>
           </div>
         </div>
       )}
