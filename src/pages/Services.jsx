@@ -32,6 +32,17 @@ function Services() {
         description: 'Creating beautiful,user-friendly interfaces using Figma,Canva,Adobe-that drive engagement and improve conversion rates.',
         features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
       },
+      {
+        icon: 'fas fa-cogs',
+        title: 'AI & Machine Learning',
+        description: 'Transform your business with intelligent automation, predictive insights, and AI-powered customer experiences — built to scale and deliver measurable ROI.',
+        features: [
+          'Tailored AI Models',
+          'Smart Chatbots & NLP',
+          'Predictive Analytics',
+          'Vision-Powered Automation',
+        ],
+      },
     ];
 
     // Animation variants for card staggering
