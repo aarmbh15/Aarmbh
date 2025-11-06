@@ -136,7 +136,7 @@ const AboutPageComponent = () => {
     }
     meta.setAttribute(
       'content',
-      'Discover the vision, mission, and core values that drive Aarmbh. We are a team of expert freelance developers delivering innovative, growth-focused technology solutions.'
+      'Discover the vision, mission, and core values that drive Aarmbh. We are a team of expert developers delivering innovative, growth-focused technology solutions.'
     );
 
     // 4. LCP Optimization: Preload hero image (LCP element)
@@ -307,7 +307,7 @@ return (
                 <h3 className="text-2xl font-bold">Our Mission</h3>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                To become a globally recognized freelance development partner — delivering top-tier digital products and strategies that accelerate business transformation, enhance efficiency, and create lasting impact.
+                To become a globally recognized development partner — delivering top-tier digital products and strategies that accelerate business transformation, enhance efficiency, and create lasting impact.
               </p>
             </motion.div>
           </div>

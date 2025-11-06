@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
  * IMPORTANT: Replace 'Your Site Domain' and 'Default Title' with your actual information.
  */
 const SITE_URL = 'https://your-live-domain.com'; // e.g., 'https://aarmbh15.42web.io'
-const SITE_NAME = 'Aarmbh IT Solutions';
+const SITE_NAME = 'Aarmbh InfoTech';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/default-og-image.jpg`; // Use a 1200x630 image
 
 /**

@@ -65,7 +65,7 @@ function Footer() {
                 />
               </div>
               <p className="text-gray-400 text-sm max-w-xs">
-                Professional freelance development team delivering high-quality web solutions worldwide.
+                Professional development team delivering high-quality web solutions worldwide.
               </p>
             </div>
 

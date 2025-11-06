@@ -71,7 +71,7 @@ function HomeComponent() {
     }
     meta.setAttribute(
       'content',
-      'Aarmbh — Professional freelance developers specializing in React, Node.js, Python, and more. From concept to deployment, we deliver high-quality, scalable, and reliable solutions.'
+      'Aarmbh — Professional developers specializing in React, Node.js, Python, and more. From concept to deployment, we deliver high-quality, scalable, and reliable solutions.'
     );
 
     // Preload hero image to improve LCP (only if not already present)
@@ -178,7 +178,7 @@ function HomeComponent() {
 
     {/* Subheading */}
     <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 mb-8 animate-fade-in-up" style={{ animationDelay: "120ms" }}>
-     Professional freelance developers specializing in React, Node.js, Python, and more. From concept to deployment, we deliver high-quality, scalable, and reliable solutions.
+     Professional developers specializing in React, Node.js, Python, and more. From concept to deployment, we deliver high-quality, scalable, and reliable solutions.
     </p>
 
     {/* CTAs */}

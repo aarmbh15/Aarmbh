@@ -160,6 +160,7 @@ if ($conn->connect_error) {
     exit;
 }
 
+// Set timezone to IST (India)
 $conn->query("SET time_zone = '+05:30'");
 
 // Collect form data (matching contact.jsx field names)
@@ -181,7 +182,8 @@ $honeypot = isset($_POST["honeypot"]) ? trim($_POST["honeypot"]) : "";
 // Honeypot check: If filled, it's a bot - log it, fake success, and exit
 if (!empty($honeypot)) {
     // Log bot attempt (connection still open here)
-    $ip = $_SERVER['REMOTE_ADDR'];
+    $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? 'unknown';
     $honeypot_val = $honeypot;
     
     // Generate IST timestamp for bot log
@@ -197,6 +199,26 @@ if (!empty($honeypot)) {
     
     // Fake success to not alert the bot, but don't store in main table
     echo json_encode(["status" => "success", "message" => "Message sent successfully!"]);
+    $conn->close();
+    exit;
+}
+
+// Basic server-side validation
+if (empty($name) || empty($email) || empty($phone) || empty($subject) || empty($service)) {
+    echo json_encode(["status" => "error", "message" => "All required fields must be filled."]);
+    $conn->close();
+    exit;
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo json_encode(["status" => "error", "message" => "Invalid email address."]);
+    $conn->close();
+    exit;
+}
+
+// Optional: Validate phone (E.164 format)
+if (!preg_match('/^\+[1-9]\d{1,14}$/', $phone)) {
+    echo json_encode(["status" => "error", "message" => "Invalid phone number format."]);
     $conn->close();
     exit;
 }
