@@ -529,6 +529,12 @@ function Contact() {
         </div>
       </section>
 
+      {/* ==== DECORATIVE NEON LINE ==== */}
+      <div className="relative w-full h-1">
+        <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+      </div>
+      {/* ============================= */}
+
       {/* Main Content Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
