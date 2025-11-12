@@ -6,6 +6,7 @@ import Footer from "./components/Footer.jsx";
 import LoadingSpinner from "./components/LoadingSpinner.jsx";
 import FloatingWhatsApp from "./components/FloatingWhatsApp.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import CustomCursor from './components/CustomCursor';
 
 // Lazy load pages
 const Home = lazy(() => import("./pages/Home.jsx"));
@@ -97,6 +98,7 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
+        <CustomCursor />
         {/* ScrollToTop component MUST be inside the Router to use useLocation */}
         <ScrollToTop /> 
 
