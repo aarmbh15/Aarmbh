@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { useReducedMotion,motion } from "framer-motion";
 // import Projects from './Projects';
 function Projects() {
     const primaryGold = '#f7dab2'; 
@@ -49,6 +49,20 @@ function Projects() {
       },
     ];
   
+    // Animated Divider Component
+    const AnimatedDivider = () => {
+      const prefersReducedMotion = useReducedMotion();
+      if (prefersReducedMotion) return <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />;
+      return (
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent origin-left"
+        />
+      );
+    };
+
     return (
       <div className={`pt-16 min-h-screen ${deepestBlack}`}>
         {/* Hero Section */}
@@ -79,11 +93,7 @@ function Projects() {
                       </div>
                     </div>
 
-                    {/* ==== DECORATIVE NEON LINE ==== */}
-      <div className="relative w-full h-1">
-        <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-      </div>
-      {/* ============================= */}
+                        <AnimatedDivider />
   
         {/* Project Grid Section */}
         <section className="py-16">

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { motion } from "framer-motion";
+import { useReducedMotion, motion } from "framer-motion";
 import {
   FiGlobe,
   FiTrendingUp,
@@ -174,6 +174,20 @@ const AboutPageComponent = () => {
     };
   }, []);
 
+  // Animated Divider Component
+    const AnimatedDivider = () => {
+      const prefersReducedMotion = useReducedMotion();
+      if (prefersReducedMotion) return <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />;
+      return (
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent origin-left"
+        />
+      );
+    };
+
 return (
     <div className="min-h-screen bg-gray-950 text-white font-sans overflow-x-hidden">
       {/* Hero Section */}
@@ -214,11 +228,7 @@ return (
         </div>
       </div>
 
-      {/* ==== DECORATIVE NEON LINE ==== */}
-      <div className="relative w-full h-1">
-        <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-      </div>
-      {/* ============================= */}
+      <AnimatedDivider />
 
       {/* RE-ADDED: Our Story/About Section (This was missing from your last provided code) */}
       <section className="py-20 bg-gray-950">
@@ -253,9 +263,11 @@ return (
               viewport={{ once: true, amount: 0.3 }}
               className="text-white h-full flex flex-col justify-center" // Added h-full, flex, flex-col, justify-center
             >
-              <h2 className="text-4xl font-bold mb-6 text-white border-b-2 border-amber-500/50 pb-2 inline-block">
+              <h2 className="text-4xl font-bold mb-6 text-white border-amber-500/50 pb-2 inline-block">
                 Our Story: Blending Trust with Creativity
               </h2>
+              <AnimatedDivider />
+              <br/>
               <p className="text-lg text-gray-300 leading-relaxed space-y-4">
                 <span className='block'>Aarmbh IT blends creativity with trust, delivering web and software solutions that turn ideas into digital success stories for businesses of all sizes.</span>
                 <span className='block'>Driven by a team of dedicated professionals, we fuse strategic thinking with the latest technologies to design platforms and experiences that inspire confidence and growth.</span>
@@ -265,6 +277,8 @@ return (
           </div>
         </div>
       </section>
+
+      <AnimatedDivider />
 
 
       {/* Vision & Mission - Section 1: Darker Gray - HOVER EFFECT ADDED */}
@@ -319,6 +333,8 @@ return (
           </div>
         </div>
       </section>
+
+      <AnimatedDivider />
 
       {/* Differentiators - Section 2: Slightly Lighter Background - HOVER EFFECT ADDED */}
       <section className="py-16 bg-gray-950 ">
@@ -383,6 +399,8 @@ return (
         </div>
       </section>
 
+      <AnimatedDivider />
+
       {/* Industries - Section 3: Slightly Darker Gray/Blue Hue - HOVER EFFECT ADDED */}
       <section className="py-16 bg-gray-900 ">
         {/* Applied max-w-7xl mx-auto px-6 lg:px-8 */}
@@ -420,6 +438,8 @@ return (
           </div>
         </div>
       </section>
+
+      <AnimatedDivider />
 
       {/* Core Values & Culture - Section 4: Lighter Background again - HOVER EFFECT ADDED */}
      <section className="py-16 bg-gray-950">

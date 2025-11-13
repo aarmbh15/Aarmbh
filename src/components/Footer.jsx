@@ -4,6 +4,7 @@ import { SocialIcon } from "react-social-icons";
 import AarambhLogo from '../assets/AarambhLogo.png';
 import { useNavigate } from "react-router-dom";
 import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import { motion, useReducedMotion } from "framer-motion";
 
 function Footer() {
   const navigate = useNavigate();
@@ -18,8 +19,24 @@ function Footer() {
     rel: "noopener noreferrer",
   };
 
+  // Animated Divider Component
+      const AnimatedDivider = () => {
+        const prefersReducedMotion = useReducedMotion();
+        if (prefersReducedMotion) return <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />;
+        return (
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent origin-left"
+          />
+        );
+      };
+
   return (
     <>
+    <AnimatedDivider />
+
       {/* ============================= */}
       {/* CTA SECTION (Before Footer) */}
       {/* ============================= */}
@@ -44,6 +61,9 @@ function Footer() {
           </div>
         </div>
       </section>
+
+      {/* Animated Divider - NOW AFTER CTA */}
+      <AnimatedDivider />
 
       {/* ============================= */}
       {/* FOOTER SECTION */}
@@ -182,6 +202,7 @@ function Footer() {
               </div>
             </div>
           </div>
+          
 
           {/* Copyright */}
           <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">

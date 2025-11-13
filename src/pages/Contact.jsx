@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from "framer-motion";
+import { useReducedMotion,motion } from "framer-motion";
 import { Linkedin, Github, Mail } from "lucide-react";
 import Swal from 'sweetalert2'; // Added SweetAlert2
 
@@ -491,6 +491,20 @@ function Contact() {
     }, 5000);
   };
 
+  // Animated Divider Component
+    const AnimatedDivider = () => {
+      const prefersReducedMotion = useReducedMotion();
+      if (prefersReducedMotion) return <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />;
+      return (
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent origin-left"
+        />
+      );
+    };
+
   return (
     <div className="min-h-screen bg-gray-800 font-inter"> 
       {/* Hero Section */}
@@ -529,11 +543,7 @@ function Contact() {
         </div>
       </section>
 
-      {/* ==== DECORATIVE NEON LINE ==== */}
-      <div className="relative w-full h-1">
-        <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-      </div>
-      {/* ============================= */}
+      <AnimatedDivider />
 
       {/* Main Content Section */}
       <section className="py-16">
