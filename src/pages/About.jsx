@@ -269,9 +269,11 @@ return (
               <AnimatedDivider />
               <br/>
               <p className="text-lg text-gray-300 leading-relaxed space-y-4">
-                <span className='block'>Aarmbh IT blends creativity with trust, delivering web and software solutions that turn ideas into digital success stories for businesses of all sizes.</span>
-                <span className='block'>Driven by a team of dedicated professionals, we fuse strategic thinking with the latest technologies to design platforms and experiences that inspire confidence and growth.</span>
-                <span className='block'>With a strong focus on understanding client needs, our commitment ensures reliable, scalable products and long-lasting partnerships that empower your journey in the digital world.</span>
+                {/* UPDATED CONTENT START */}
+                <span className='block'>Aarmbh IT blends creativity with trust, delivering web and software solutions that are always updated to meet the standards of the new generation.</span>
+                <span className='block'>Driven by a team of dedicated professionals, we fuse strategic thinking with the latest, most advanced technologies to design platforms and experiences that inspire confidence and future growth.</span>
+                <span className='block'>Our commitment ensures reliable, scalable products and long-lasting partnerships built on a strong focus on understanding client needs and evolving with the rapidly changing digital world.</span>
+                {/* UPDATED CONTENT END */}
               </p>
             </motion.div>
           </div>

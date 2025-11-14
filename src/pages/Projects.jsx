@@ -1,4 +1,6 @@
 import { useReducedMotion,motion } from "framer-motion";
+import smartImage from '../assets/smart.jpg';
+import phdianImage from '../assets/phdian.jpg';
 // import Projects from './Projects';
 function Projects() {
     const primaryGold = '#f7dab2'; 
@@ -6,23 +8,41 @@ function Projects() {
     const deepestBlack = 'bg-gray-950';
 
     const projects = [
-      {
-        title: 'H&H TECH SOLUTIONS',
-        client: 'IT Consultany & Services',
-        category: 'Web Development',
-        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80',
-        description: 'Full-stack e-commerce platform built with modern web technologies, featuring a responsive design,and seamless user experience across devices.',
-        technologies: ['React.js', 'PHP', 'My SQL'],
-      },
-      {
-  title: "Ambition Let's Move",
-  client: "Transportation App",
-  category: "Mobile Development",
-  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop",
-  description: "Ambition Let's Move is a mobile transportation app built with Flutter, Firebase, and MongoDB. It features real-time ride tracking, seamless booking, and efficient route management, providing users with a smooth and reliable transportation experience.",
-  technologies: ['Flutter', 'Firebase', 'MongoDB'],
-},
-
+        // --- NEW PROJECT 1 (Smart Auto Electrics) ---
+       {
+          title: 'Smart Auto Electrics',
+          client: 'Auto Service',
+          category: 'Web Development',
+          image: smartImage, // Replaced URL with imported variable
+          description: 'A full-featured online marketplace platform for buying and selling cars, with a responsive design, real-time listings, and secure user interactions.',
+          technologies: ['React.js', 'Tailwind CSS', 'MongoDB'],
+        },
+        // --- NEW PROJECT 2 (Phdians) ---
+        {
+          title: 'Phdians',
+          client: 'Educational department',
+          category: 'Web Development',
+          image: phdianImage, // Replaced URL with imported variable
+          description: 'A full-featured online platform for interaction with the Experties of the college for the guidance, books all at one place, with a responsive design, real-time listings, and secure user interactions.',
+          technologies: ['React.js','Tailwind CSS', 'Firebase'],
+        },
+        // --- Existing Projects ---
+        {
+          title: 'H&H TECH SOLUTIONS',
+          client: 'IT Consultany & Services',
+          category: 'Web Development',
+          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80',
+          technologies: ['React.js', 'PHP', 'My SQL'],
+          description: 'Full-stack e-commerce platform built with modern web technologies, featuring a responsive design,and seamless user experience across devices.',
+        },
+        {
+      title: "Ambition Let's Move",
+      client: "Transportation App",
+      category: "Mobile Development",
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop",
+      description: "Ambition Let's Move is a mobile transportation app built with Flutter, Firebase, and MongoDB. It features real-time ride tracking, seamless booking, and efficient route management, providing users with a smooth and reliable transportation experience.",
+      technologies: ['Flutter', 'Firebase', 'MongoDB'],
+    },
       {
         title: 'Telegram chatbot',
         client: 'Telegram chatbot',
@@ -47,6 +67,14 @@ function Projects() {
         description: 'A full-featured online marketplace platform for buying and selling products, with a responsive design, real-time listings, and secure user interactions.',
         technologies: ['React.js', 'Firebase'],
       },
+      // {
+      //   title: 'E-rupaiya',
+      //   client: 'E-rupaiya',
+      //   category: 'Web Development',
+      //   image: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=800&q=80',
+      //   description: 'A full-featured online marketplace platform for buying and selling products, with a responsive design, real-time listings, and secure user interactions.',
+      //   technologies: ['React.js', 'Firebase'],
+      // },
     ];
   
     // Animated Divider Component
@@ -137,4 +165,3 @@ function Projects() {
   }
   
   export default Projects;
-  

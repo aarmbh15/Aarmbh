@@ -35,12 +35,12 @@ function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { key: 'home', label: 'Home', icon: <FaHome />, path: '/' },
-    { key: 'about', label: 'About', icon: <FaInfoCircle />, path: '/About' },
-    { key: 'services', label: 'Services', icon: <FaCogs />, path: '/services' },
-    { key: 'team', label: 'Our Team', icon: <FaUsers />, path: '/team' },
-    { key: 'projects', label: 'Projects', icon: <FaBriefcase />, path: '/projects' },
-    { key: 'contact', label: 'Contact', icon: <FaEnvelope />, path: '/contact' },
+    { key: 'home', label: 'HOME', icon: <FaHome />, path: '/' },
+    { key: 'about', label: 'ABOUT', icon: <FaInfoCircle />, path: '/About' },
+    { key: 'services', label: 'SERVICES', icon: <FaCogs />, path: '/services' },
+    { key: 'team', label: 'TECH STACK', icon: <FaUsers />, path: '/team' },
+    { key: 'projects', label: 'PROJECTS', icon: <FaBriefcase />, path: '/projects' },
+    { key: 'contact', label: 'CONTACT', icon: <FaEnvelope />, path: '/contact' },
   ];
 
   const handleNavigation = (path) => {
@@ -137,7 +137,7 @@ function Navigation() {
                 className="glass-button text-gray-900 px-5 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow-lg"
                 aria-label="Contact us"
               >
-                Contact Us
+                CONTACT US
                 <FaPhoneAlt className="text-gray-900" />
               </button>
             </div>

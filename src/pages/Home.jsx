@@ -326,10 +326,10 @@ function HomeComponent() {
   ];
 
   const TESTIMONIALS = [
-    { name: 'Sarah Chen', role: 'CEO, TechStart', rating: 5, text: 'Aarmbh transformed our idea into a scalable platform in record time. Their communication and expertise are unmatched.' },
-    { name: 'Michael Rivera', role: 'Product Lead, InnovateCo', rating: 5, text: 'Professional, reliable, and incredibly skilled. They delivered beyond expectations with zero downtime.' },
+    { name: 'Hammad Akbar', role: 'CEO', rating: 5, text: 'Aarmbh transformed our idea into a scalable platform in record time. Their communication and expertise are unmatched.' },
+    { name: 'Rohinit Gitay', role: 'Product Lead', rating: 5, text: 'Professional, reliable, and incredibly skilled. They delivered beyond expectations with zero downtime.' },
     { name: 'Priya Sharma', role: 'Founder, EduLearn', rating: 5, text: 'The team’s attention to detail and proactive updates made the entire process seamless. Highly recommend!' },
-    { name: 'James Liu', role: 'CTO, FinTrust', rating: 5, text: 'Secure, fast, and scalable solutions. Their 24/7 support gives us complete peace of mind.' },
+    // { name: 'James Liu', role: 'CTO, FinTrust', rating: 5, text: 'Secure, fast, and scalable solutions. Their 24/7 support gives us complete peace of mind.' },
   ];
 
   return (
