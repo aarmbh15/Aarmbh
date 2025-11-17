@@ -213,10 +213,10 @@ return (
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-6 text-white">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500">
               Transforming Ideas Into
               <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500">
+              <span className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500">
                 Real-World Impact
               </span>
             </h1>

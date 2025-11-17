@@ -9,17 +9,48 @@ function Services() {
   // -------------------------------------------------
   const services = [
     {
+      // NEW SERVICE: Software Development (1)
+      icon: "fas fa-laptop-code", // New icon for general software
+      title: "Software Development",
+      description:
+        "Comprehensive, end-to-end software development services from conceptualization to deployment, covering desktop, enterprise, and custom applications built with modern engineering best practices.",
+      features: [
+        "Full-Stack Engineering – expertise across all application layers",
+        "Legacy System Modernization – upgrading and optimizing existing codebases",
+        "Enterprise Resource Planning (ERP) Solutions – tailored to business needs",
+        "Scalable Architecture – microservices and cloud-native design",
+      ],
+      benefit: "Achieve digital transformation & optimize operations",
+    },
+    {
       icon: "fas fa-globe",
       title: "Web Development",
       description:
         "Custom web applications using modern technologies like HTML, CSS, JavaScript, & frameworks such as PHP, React.js and Node.js. Optimized for performance and scale.",
       features: [
-        "Responsive Design – reach customers on every device, increase engagement by 30 %",
-        "SEO Optimized – rank higher, attract organic traffic",
+        "Responsive Design – reach customers on every device, increase engagement by 30 %", // Existing (with new detail from list 24)
+        "SEO Services (Search Engine Optimization) – rank higher, attract organic traffic", // NEW from list 22
+        "Custom Web Applications – tailored features and functionality (list 29)", // NEW from list 29
+        "Content Management Systems (CMS) Integration – easy content updates (list 28)", // NEW from list 28
+        "Website Maintenance & Updates – keep your site fresh, secure, and running smoothly (list 27)", // NEW from list 27
         "Fast Performance – sub-second load times, lower bounce rates",
         "Security Focused – protect user data, stay compliant",
       ],
       benefit: "Boost conversions & scale effortlessly",
+    },
+    {
+      // NEW SERVICE: Web Hosting & Domain Services (7)
+      icon: "fas fa-server",
+      title: "Web Hosting & Domain Services",
+      description:
+        "Secure, high-speed hosting solutions and comprehensive domain registration and management to ensure your digital presence is always available and performing at its peak.",
+      features: [
+        "Web Hosting Services – reliable, fast, and secure hosting (list 26)",
+        "Domain Registration & Management – secure and easy setup of your digital address (list 25)",
+        "24/7 Monitoring – proactive issue detection and resolution",
+        "Scalable Infrastructure – effortless handling of traffic spikes",
+      ],
+      benefit: "Guaranteed uptime & peace of mind",
     },
     {
       icon: "fas fa-mobile-alt",
@@ -48,11 +79,13 @@ function Services() {
       benefit: "Run reliably at any traffic volume",
     },
     {
+      // UPDATED TITLE: UI/UX Design & Development (14)
       icon: "fas fa-paint-brush",
-      title: "UI/UX Design",
+      title: "UI/UX Design & Development",
       description:
         "Creating beautiful, user-friendly interfaces using Figma, Canva, Adobe that drive engagement and improve conversion rates.",
       features: [
+        "Logo Design & Branding – cohesive visual identity (list 23)", // NEW from list 23
         "User Research – data-driven decisions",
         "Wireframing – rapid iteration",
         "Prototyping – test before building",
@@ -61,8 +94,9 @@ function Services() {
       benefit: "Turn visitors into loyal customers",
     },
     {
+      // UPDATED TITLE: Artificial Intelligence & Machine Learning (8)
       icon: "fas fa-cogs",
-      title: "AI & Machine Learning",
+      title: "Artificial Intelligence & Machine Learning",
       description:
         "Transform your business with intelligent automation, predictive insights, and AI-powered customer experiences — built to scale and deliver measurable ROI.",
       features: [
@@ -72,6 +106,20 @@ function Services() {
         "Vision-Powered Automation – reduce manual work",
       ],
       benefit: "Cut costs & unlock new revenue streams",
+    },
+    {
+      // NEW SERVICE: Healthcare IT Services (18)
+      icon: "fas fa-hospital", // New icon for healthcare
+      title: "Healthcare IT Services",
+      description:
+        "Specialized technology solutions for the healthcare industry, focusing on security, compliance (HIPAA/GDPR), and seamless integration with Electronic Health Records (EHR) systems.",
+      features: [
+        "HIPAA/GDPR Compliance – ensuring patient data protection",
+        "EHR/EMR Integration – connecting systems for unified patient data",
+        "Telemedicine Platform Development – virtual care solutions",
+        "Secure Data Infrastructure – robust cloud and on-premise solutions",
+      ],
+      benefit: "Improve patient care & maintain regulatory compliance",
     },
   ];
 
@@ -254,7 +302,7 @@ function Services() {
                           scale: 1.03,
                           boxShadow: "0 25px 50px -12px rgba(251, 191, 36, 0.15)",
                         }}
-                        transition={{ duration: 0.4, delay: 0.4 }} // Fixed: comma instead of colon
+                        transition={{ duration: 0.4 }}
                         className="relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg overflow-hidden group"
                       >
                         <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

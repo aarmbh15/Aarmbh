@@ -248,57 +248,47 @@ function Team() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {stackProsAndCons.map((item, index) => (
-              <motion.div
-                key={item.tech}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="bg-neutral-800/50 backdrop-blur-xl border border-amber-500/20 rounded-xl p-6 shadow-2xl"
-              >
-                <div className="flex items-center mb-4">
-                    <i className={`${item.icon} text-3xl mr-3`} style={{ color: primaryGold }} />
-                    <h3 className="text-xl font-bold text-white">{item.tech}</h3>
-                </div>
+   <div className="grid lg:grid-cols-2 gap-8">
+  {stackProsAndCons.map((item, index) => (
+    <motion.div
+      key={item.tech}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
+      className="bg-neutral-800/50 backdrop-blur-xl border border-amber-500/20 
+                 rounded-xl p-6 shadow-2xl 
+                 flex flex-col items-center text-center"
+    >
+      {/* Title + Icon */}
+      <div className="flex items-center justify-center mb-4">
+        <i
+          className={`${item.icon} text-3xl mr-3`}
+          style={{ color: primaryGold }}
+        />
+        <h3 className="text-xl font-bold text-white">{item.tech}</h3>
+      </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                    {/* Pros Column */}
-                    <div>
-                        <h4 className="font-semibold text-green-400 mb-2 flex items-center">
-                            <i className="fas fa-check-circle mr-2" />
-                            Pros
-                        </h4>
-                        <ul className="space-y-2 text-sm text-gray-300">
-                            {item.pros.map((pro, i) => (
-                                <li key={i} className="flex items-start">
-                                    <i className="fas fa-plus text-green-400 mt-1 mr-2 flex-shrink-0 text-xs" />
-                                    <span>{pro}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+      {/* Pros Column Only */}
+      <div className="w-full flex flex-col items-center">
+        <h4 className="font-semibold text-green-400 mb-2 flex items-center justify-center">
+          <i className="fas fa-check-circle mr-2" />
+          Pros
+        </h4>
 
-                    {/* Cons Column */}
-                    <div>
-                        <h4 className="font-semibold text-red-400 mb-2 flex items-center">
-                            <i className="fas fa-times-circle mr-2" />
-                            Cons
-                        </h4>
-                        <ul className="space-y-2 text-sm text-gray-300">
-                            {item.cons.map((con, i) => (
-                                <li key={i} className="flex items-start">
-                                    <i className="fas fa-minus text-red-400 mt-1 mr-2 flex-shrink-0 text-xs" />
-                                    <span>{con}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <ul className="space-y-2 text-sm text-gray-300">
+          {item.pros.map((pro, i) => (
+            <li key={i} className="flex items-start justify-center">
+              <i className="fas fa-plus text-green-400 mt-1 mr-2 flex-shrink-0 text-xs" />
+              <span>{pro}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
+  ))}
+</div>
+ss
 
         </div>
       </section>
@@ -383,7 +373,7 @@ function Team() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600">
+            <span className="text-4xl md:text-5xl lg:text-6xl mt-20 font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-amber-500">
               Our Core Technology Stack
             </span>
           </motion.h1>
