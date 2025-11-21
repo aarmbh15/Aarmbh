@@ -190,12 +190,12 @@ function Footer() {
                 <p className="flex items-center justify-center md:justify-start">
                   <FaEnvelope className="w-5 mr-2 text-amber-500" aria-label="Email Icon" />
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=aarmbh15@gmail.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@aarmbhinfotech.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-amber-400 transition-colors" // Changed hover color to amber for consistency
                   >
-                    aarmbh15@gmail.com
+                    contact@aarmbhinfotech.com
                   </a>
                 </p>
 
