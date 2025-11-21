@@ -441,7 +441,7 @@ function Contact() {
     // }
 
     try {
-      const response = await fetch('http://localhost/contact.php', {
+      const response = await fetch('contact.php', {
         method: 'POST',
         body: payload,
       });
