@@ -122,33 +122,6 @@ if (!empty($honeypot)) {
     exit;
 }
 
-// ──────────────────────────────────────────────────────────────
-// NEW: Limit 2 submissions per email per calendar month
-// ──────────────────────────────────────────────────────────────
-// $currentMonth = date('Y-m'); // e.g., 2025-11
-
-// $limit_sql = "SELECT COUNT(*) as count FROM contact_form 
-//               WHERE email = ? AND DATE_FORMAT(submission_date, '%Y-%m') = ?";
-
-// if ($limit_stmt = $conn->prepare($limit_sql)) {
-//     $limit_stmt->bind_param("ss", $email, $currentMonth);
-//     $limit_stmt->execute();
-//     $result = $limit_stmt->get_result();
-//     $row = $result->fetch_assoc();
-//     $countThisMonth = (int)$row['count'];
-//     $limit_stmt->close();
-
-//     if ($countThisMonth >= 2) {
-//         echo json_encode([
-//             "status" => "error",
-//             "message" => "You have already submitted the form twice this month. Please try again next month."
-//         ]);
-//         $conn->close();
-//         exit;
-//     }
-// }
-// ──────────────────────────────────────────────────────────────
-
 // Basic server-side validation
 if (empty($name) || empty($email) || empty($phone) || empty($subject) || empty($service)) {
     echo json_encode(["status" => "error", "message" => "All required fields must be filled."]);
@@ -169,39 +142,6 @@ if (!preg_match('/^\+[1-9]\d{1,14}$/', $phone)) {
     exit;
 }
 
-// Default response
-$response = ["status" => "error", "message" => ""];
-
-// Email recipient
-$to = "contact@aarmbhinfotech.com";
-
-// Email content
-$email_body .= "Name: $name\r\n";
-$email_body .= "Email: $email\r\n";
-$email_body .= "Phone: $phone\r\n";
-$email_body .= "Service: $service\r\n";
-$email_body .= "Subject: $subject\r\n";
-$email_body .= "Message:\r\n$message\r\n";
-$email_body .= "--------------------------\r\n";
-$email_body .= "User Details:\r\n";
-$email_body .= "IP Address: $ipAddress\r\n";
-$email_body .= "Browser: $browser\r\n";
-$email_body .= "Operating System: $platform\r\n";
-$email_body .= "User Agent: $userAgent\r\n";
-
-// Email headers
-$headers = "From: contact@aarmbhinfotech.com\r\n";
-$headers .= "Reply-To: $email\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-// Send email
-if (mail($to, "New Contact: $name", $email_body, $headers)) {
-    echo json_encode(["status" => "success", "message" => "Email sent successfully"]);
-} else {
-    echo json_encode(["status" => "error", "message" => "Failed to send email"]);
-}
-
-
 // Insert into DB only if not bot
 $sql = "INSERT INTO contact_form (full_name, email, phone_number, subject, service, message) 
         VALUES (?, ?, ?, ?, ?, ?)";
@@ -218,14 +158,87 @@ if ($stmt === false) {
 // Bind parameters (all strings)
 $stmt->bind_param("ssssss", $name, $email, $phone, $subject, $service, $message);
 
-// Execute the statement
+// DEMO LOGIC APPLIED HERE ✔  
 if ($stmt->execute()) {
-    $response = ["status" => "success", "message" => "Message stored successfully!"];
-} else {
-    $response["message"] = "Database insert failed: " . $stmt->error;
-}
-$stmt->close();
-$conn->close();
 
-echo json_encode($response);
+    // ONLY NOW send email (exact structure of your demo)
+    $stmt->close();
+
+    $to = "contact@aarmbhinfotech.com";
+    $subjectMail = "New Contact: $name";
+
+    $email_body = "";
+    $email_body  = "Name: $name\r\n";
+    $email_body .= "Email: $email\r\n";
+    $email_body .= "Phone: $phone\r\n";
+    $email_body .= "Service: $service\r\n";
+    $email_body .= "Subject: $subject\r\n";
+    $email_body .= "Message:\r\n$message\r\n";
+    $email_body .= "--------------------------\r\n";
+    $email_body .= "IP Address: $ipAddress\r\n";
+    $email_body .= "Browser: $browser\r\n";
+    $email_body .= "OS: $platform\r\n";
+    $email_body .= "User Agent: $userAgent\r\n";
+
+    $headers  = "From: contact@aarmbhinfotech.com\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+    mail($to, $subjectMail, $email_body, $headers);
+
+    echo json_encode(["status" => "success", "message" => "Your message has been sent successfully!"]);
+    $conn->close();
+    exit;
+
+} else {
+    echo json_encode(["status" => "error", "message" => "Database insert failed: " . $stmt->error]);
+    $stmt->close();
+    $conn->close();
+    exit;
+}
+
+// Default response
+// $response = ["status" => "error", "message" => ""];
+
+// // Email recipient
+// $to = "contact@aarmbhinfotech.com";
+
+// // Email content
+// $email_body .= "Name: $name\r\n";
+// $email_body .= "Email: $email\r\n";
+// $email_body .= "Phone: $phone\r\n";
+// $email_body .= "Service: $service\r\n";
+// $email_body .= "Subject: $subject\r\n";
+// $email_body .= "Message:\r\n$message\r\n";
+// $email_body .= "--------------------------\r\n";
+// $email_body .= "User Details:\r\n";
+// $email_body .= "IP Address: $ipAddress\r\n";
+// $email_body .= "Browser: $browser\r\n";
+// $email_body .= "Operating System: $platform\r\n";
+// $email_body .= "User Agent: $userAgent\r\n";
+
+// // Email headers
+// $headers = "From: contact@aarmbhinfotech.com\r\n";
+// $headers .= "Reply-To: $email\r\n";
+// $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+// // Send email
+// if (mail($to, "New Contact: $name", $email_body, $headers)) {
+//     echo json_encode(["status" => "success", "message" => "Email sent successfully"]);
+// } else {
+//     echo json_encode(["status" => "error", "message" => "Failed to send email"]);
+// }
+
+// // Execute the statement
+// if ($stmt->execute()) {
+//     $response = ["status" => "success", "message" => "Message stored successfully!"];
+// } else {
+//     $response["message"] = "Database insert failed: " . $stmt->error;
+// }
+
+// $stmt->close();
+// $conn->close();
+
+// echo json_encode($response);
+
 ?>
