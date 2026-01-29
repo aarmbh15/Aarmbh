@@ -37,7 +37,7 @@ const BUSINESS_KEYWORDS =
 
 // --- Per-Route Short Keywords (Specific targeting) ---
 const pageSpecificKeywords = {
-  home: "Aarmbh InfoTech, web & app development, digital services",
+  home: "Aarmbh InfoTech, web & app development, digital services,",
   about: "Aarmbh about, company profile, mission vision, tech team, corporate identity",
   team: "Aarmbh team, software engineers, developers, designers, IT experts",
   dashboard: "project dashboard, client portal, project management, Aarmbh client access", 
@@ -114,38 +114,21 @@ function App() {
                   element={
                     <>
                       <Helmet>
-                        <title>Aarmbh InfoTech | Web, Mobile & Custom Software Development</title>
-                        <meta
-                          name="description"
-                          content="Aarmbh InfoTech offers innovative web, mobile, and custom software development services along with expert IT consulting and digital transformation strategies to scale your business."
-                        />
-                        <meta
-                          name="keywords"
-                          content={combineKeywords("home")} // Targeted Keywords
-                        />
-                        <meta
-                          property="og:title"
-                          content="Aarmbh InfoTech | Web, Mobile & Custom Software"
-                        />
-                        <meta
-                          property="og:description"
-                          content="Discover cutting-edge IT solutions for your business—from web development and mobile apps to IT infrastructure and digital strategy."
-                        />
-                        <meta property="og:type" content="website" />
-                        <meta
-                          property="og:url"
-                          content="https://aarmbh15.42web.io/"
-                        />
-                        <meta
-                          property="og:image"
-                          content="https://aarmbh15.42web.io/images/og-home.jpg"
-                        />
-                        <meta name="robots" content="index, follow" />
-                        <link
-                          rel="canonical"
-                          href="https://aarmbh15.42web.io/"
-                        />
-                      </Helmet>
+        <title>Aarmbh InfoTech (Aarambh | Arambh | Aarambha) | Web & App Development Company India</title>
+        <meta
+          name="description"
+          content="Aarmbh InfoTech Pvt. Ltd. — Official website of Aarambh Infotech | Arambh Infotech | Aarambha Infotech. Leading web development, mobile app development & custom software company based in Surat, Gujarat, India."
+        />
+        <meta
+          name="keywords"
+          content={
+            "Aarmbh Infotech, Aarambh Infotech, Arambh Infotech, Aarambha Infotech, Arambha Infotech, Aaramba Infotech, " +
+            combineKeywords("home")
+          }
+        />
+        <meta property="og:title" content="Aarmbh InfoTech (also Aarambh / Arambh Infotech) | Web & App Development" />
+        <meta property="og:description" content="Official website of Aarmbh InfoTech (commonly searched as Aarambh, Arambh, Aarambha Infotech). Expert in React, Node.js, Mobile Apps & AI solutions." />
+      </Helmet>
                       <Home />
                     </>
                   }
@@ -177,16 +160,16 @@ function App() {
                         <meta property="og:type" content="website" />
                         <meta
                           property="og:url"
-                          content="https://aarmbh15.42web.io/about"
+                          content="https://aarmbhinfotech.com/about"
                         />
                         <meta
                           property="og:image"
-                          content="https://aarmbh15.42web.io/images/og-about.jpg"
+                          content="https://aarmbhinfotech.com/images/og-about.jpg"
                         />
                         <meta name="robots" content="index, follow" />
                         <link
                           rel="canonical"
-                          href="https://aarmbh15.42web.io/about"
+                          href="https://aarmbhinfotech.com/about"
                         />
                       </Helmet>
                       <About />
@@ -220,16 +203,16 @@ function App() {
                         <meta property="og:type" content="website" />
                         <meta
                           property="og:url"
-                          content="https://aarmbh15.42web.io/team"
+                          content="https://aarmbhinfotech.com/team"
                         />
                         <meta
                           property="og:image"
-                          content="https://aarmbh15.42web.io/images/og-team.jpg"
+                          content="https://aarmbhinfotech.com/images/og-team.jpg"
                         />
                         <meta name="robots" content="index, follow" />
                         <link
                           rel="canonical"
-                          href="https://aarmbh15.42web.io/team"
+                          href="https://aarmbhinfotech.com/team"
                         />
                       </Helmet>
                       <Team />
@@ -263,16 +246,16 @@ function App() {
                         <meta property="og:type" content="website" />
                         <meta
                           property="og:url"
-                          content="https://aarmbh15.42web.io/dashboard"
+                          content="https://aarmbhinfotech.com/dashboard"
                         />
                         <meta
                           property="og:image"
-                          content="https://aarmbh15.42web.io/images/og-dashboard.jpg"
+                          content="https://aarmbhinfotech.com/images/og-dashboard.jpg"
                         />
                         <meta name="robots" content="noindex, nofollow" /> {/* Correctly set to noindex/nofollow for a private area */}
                         <link
                           rel="canonical"
-                          href="https://aarmbh15.42web.io/dashboard"
+                          href="https://aarmbhinfotech.com/dashboard"
                         />
                       </Helmet>
                       <Dashboard />
@@ -306,16 +289,16 @@ function App() {
                         <meta property="og:type" content="website" />
                         <meta
                           property="og:url"
-                          content="https://aarmbh15.42web.io/services"
+                          content="https://aarmbhinfotech.com/services"
                         />
                         <meta
                           property="og:image"
-                          content="https://aarmbh15.42web.io/images/og-services.jpg"
+                          content="https://aarmbhinfotech.com/images/og-services.jpg"
                         />
                         <meta name="robots" content="index, follow" />
                         <link
                           rel="canonical"
-                          href="https://aarmbh15.42web.io/services"
+                          href="https://aarmbhinfotech.com/services"
                         />
                       </Helmet>
                       <Services />
@@ -349,16 +332,16 @@ function App() {
                         <meta property="og:type" content="website" />
                         <meta
                           property="og:url"
-                          content="https://aarmbh15.42web.io/projects"
+                          content="https://aarmbhinfotech.com/projects"
                         />
                         <meta
                           property="og:image"
-                          content="https://aarmbh15.42web.io/images/og-projects.jpg"
+                          content="https://aarmbhinfotech.com/images/og-projects.jpg"
                         />
                         <meta name="robots" content="index, follow" />
                         <link
                           rel="canonical"
-                          href="https://aarmbh15.42web.io/projects"
+                          href="https://aarmbhinfotech.com/projects"
                         />
                       </Helmet>
                       <Projects />
@@ -392,16 +375,16 @@ function App() {
                         <meta property="og:type" content="website" />
                         <meta
                           property="og:url"
-                          content="https://aarmbh15.42web.io/contact"
+                          content="https://aarmbhinfotech.com/contact"
                         />
                         <meta
                           property="og:image"
-                          content="https://aarmbh15.42web.io/images/og-contact.jpg"
+                          content="https://aarmbhinfotech.com/images/og-contact.jpg"
                         />
                         <meta name="robots" content="index, follow" />
                         <link
                           rel="canonical"
-                          href="https://aarmbh15.42web.io/contact"
+                          href="https://aarmbhinfotech.com/contact"
                         />
                       </Helmet>
                       <Contact />
