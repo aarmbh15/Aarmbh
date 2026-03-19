@@ -8,6 +8,7 @@ import {
   useReducedMotion,
   useMotionValue,
   animate,
+  useSpring,
 } from 'framer-motion';
 
 const primaryGold = '#f7dab2';
@@ -69,6 +70,58 @@ const TESTIMONIALS = [
   { name: 'Priya Sharma', role: 'Founder', company: 'EduLearn', rating: 5, text: "The team's attention to detail and proactive updates made the entire process seamless. Highly recommend!" },
 ];
 
+const PROJECTS = [
+  {
+    id: 3,
+    title: 'H&H Tech Solutions',
+    client: 'IT Consultancy, UK',
+    category: 'Web Development',
+    tag: 'Live',
+    url: 'https://hhtechsolutions.co.uk/',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+    description: 'Corporate IT consultancy website with professional services showcase, case studies, and lead generation — designed for the UK enterprise market.',
+    technologies: ['React.js', 'PHP', 'MySQL'],
+    year: '2024',
+  },
+  {
+    id: 4,
+    title: 'Digital Marketing Agency',
+    client: 'Marketing Agency',
+    category: 'Web Development',
+    tag: 'Live',
+    url: 'https://digital-agency-ten-self.vercel.app/',
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
+    description: 'High-impact digital marketing agency website with bold animations, comprehensive service sections, and a conversion-focused layout to attract premium clients.',
+    technologies: ['React.js', 'Framer Motion', 'Tailwind CSS'],
+    year: '2024',
+  },
+  {
+    id: 5,
+    title: 'Cafe Lamees',
+    client: 'Food & Beverage, UK',
+    category: 'E-Commerce',
+    tag: 'Live',
+    url: 'https://test.cafelamees.co.uk/',
+    image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80',
+    description: 'Elegant café website with online menu, brand storytelling, and ambience-focused design — crafted for a UK-based food and beverage establishment.',
+    technologies: ['React.js', 'Tailwind CSS', 'Firebase'],
+    year: '2024',
+  },
+  {
+    id: 6,
+    title: 'Luxury Furniture Store',
+    client: 'E-commerce Retail',
+    category: 'E-commerce',
+    tag: 'Live',
+    url: 'https://furniture-420c3.web.app',
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
+    description: 'Sophisticated furniture e-commerce platform with product showcases, advanced filtering, and a luxurious browsing experience designed to drive premium sales.',
+    technologies: ['React.js', 'Firebase', 'Tailwind CSS'],
+    year: '2024',
+  },
+];
+
+
 /* ---------- FLIP CARD ---------- */
 const FlipCard = React.memo(({ feature, index, isInView }) => {
   const [isFlipped, setIsFlipped] = React.useState(false);
@@ -106,32 +159,50 @@ const FlipCard = React.memo(({ feature, index, isInView }) => {
   );
 });
 
-/* ---------- STAT CARD ---------- */
+/* ---------- REFINED STAT CARD ---------- */
 const StatCard = React.memo(({ stat, index, isInView }) => {
   const count = useMotionValue(0);
-  const rounded = useTransform(count, Math.round);
-  const display = useTransform(rounded, v => `${v}${stat.suffix}`);
+  const rounded = useTransform(count, (v) => Math.round(v));
+
   React.useEffect(() => {
     if (!isInView) return;
-    const controls = animate(count, stat.end, { duration: 4.2, ease: [0.22, 1, 0.36, 1], delay: index * 0.25 });
+    // Faster, smoother animation duration for a snappier feel
+    const controls = animate(count, stat.end, { 
+      duration: 2.5, 
+      ease: [0.16, 1, 0.3, 1], 
+      delay: index * 0.1 
+    });
     return controls.stop;
   }, [isInView, count, stat.end, index]);
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      whileHover={{ scale: 1.08 }}
-      className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 hover:border-amber-500/40 transition-colors"
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      className="relative group p-10 md:p-14 border-r border-b border-white/10 flex flex-col items-center justify-center overflow-hidden"
     >
-      <motion.div className="text-4xl font-bold mb-2" style={{ color: primaryGold }}>
-        <motion.span>{display}</motion.span>
-      </motion.div>
-      <div className="text-gray-400 text-sm">{stat.label}</div>
+      {/* 1. Subtle Background Hover Glow */}
+      <div className="absolute inset-0 bg-amber-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+      {/* 2. Number Layout */}
+      <div className="relative z-10 flex items-baseline gap-1 mb-3">
+        <motion.span className="text-4xl md:text-6xl font-light tracking-tighter text-white group-hover:text-amber-400 transition-colors duration-500">
+          {rounded}
+        </motion.span>
+        <span className="text-amber-500 text-xl font-light">{stat.suffix}</span>
+      </div>
+
+      {/* 3. Label - Micro Typography */}
+      <div className="relative z-10 text-slate-500 text-[10px] uppercase tracking-[0.2em] font-medium text-center">
+        {stat.label}
+      </div>
+
+      {/* 4. Architectural Accent (Bottom line that grows on hover) */}
+      <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-500 group-hover:w-full transition-all duration-700 ease-in-out" />
     </motion.div>
   );
 });
-
 /* ---------- STAR RATING ---------- */
 const StarRating = ({ rating }) => (
   <div className="flex gap-1">
@@ -172,6 +243,38 @@ const AnimatedDivider = () => {
   return (
     <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 1.2, ease: 'easeOut' }}
       className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent origin-left" />
+  );
+};
+
+/* ---------- FAQ ITEM COMPONENT ---------- */
+const FAQItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border border-white/5 rounded-2xl bg-[#080808] overflow-hidden transition-all duration-300">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full p-6 flex items-center justify-between text-left hover:bg-white/[0.02] transition-colors"
+      >
+        <span className="text-slate-200 text-sm font-medium tracking-wide">{question}</span>
+        <motion.span 
+          animate={{ rotate: isOpen ? 135 : 0 }}
+          className="text-amber-500 text-xl font-light"
+        >
+          +
+        </motion.span>
+      </button>
+      
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+        className="overflow-hidden"
+      >
+        <div className="p-6 pt-0 text-slate-400 text-sm leading-relaxed border-t border-white/5">
+          {answer}
+        </div>
+      </motion.div>
+    </div>
   );
 };
 
@@ -286,215 +389,546 @@ function HomeComponent() {
 
   return (
     <div className={`pt-16 ${deepestBlack} overflow-x-hidden`}>
-      <LeadModal isOpen={showLeadModal} onClose={() => setShowLeadModal(false)} />
+      {/* <LeadModal isOpen={showLeadModal} onClose={() => setShowLeadModal(false)} /> */}
 
       {/* ═══════════════════════════════════════ HERO ═══════════════════════════════════════ */}
-      <motion.section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{ opacity: opacityPrevSection }} aria-labelledby="hero-heading">
-        <motion.img src={HERO_IMAGE} alt="Expert development team working" fetchPriority="high"
-          style={{ y: yHeroBg }} className="absolute inset-0 w-full h-full object-cover"
-          initial={{ scale: 1.1, opacity: 0.9 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 1.6, ease: 'easeOut' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/90 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-transparent blur-3xl pointer-events-none" />
+<motion.section 
+  ref={heroRef} 
+  className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a0a0a]"
+  style={{ opacity: opacityPrevSection }} 
+  aria-labelledby="hero-heading"
+>
+  {/* Background: Reduced opacity to let text breathe, removed the heavy orange blur */}
+  <motion.img
+    src={HERO_IMAGE}
+    alt="Expert development team working"
+    fetchPriority="high"
+    className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity"
+    initial={{ scale: 1.05 }}
+    animate={{ scale: 1 }}
+    transition={{ duration: 2, ease: 'easeOut' }}
+  />
+  <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#0a0a0a] z-10" />
 
-        <motion.div className="relative z-20 max-w-6xl mx-auto px-6 lg:px-8 text-center text-white"
-          initial="hidden" animate="visible"
-          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } } }}>
+  <motion.div 
+    className="relative z-20 max-w-5xl mx-auto px-6 text-center text-white"
+    initial="hidden" 
+    animate="visible"
+    variants={{ 
+      hidden: { opacity: 0 }, 
+      visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } } 
+    }}
+  >
+    {/* Refined Trust badge - Removed Checkmark Emoji, simplified colors */}
+    <motion.div 
+      variants={{ hidden: { opacity: 0, y: -10 }, visible: { opacity: 1, y: 0 } }}
+      className="inline-flex items-center gap-2 bg-white/5 border border-white/10 backdrop-blur-md rounded-full px-4 py-1.5 mb-8 text-slate-300 text-xs tracking-wide uppercase font-medium"
+    >
+      <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e]"></span>
+      Available for new projects
+    </motion.div>
 
-          {/* Trust badge */}
-          <motion.div variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }}
-            className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 rounded-full px-4 py-2 mb-6 text-amber-400 text-sm font-medium">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block"></span>
-            ✅ Available for new projects — Free consultation
-          </motion.div>
+    {/* Headline - Removed the text-shadow animation for a "quieter" feel */}
+    <motion.h1 
+      variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+      transition={{ duration: 0.8 }}
+      id="hero-heading"
+      className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
+    >
+      Expert Development <br /> 
+      <span className="text-amber-400">Ready to Build Your Vision</span>
+    </motion.h1>
 
-          <motion.h1 variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-            transition={{ duration: 0.7, ease: 'easeOut' }} id="hero-heading"
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-white mb-4">
-            Expert Development Team
-            <motion.span className="block text-amber-400 mt-2"
-              animate={{ textShadow: ['0 0 8px rgba(251,191,36,0)', '0 0 30px rgba(251,191,36,0.4)', '0 0 8px rgba(251,191,36,0)'] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
-              Ready to Build Your Vision
-            </motion.span>
-          </motion.h1>
+    {/* Subtext - Removed tech stack keywords (move those to a 'Tools' section below) */}
+    <motion.p 
+      variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+      className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed mb-10"
+    >
+      We engineer scalable web and mobile solutions designed to grow with your business.
+    </motion.p>
 
-          <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 mb-4">
-            We build scalable web apps, mobile apps & AI solutions that grow your business.
-            React · Node.js · Flutter · Python · AI/ML
-          </motion.p>
+    {/* Buttons - Cleaned up gradients and simplified "View Our Work" */}
+    <motion.div 
+      variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+      className="flex flex-col sm:flex-row items-center justify-center gap-4"
+    >
+      <motion.button 
+        onClick={() => setShowLeadModal(true)}
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        className="px-8 py-4 rounded-full font-bold bg-amber-400 text-black hover:bg-amber-300 transition-colors shadow-xl shadow-amber-400/10"
+      >
+        Get Free Consultation
+      </motion.button>
+      
+      <motion.button 
+        onClick={goProjects}
+        whileHover={{ backgroundColor: 'rgba(255,255,255,0.05)', y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        className="px-8 py-4 rounded-full font-semibold border border-white/20 text-white transition-all"
+      >
+        View Our Work
+      </motion.button>
+    </motion.div>
+  </motion.div>
+</motion.section>
 
-          {/* Social proof micro-text */}
-          <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-            className="flex items-center justify-center gap-4 mb-8 text-gray-400 text-sm">
-            <span className="flex items-center gap-1">⭐ 5.0 Rating</span>
-            <span className="text-gray-600">•</span>
-            <span>10+ Projects Delivered</span>
-            <span className="text-gray-600">•</span>
-            <span>90% Client Retention</span>
-          </motion.div>
+      <AnimatedDivider />
 
-          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            <motion.button onClick={() => setShowLeadModal(true)}
-              whileHover={!prefersReducedMotion ? { scale: 1.05, boxShadow: '0 0 40px rgba(251,191,36,0.5)' } : {}}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold shadow-lg text-base"
-              style={{ background: 'linear-gradient(90deg, #F59E0B 0%, #FBBF24 100%)', color: '#061223' }}>
-              🚀 Get Free Consultation
-            </motion.button>
-            <motion.button onClick={goProjects}
-              whileHover={!prefersReducedMotion ? { scale: 1.05, backgroundColor: 'rgba(251,191,36,0.15)' } : {}}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold border-2 border-amber-300 bg-transparent text-amber-300">
-              View Our Work →
-            </motion.button>
-          </motion.div>
+      {/* ═══════════════════════════════════════ MINIMALIST TECH STRIP ═══════════════════════════════════════ */}
+<section className="py-6 bg-[#050505] border-y border-white/[0.05]">
+  <div className="relative flex items-center overflow-hidden">
+    
+    {/* Infinite Loop Container */}
+    <motion.div 
+      className="flex whitespace-nowrap gap-16 items-center"
+      animate={{ x: ['0%', '-50%'] }}
+      transition={{ 
+        duration: 35, 
+        repeat: Infinity, 
+        ease: "linear" 
+      }}
+    >
+      {[...TECH_STACK, ...TECH_STACK].map((tech, i) => (
+        <div key={`${tech}-${i}`} className="flex items-center gap-12">
+          <span className="text-[12px] uppercase tracking-[0.4em] text-white/80 font-medium select-none">
+            {tech}
+          </span>
+          {/* A tiny, low-opacity separator */}
+          <div className="w-1 h-1 rounded-full bg-white/10" />
+        </div>
+      ))}
+    </motion.div>
+
+    {/* Intense Fades: This makes the text "appear" and "disappear" softly */}
+    <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10" />
+    <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10" />
+  </div>
+</section>
+
+      <AnimatedDivider />
+
+      {/* ═══════════════════════════════════════ REFINED STATS ═══════════════════════════════════════ */}
+<section ref={statsRef} className="py-24 bg-[#050505] overflow-hidden border-y border-white/[0.03]">
+  <div className="max-w-6xl mx-auto px-6">
+    
+    {/* Minimalist Header - Left Aligned to match Capabilities */}
+    <div className="mb-16 border-l border-amber-500/50 pl-4">
+      <h2 className="text-[10px] uppercase tracking-[0.6em] text-amber-500 font-bold mb-1">
+        Impact
+      </h2>
+      <p className="text-2xl md:text-3xl font-light text-white tracking-tight">
+        Our Track Record.
+      </p>
+    </div>
+
+    {/* Stats Grid with 1px Divider Logic */}
+    <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-l border-white/10">
+      {[
+        // { end: 10, label: 'Projects Completed', suffix: '+' },
+        // { end: 90, label: 'Client Satisfaction', suffix: '%' },
+        // { end: 4, label: 'Expert Developers', suffix: '+' },
+        // { end: 24, label: 'Support Available', suffix: '/7' },
+        // { end: 99, label: 'Lighthouse Score', suffix: '%' },
+        { end: 100, label: 'Responsive Design', suffix: '%' },
+        { end: 40, label: 'Conversion Increase', suffix: '%' },
+        { end: 2, label: 'Average Build Time', suffix: 'wk' },
+        // { end: 15, label: 'Industries Transformed', suffix: '+' },
+        { end: 100, label: 'Custom Components', suffix: '%' },
+        // { end: 8, label: 'Hours Avg Support', suffix: '<' },
+        // { end: 5, label: 'Design Iterations', suffix: '+' } 
+      ].map((s, i) => (
+        <StatCard key={i} stat={s} index={i} isInView={isStatsInView} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<AnimatedDivider />
+
+{/* ═══════════════════════════════════════ REFINED FEATURED WORK ═══════════════════════════════════════ */}
+<section className="py-24 bg-[#050505]">
+  <div className="max-w-6xl mx-auto px-6">
+    
+    {/* Header */}
+    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div className="border-l border-amber-500/50 pl-4">
+        <h2 className="text-[10px] uppercase tracking-[0.6em] text-amber-500 font-bold mb-1">
+          Portfolio
+        </h2>
+        <p className="text-2xl md:text-3xl font-light text-white tracking-tight">
+          Selected Projects.
+        </p>
+      </div>
+      
+      <button 
+        onClick={() => navigate('/projects')}
+        className="hidden md:flex items-center gap-2 text-white hover:text-amber-500 transition-colors group text-[12px] tracking-[0.3em] uppercase font-mono"
+      >
+        View All Work 
+        <span className="group-hover:translate-x-1 transition-transform">→</span>
+      </button>
+    </div>
+
+    {/* Project Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {/* Ensure PROJECTS exists and has items before mapping */}
+      {PROJECTS && PROJECTS.length > 0 ? PROJECTS.slice(0, 3).map((project, i) => (
+        <motion.div 
+          key={project.id || i}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: i * 0.1 }}
+          onClick={() => project.url && window.open(project.url, '_blank')}
+          className="group relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/5 bg-[#080808] cursor-pointer"
+        >
+          {/* Image Layer */}
+          <div className="absolute inset-0 w-full h-full">
+             <img 
+              src={project.image} 
+              className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-60 transition-all duration-700" 
+              alt={project.title} 
+              loading="lazy"
+            />
+          </div>
+          
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90" />
+
+          {/* Project Content */}
+          <div className="absolute inset-0 p-8 flex flex-col justify-end">
+            <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <span className="text-amber-500 font-mono text-[9px] tracking-[0.3em] uppercase">
+                {project.category}
+              </span>
+              <h3 className="text-xl font-light text-white mt-2 group-hover:text-amber-200 transition-colors">
+                {project.title}
+              </h3>
+              
+              <div className="flex flex-wrap gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                {project.technologies && project.technologies.slice(0, 3).map(tech => (
+                  <span key={tech} className="text-[8px] text-slate-400 border border-white/10 px-2 py-1 rounded-full uppercase tracking-widest bg-white/5">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </motion.div>
+      )) : (
+        <p className="text-slate-500 col-span-full text-center py-10">No projects found.</p>
+      )}
+    </div>
 
-        {/* Scroll indicator */}
-        <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
-          animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-            <div className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
+    {/* Mobile "View More" Button */}
+    <div className="flex md:hidden justify-center">
+       <button 
+        onClick={() => navigate('/projects')}
+        className="w-full py-4 rounded-xl border border-white/10 text-white text-[10px] tracking-[0.3em] uppercase font-mono active:bg-white/5 transition-all"
+      >
+        Explore Full Portfolio
+      </button>
+    </div>
+  </div>
+</section>
+
+      <AnimatedDivider />
+
+{/* ═══════════════════════════════════════ REFINED PROCESS ═══════════════════════════════════════ */}
+<section ref={processRef} className="py-24 bg-[#050505] overflow-hidden">
+  <div className="max-w-5xl mx-auto px-6">
+    
+    {/* Header */}
+    <div className="mb-20 border-l border-amber-500/50 pl-4">
+      <h2 className="text-[10px] uppercase tracking-[0.6em] text-amber-500 font-bold mb-1">
+        Workflow
+      </h2>
+      <p className="text-2xl md:text-3xl font-light text-white tracking-tight">
+        How we bring ideas to life.
+      </p>
+    </div>
+
+    <div className="relative">
+      {/* 1. THE STATIC BACKGROUND LINE: Thin and dim */}
+      <div className="absolute left-[11px] md:left-1/2 top-0 bottom-0 w-[1px] bg-white/10 md:-translate-x-1/2 z-0" />
+
+      {/* 2. THE DYNAMIC TRACE LINE: This grows as the user scrolls */}
+      {/* Note: Requires 'useScroll' and 'useSpring' from framer-motion in your component top level */}
+      <motion.div 
+        className="absolute left-[11px] md:left-1/2 top-0 w-[1.5px] bg-gradient-to-b from-amber-600 via-amber-400 to-amber-200 md:-translate-x-1/2 z-0 origin-top shadow-[0_0_15px_rgba(251,191,36,0.4)]"
+        style={{ 
+          height: "100%", 
+          scaleY: useSpring(useScroll({ target: processRef, offset: ["start 0.7", "end 0.5"] }).scrollYProgress, { stiffness: 100, damping: 30 }) 
+        }} 
+      />
+
+      <div className="space-y-24 md:space-y-32">
+        {PROCESS_STEPS.map((step, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0.2 }} // Starts muted
+            whileInView={{ opacity: 1 }} // Lights up when in view
+            viewport={{ amount: 0.6 }}
+            transition={{ duration: 0.5 }}
+            className={`relative flex flex-col md:flex-row items-start md:items-center ${
+              i % 2 === 0 ? "md:flex-row-reverse" : ""
+            }`}
+          >
+            {/* 1. The Connector Dot - Lights up based on Viewport */}
+            <div className="absolute left-0 md:left-1/2 w-[24px] h-[24px] rounded-full bg-[#050505] border border-white/20 flex items-center justify-center md:-translate-x-1/2 z-10 shadow-[0_0_15px_rgba(0,0,0,1)]">
+              <motion.div 
+                whileInView={{ scale: [1, 1.5, 1], backgroundColor: ["#475569", "#fbbf24", "#fbbf24"] }}
+                viewport={{ amount: 0.9 }}
+                className="w-1.5 h-1.5 rounded-full bg-slate-600 shadow-[0_0_10px_#fbbf24]" 
+              />
+            </div>
+
+            {/* 2. The Content Card */}
+            <div className="pl-12 md:pl-0 md:w-1/2 group">
+              <div className={`flex flex-col ${i % 2 === 0 ? "md:items-start md:pl-16" : "md:items-end md:pr-16"}`}>
+                <div className="flex items-center gap-3 mb-2">
+                   <span className="font-mono text-[12px] text-amber-500/60 uppercase tracking-widest">
+                    Phase 0{i + 1}
+                  </span>
+                  <div className="h-px w-8 bg-white/10 group-hover:bg-amber-500/40 transition-all" />
+                </div>
+                
+                <h3 className="text-xl md:text-3xl font-light text-white mb-3 group-hover:text-amber-400 transition-colors duration-500">
+                  {step.title}
+                </h3>
+                <p className={`text-slate-500 text-md leading-relaxed max-w-sm transition-colors group-hover:text-slate-300 ${i % 2 === 0 ? "" : "md:text-right"}`}>
+                  {step.description}
+                </p>
+              </div>
+            </div>
+
+            {/* 3. Empty Spacer for Desktop Layout */}
+            <div className="hidden md:block md:w-1/2" />
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+      <AnimatedDivider />
+
+{/* ═══════════════════════════════════════ FEATURES (HYBRID VIEW) ═══════════════════════════════════════ */}
+<section ref={featuresRef} className="py-32 bg-[#050505] overflow-hidden">
+  <div className="max-w-6xl mx-auto px-6">
+    
+    {/* Header: Original Design */}
+    <div className="mb-20 border-l-2 border-amber-500 pl-6">
+      <h2 className="text-[10px] uppercase tracking-[0.5em] text-amber-500 font-bold mb-2">
+        Capabilities
+      </h2>
+      <p className="text-4xl md:text-5xl font-light text-white tracking-tight">
+        Why partners choose us.
+      </p>
+    </div>
+
+    {/* List Body */}
+    <div className="flex flex-col border-t border-white/10">
+      {features.map((f, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.1 }}
+          className="group relative flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-white/5 transition-all duration-500 md:hover:px-6"
+        >
+          {/* Left Side: Number and Title */}
+          <div className="relative z-10 flex items-center gap-8 md:gap-16">
+            <span className="font-mono text-[10px] tracking-widest text-slate-600 group-hover:text-amber-500 transition-colors">
+              0{i + 1}
+            </span>
+            <h3 className="text-2xl md:text-3xl font-light tracking-tight text-slate-300 group-hover:text-white transition-all duration-500 md:group-hover:translate-x-3">
+              {f.title}
+            </h3>
           </div>
+
+          {/* Right Side: Description */}
+          <div className="relative z-10 mt-6 md:mt-0 max-w-sm md:text-right">
+            <p className="text-slate-500 text-sm md:text-base leading-relaxed group-hover:text-slate-200 transition-colors duration-500">
+              {f.description}
+            </p>
+          </div>
+
+          {/* --- Interactive Layering --- */}
+
+          {/* 1. Desktop Vertical Glow Line (Only active on hover for Desktop) */}
+          <div className="hidden md:block absolute left-0 top-0 w-[2px] h-0 bg-amber-500 group-hover:h-full transition-all duration-700 ease-in-out" />
+          
+          {/* 2. MOBILE SCROLL HIGHLIGHT: 
+               This line grows as the user scrolls the card into view on mobile devices.
+          */}
+          <motion.div 
+            className="md:hidden absolute left-[-10px] top-0 w-[2px] bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]"
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
+            viewport={{ amount: 0.5, margin: "-10% 0px -10% 0px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          />
+          
+          {/* 3. Background Gradient Sweep (Original Design) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
         </motion.div>
-      </motion.section>
-
+      ))}
+    </div>
+  </div>
+</section>
       <AnimatedDivider />
 
-      {/* ═══════════════════════════════════════ TECH STACK ═══════════════════════════════════════ */}
-      <section ref={techRef} className={`py-10 ${darkBg}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-500 text-sm uppercase tracking-widest mb-6">Technologies We Master</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {TECH_STACK.map((tech, i) => (
-              <motion.span key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isTechInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: i * 0.05 }}
-                className="px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-gray-300 text-sm hover:border-amber-400/60 hover:text-amber-300 transition-all cursor-default">
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
-      <AnimatedDivider />
+     {/* ═══════════════════════════════════════ REFINED TESTIMONIALS ═══════════════════════════════════════ */}
+<section className="py-24 bg-[#050505] overflow-hidden">
+  <div className="max-w-6xl mx-auto px-6 mb-16">
+    {/* Left-Aligned Header - Matches your Capabilities & Process */}
+    <div className="border-l border-amber-500/50 pl-4">
+      <h2 className="text-[10px] uppercase tracking-[0.6em] text-amber-500 font-bold mb-1">
+        Voices
+      </h2>
+      <p className="text-2xl md:text-3xl font-light text-white tracking-tight">
+        Trusted by industry leaders.
+      </p>
+    </div>
+  </div>
 
-      {/* ═══════════════════════════════════════ FEATURES ═══════════════════════════════════════ */}
-      <motion.section ref={featuresRef} className={`py-16 ${deepestBlack}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: -40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Why Choose Aarmbh?</h2>
-            <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">We combine technical expertise with seamless project management.</p>
-          </motion.div>
-          <div className="hidden md:grid md:grid-cols-3 gap-8">
-            {features.map((f, i) => <FlipCard key={i} feature={f} index={i} isInView={isFeaturesInView} />)}
-          </div>
-          <div className="md:hidden grid gap-6">
-            {features.map((f, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 40 }} animate={isFeaturesInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: i * 0.12 }}
-                className="rounded-2xl overflow-hidden shadow-xl bg-white/10 border border-white/20 backdrop-blur-md p-5 text-center">
-                <div className="w-14 h-14 mx-auto mb-3 bg-amber-400/20 rounded-full flex items-center justify-center text-amber-400">{f.icon}</div>
-                <h3 className="text-lg font-bold text-amber-300 mb-2">{f.title}</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">{f.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
+  {/* Marquee Container with Side Fades */}
+  <div className="relative flex overflow-hidden select-none group">
+    <motion.div 
+      animate={{ x: ['0%', '-50%'] }}
+      transition={{ 
+        duration: 30, // Slow & premium speed
+        repeat: Infinity, 
+        ease: "linear" 
+      }}
+      className="flex whitespace-nowrap gap-6 pr-6"
+    >
+      {/* We map twice to create the infinite loop effect */}
+      {[...TESTIMONIALS, ...TESTIMONIALS].map((r, i) => (
+        <div 
+          key={i} 
+          className="w-[350px] md:w-[450px] bg-white/[0.02] border border-white/5 p-10 rounded-[2rem] flex flex-col justify-between hover:bg-white/[0.04] transition-all duration-500 group/card hover:border-amber-500/20"
+        >
+          {/* Quote Text */}
+          <p className="text-slate-400 text-sm md:text-base leading-relaxed italic whitespace-normal mb-8 group-hover/card:text-slate-200 transition-colors">
+            "{r.text}"
+          </p>
 
-      <AnimatedDivider />
-
-      {/* ═══════════════════════════════════════ STATS ═══════════════════════════════════════ */}
-      <motion.section ref={statsRef} className={`py-16 ${darkBg}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-white">Our Track Record</h2>
-          <p className="text-gray-400 mb-12 text-lg italic">From concept to completion — we make it happen.</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-            {[
-              { end: 10, label: 'Projects Completed', suffix: '+' },
-              { end: 90, label: 'Client Satisfaction', suffix: '%' },
-              { end: 4, label: 'Expert Developers', suffix: '+' },
-              { end: 24, label: 'Support Available', suffix: '/7' },
-            ].map((s, i) => <StatCard key={i} stat={s} index={i} isInView={isStatsInView} />)}
-          </div>
-        </div>
-      </motion.section>
-
-      <AnimatedDivider />
-
-      {/* ═══════════════════════════════════════ PROCESS ═══════════════════════════════════════ */}
-      <motion.section ref={processRef} className={`py-20 ${deepestBlack}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">How We Work</h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">A proven, transparent process from idea to launch.</p>
-          </motion.div>
-          <div className="relative">
-            <motion.div className="absolute top-10 left-0 right-0 h-1 bg-gradient-to-r from-amber-400/20 via-amber-400 to-amber-400/20 hidden lg:block"
-              initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 1.5, delay: 0.4 }} />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-              {PROCESS_STEPS.map((step, i) => (
-                <motion.div key={i}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                  animate={isProcessInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.7, delay: i * 0.2 }}
-                  className="flex flex-col items-center text-center max-w-xs mx-auto">
-                  <motion.div whileHover={{ scale: 1.1 }}
-                    className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-3xl font-bold text-gray-900 shadow-xl mb-4">
-                    {i + 1}
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-amber-300 mb-2">{step.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
-                </motion.div>
-              ))}
+          {/* Author Info */}
+          <div className="flex items-center gap-4">
+            {/* Minimalist Monogram Avatar */}
+            <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 font-bold text-xs uppercase">
+              {r.name[0]}
+            </div>
+            <div>
+              <h4 className="text-white text-sm font-medium tracking-wide">
+                {r.name}
+              </h4>
+              <p className="text-slate-600 text-[9px] uppercase tracking-[0.2em] font-semibold">
+                {r.role} • {r.company}
+              </p>
             </div>
           </div>
         </div>
-      </motion.section>
+      ))}
+    </motion.div>
+    
+    {/* Gradient Overlays: Makes the testimonials 'fade' in and out at the edges */}
+    <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
+    <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
+  </div>
+</section>
 
       <AnimatedDivider />
 
-      {/* ═══════════════════════════════════════ TESTIMONIALS ═══════════════════════════════════════ */}
-      <motion.section className={`py-20 ${darkBg}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: -40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">What Our Clients Say</h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">Trusted by startups and enterprises alike.</p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((r, i) => <TestimonialCard key={i} review={r} index={i} />)}
+      {/* ═══════════════════════════════════════ FAQ SECTION ═══════════════════════════════════════ */}
+{/* <section className="py-24 bg-[#050505]">
+  <div className="max-w-3xl mx-auto px-6">
+    <div className="text-center mb-16">
+      <h2 className="text-[10px] uppercase tracking-[0.6em] text-amber-500 font-bold mb-4">FAQ</h2>
+      <p className="text-3xl font-light text-white">Common Inquiries.</p>
+    </div>
+
+    <div className="space-y-4">
+      {[
+        { q: "What is your typical project timeline?", a: "Most MVP projects are delivered within 4-8 weeks, depending on complexity and scope." },
+        { q: "Do you provide post-launch support?", a: "Yes, we offer 24/7 technical support and maintenance packages to ensure your platform stays updated." },
+        { q: "Who owns the intellectual property?", a: "You do. Once the final payment is cleared, 100% of the code and design assets belong to you." },
+        { q: "Which tech stack do you recommend?", a: "We typically suggest React or Next.js for web and Flutter for mobile to ensure the best performance." }
+      ].map((item, i) => (
+        <FAQItem key={i} question={item.q} answer={item.a} />
+      ))}
+    </div>
+  </div>
+</section> */}
+<AnimatedDivider />
+
+      {/* ═══════════════════════════════════════ REFINED CTA ═══════════════════════════════════════ */}
+{/* ═══════════════════════════════════════ PRECISION CTA ═══════════════════════════════════════ */}
+{/* <section className="py-24 bg-[#050505]">
+  <div className="max-w-5xl mx-auto px-6">
+    <div className="relative border border-white/10 rounded-2xl overflow-hidden bg-[#080808] grid grid-cols-1 lg:grid-cols-2 group">
+      
+      {/* Left Side: The "Quiet" Invitation */}
+      {/* <div className="p-10 md:p-16 border-b lg:border-b-0 lg:border-r border-white/10">
+        <span className="text-[10px] uppercase tracking-[0.4em] text-amber-500 font-bold mb-4 block">
+          Collaboration
+        </span>
+        <h2 className="text-3xl md:text-4xl font-light text-white tracking-tight mb-6">
+          Ready to bring your <br /> 
+          <span className="text-slate-500">vision to reality?</span>
+        </h2>
+        <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
+          We specialize in turning complex ideas into seamless digital experiences. Reach out for a consultation.
+        </p>
+      </div> */}
+
+      {/* Right Side: The "Direct" Action */}
+      {/* <div className="p-10 md:p-16 flex flex-col justify-center bg-gradient-to-br from-transparent to-amber-500/[0.02]">
+        <div className="space-y-8"> */}
+          {/* Action 1: Primary */}
+          {/* <motion.button
+            onClick={() => navigate("/contact")}
+            whileHover={{ x: 5 }}
+            className="flex items-center gap-4 group/btn"
+          >
+            <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-black transition-transform group-hover/btn:scale-110">
+              <span className="text-xl">→</span>
+            </div>
+            <div className="text-left">
+              <p className="text-white font-medium text-sm uppercase tracking-widest">Start Project</p>
+              <p className="text-slate-500 text-[10px]">Average response: 24h</p>
+            </div>
+          </motion.button>
+
+          <div className="h-px w-full bg-white/5" /> */}
+
+          {/* Action 2: Secondary / Contact */}
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-25">
+            <div className="space-y-1">
+              <p className="text-[9px] uppercase tracking-widest text-slate-600">Email us</p>
+              <a href="mailto:aarmbh15@gmail.com" className="text-white text-sm hover:text-amber-500 transition-colors">
+                contact@aarmbhinfotech.com
+              </a>
+            </div>
+            <div className="space-y-1">
+              <p className="text-[9px] uppercase tracking-widest text-slate-600">Call us</p>
+              <p className="text-white text-sm">+91 94235 12942</p>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </div> */}
 
-      <AnimatedDivider />
-
-      {/* ═══════════════════════════════════════ CTA BANNER ═══════════════════════════════════════ */}
-      <section className={`py-20 ${deepestBlack}`}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
-            className="bg-gradient-to-r from-amber-500/10 via-amber-400/5 to-amber-500/10 border border-amber-500/30 rounded-3xl p-10 md:p-14">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">Ready to Build Something Great?</h2>
-            <p className="text-gray-400 text-lg mb-2">Free consultation · No commitment · 24-hour response</p>
-            <p className="text-gray-500 text-sm mb-8">📍 Pune, India &nbsp;|&nbsp; 📞 +91 9423512942 &nbsp;|&nbsp; ✉️ aarmbh15@gmail.com</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button onClick={() => setShowLeadModal(true)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
-                className="px-8 py-4 rounded-2xl font-bold text-gray-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 shadow-lg shadow-amber-500/25 transition-all text-base">
-                🚀 Start Your Project
-              </motion.button>
-              <motion.button onClick={goContact} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
-                className="px-8 py-4 rounded-2xl font-semibold border-2 border-amber-400/50 text-amber-300 hover:border-amber-400 hover:bg-amber-400/5 transition-all text-base">
-                Contact Us →
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Subtle Interactive Glow */}
+      {/* <div className="absolute top-0 right-0 w-1/2 h-full bg-amber-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+    </div>
+  </div> */}
+{/* // </section> */} 
 
       {/* GLOBAL STYLES */}
       <style jsx>{`

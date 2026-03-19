@@ -58,7 +58,7 @@ const PROJECTS = [
     id: 5,
     title: 'Cafe Lamees',
     client: 'Food & Beverage, UK',
-    category: 'Web Development',
+    category: 'E-Commerce',
     tag: 'Live',
     url: 'https://test.cafelamees.co.uk/',
     image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80',
@@ -70,7 +70,7 @@ const PROJECTS = [
     id: 6,
     title: 'Luxury Furniture Store',
     client: 'E-commerce Retail',
-    category: 'E-commerce',
+    category: 'Web Development',
     tag: 'Live',
     url: 'https://furniture-420c3.web.app',
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
@@ -135,11 +135,11 @@ const MAINTENANCE = [
   { title: 'Cafe Lamees', url: 'https://test.cafelamees.co.uk/', type: 'Website Maintenance', since: '2024', icon: '☕' },
 ];
 
-const CATEGORIES = ['All', 'Web Development', 'E-commerce', 'Mobile App', 'AI / ML', 'Enterprise Software'];
+const CATEGORIES = ['All', 'Web Development', 'E-Commerce', 'Mobile App', 'AI / ML', 'Enterprise Software'];
 
 const categoryColors = {
   'Web Development':     'bg-sky-500/15 text-sky-300 border-sky-500/30',
-  'E-commerce':          'bg-violet-500/15 text-violet-300 border-violet-500/30',
+  'E-Commerce':          'bg-violet-500/15 text-violet-300 border-violet-500/30',
   'Mobile App':          'bg-purple-500/15 text-purple-300 border-purple-500/30',
   'AI / ML':             'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
   'Enterprise Software': 'bg-orange-500/15 text-orange-300 border-orange-500/30',
