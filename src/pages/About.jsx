@@ -480,6 +480,12 @@ We don't just write code; we engineer the high-performance infrastructure of bus
             whileHover={{ y: -5 }}
             className="p-8 rounded-[2rem] bg-[#080808] border border-white/5 flex flex-col items-center text-center group"
           >
+            <div className="flex items-center gap-4 mb-4">
+               <span className="text-amber-500/50 group-hover:text-amber-500 transition-colors">
+                 {item.icon}
+               </span>
+               <div className="h-px flex-grow bg-white/5 group-hover:bg-amber-500/20 transition-all" />
+            </div>
             <h3 className="text-3xl font-light text-amber-500 mb-2">{item.value}</h3>
             <p className="text-[9px] uppercase tracking-[0.4em] text-slate-500 group-hover:text-white transition-colors">
               {item.label}

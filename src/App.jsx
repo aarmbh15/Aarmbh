@@ -11,7 +11,7 @@ import CustomCursor from "./components/CustomCursor";
 // ─── Lazy-loaded pages ────────────────────────────────────────────────
 const Home     = lazy(() => import("./pages/Home.jsx"));
 const About    = lazy(() => import("./pages/About.jsx"));
-const Team     = lazy(() => import("./pages/Team.jsx"));
+const Team     = lazy(() => import("./pages/Tech.jsx"));
 const Services = lazy(() => import("./pages/Services.jsx"));
 const Projects = lazy(() => import("./pages/Projects.jsx"));
 const Contact  = lazy(() => import("./pages/Contact.jsx"));
