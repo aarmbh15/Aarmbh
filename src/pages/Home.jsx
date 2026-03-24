@@ -392,85 +392,116 @@ function HomeComponent() {
       {/* <LeadModal isOpen={showLeadModal} onClose={() => setShowLeadModal(false)} /> */}
 
       {/* ═══════════════════════════════════════ HERO ═══════════════════════════════════════ */}
+{/* ═══════════════════════════════════════ HOME HERO (FLAGSHIP) ═══════════════════════════════════════ */}
+{/* ═══════════════════════════════════════ HOME HERO (RESPONSIVE) ═══════════════════════════════════════ */}
 <motion.section 
   ref={heroRef} 
-  className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a0a0a]"
+  className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#050505]"
   style={{ opacity: opacityPrevSection }} 
-  aria-labelledby="hero-heading"
 >
-  {/* Background: Reduced opacity to let text breathe, removed the heavy orange blur */}
-  <motion.img
-    src={HERO_IMAGE}
-    alt="Expert development team working"
-    fetchPriority="high"
-    className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity"
-    initial={{ scale: 1.05 }}
-    animate={{ scale: 1 }}
-    transition={{ duration: 2, ease: 'easeOut' }}
-  />
-  <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#0a0a0a] z-10" />
+  {/* 1. BACKGROUND LAYER */}
+  <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:30px_30px] md:bg-[size:50px_50px]" />
+    
+    <motion.img
+      src={HERO_IMAGE}
+      alt="Engineering Core"
+      className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale mix-blend-luminosity"
+      initial={{ scale: 1.1 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 4, ease: 'easeOut' }}
+    />
+    
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#050505_90%)]" />
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505]" />
+  </div>
 
-  <motion.div 
-    className="relative z-20 max-w-5xl mx-auto px-6 text-center text-white"
-    initial="hidden" 
-    animate="visible"
-    variants={{ 
-      hidden: { opacity: 0 }, 
-      visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } } 
-    }}
-  >
-    {/* Refined Trust badge - Removed Checkmark Emoji, simplified colors */}
+  {/* 2. HUD ACCENTS (Hidden on mobile to prevent overlap) */}
+  <div className="absolute top-32 left-10 hidden lg:block overflow-hidden">
     <motion.div 
-      variants={{ hidden: { opacity: 0, y: -10 }, visible: { opacity: 1, y: 0 } }}
-      className="inline-flex items-center gap-2 bg-white/5 border border-white/10 backdrop-blur-md rounded-full px-4 py-1.5 mb-8 text-slate-300 text-xs tracking-wide uppercase font-medium"
+      initial={{ x: -100 }} animate={{ x: 0 }} transition={{ duration: 1 }}
+      className="flex flex-col gap-2 border-l border-amber-500 pl-4"
     >
-      <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e]"></span>
-      Available for new projects
+      <span className="font-mono text-[8px] text-white/80 tracking-[0.5em] uppercase">Status // Ready</span>
+      <span className="font-mono text-[8px] text-white/80 tracking-[0.5em] uppercase">Loc // Pune</span>
+    </motion.div>
+  </div>
+
+  {/* 3. MAIN CONTENT */}
+  <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
+    
+    {/* System Badge */}
+    <motion.div 
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="inline-flex items-center gap-3 bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-full px-4 md:px-5 py-2 mb-8 md:mb-12"
+    >
+      <div className="relative flex h-1.5 w-1.5 md:h-2 md:w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-1.5 w-1.5 md:h-2 md:w-2 bg-green-500"></span>
+      </div>
+      <span className="font-mono text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.4em] text-slate-300">
+        Active Node // Available for Global Engagement
+      </span>
     </motion.div>
 
-    {/* Headline - Removed the text-shadow animation for a "quieter" feel */}
+    {/* Original Headline: Preserved Content */}
     <motion.h1 
-      variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-      transition={{ duration: 0.8 }}
-      id="hero-heading"
-      className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      className="text-5xl sm:text-6xl md:text-8xl lg:text-[8.5vw] font-light text-white tracking-tighter leading-[1] md:leading-[0.8] mb-8 md:mb-12"
     >
-      Expert Development <br /> 
-      <span className="text-amber-400">Ready to Build Your Vision</span>
+      Digital <br /> 
+      <span className="text-amber-500 italic font-serif">Infrastructure.</span>
     </motion.h1>
 
-    {/* Subtext - Removed tech stack keywords (move those to a 'Tools' section below) */}
-    <motion.p 
-      variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-      className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed mb-10"
+    {/* Original Subtext: Preserved Content */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0.4 }}
+      className="max-w-2xl mx-auto mb-12 md:mb-16"
     >
-      We engineer scalable web and mobile solutions designed to grow with your business.
-    </motion.p>
-
-    {/* Buttons - Cleaned up gradients and simplified "View Our Work" */}
-    <motion.div 
-      variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-      className="flex flex-col sm:flex-row items-center justify-center gap-4"
-    >
-      <motion.button 
-        onClick={() => setShowLeadModal(true)}
-        whileHover={{ y: -2 }}
-        whileTap={{ scale: 0.98 }}
-        className="px-8 py-4 rounded-full font-bold bg-amber-400 text-black hover:bg-amber-300 transition-colors shadow-xl shadow-amber-400/10"
-      >
-        Get Free Consultation
-      </motion.button>
-      
-      <motion.button 
-        onClick={goProjects}
-        whileHover={{ backgroundColor: 'rgba(255,255,255,0.05)', y: -2 }}
-        whileTap={{ scale: 0.98 }}
-        className="px-8 py-4 rounded-full font-semibold border border-white/20 text-white transition-all"
-      >
-        View Our Work
-      </motion.button>
+      <p className="text-slate-400 text-base md:text-xl font-light leading-relaxed px-2 md:px-0">
+        Transforming complex business logic into high-velocity digital products. 
+        We deploy the <span className="text-white border-b border-amber-500/30">advanced engineering</span> 
+        required to outpace the competition and scale without friction.
+      </p>
     </motion.div>
-  </motion.div>
+
+    {/* 4. CALLS TO ACTION (Stacked on mobile for better UX) */}
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.6 }}
+      className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8"
+    >
+      <button 
+        onClick={() => setShowLeadModal(true)}
+        className="w-full sm:w-auto group relative flex items-center justify-center gap-6 px-10 py-5 rounded-full bg-amber-500 text-black font-bold text-xs uppercase tracking-[0.2em] transition-all hover:bg-amber-400"
+      >
+        <span>Initiate Consultation</span>
+        <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
+      </button>
+      
+      <button 
+        onClick={goProjects}
+        className="group flex items-center gap-4 text-white text-[10px] uppercase tracking-[0.4em] font-bold py-2"
+      >
+        <span className="relative">
+          View Portfolio
+          <div className="absolute -bottom-2 left-0 w-8 h-[1px] bg-amber-500 group-hover:w-full transition-all duration-500" />
+        </span>
+      </button>
+    </motion.div>
+  </div>
+  
+  {/* Scroll Indicator */}
+  <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-4 opacity-30">
+    <div className="w-px h-12 bg-gradient-to-b from-amber-500 to-transparent" />
+    <span className="font-mono text-[8px] uppercase tracking-[0.5em] text-slate-500">Scroll</span>
+  </div>
 </motion.section>
 
       <AnimatedDivider />
