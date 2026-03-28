@@ -84,7 +84,7 @@ function Tech() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#050505_80%)]" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 mt-14 md:mt-0 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
             <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-amber-500">System Core // v2026.03</span>
           </motion.div>

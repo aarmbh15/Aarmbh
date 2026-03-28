@@ -245,192 +245,191 @@ function Contact() {
       {/* ─── MAIN CONTENT ──────────────────────────────────────────── */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
+          {/* Main Container: Stacked on mobile (default), Side-by-side on large screens (lg) */}
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  
+  {/* ─── LEFT: Contact Info ────────────────────────────────────── */}
+  <motion.div 
+    initial={{ opacity: 0, x: -30 }} 
+    whileInView={{ opacity: 1, x: 0 }} 
+    transition={{ duration: 0.6 }} 
+    viewport={{ once: true }}
+    className="h-full"
+  >
+    <div className="bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-800 h-full">
+      <h2 className="text-2xl font-bold text-white mb-2">Let's Talk</h2>
+      <p className="text-gray-400 mb-8 text-sm">Fill in the form or reach us directly. We respond within 24 hours on business days.</p>
 
-            {/* ─── LEFT: Info + Social ─────────────────────────────── */}
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-              <div className="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800 h-full">
-                <h2 className="text-2xl font-bold text-white mb-2">Let's Talk</h2>
-                <p className="text-gray-400 mb-8 text-sm">Fill in the form or reach us directly. We respond within 24 hours on business days.</p>
-
-                <div className="space-y-5 mb-8">
-                  <a href="tel:+919881033442" className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
-                      <PhoneIcon className="text-amber-500" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white text-sm">Call Us</p>
-                      <p className="text-gray-400 group-hover:text-amber-400 transition-colors">+91 98810 33442</p>
-                    </div>
-                  </a>
-                  <a href="mailto:contact@aarmbhinfotech.com" className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
-                      <MailIcon className="text-amber-500" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white text-sm">Email Us</p>
-                      <p className="text-gray-400 group-hover:text-amber-400 transition-colors">contact@aarmbhinfotech.com</p>
-                    </div>
-                  </a>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                      <MapPinIcon className="text-amber-500" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white text-sm">Location</p>
-                      <p className="text-gray-400">Pune, Maharashtra, India</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* WhatsApp CTA */}
-                <a href="https://wa.me/919881033442?text=Hi%20Aarmbh%2C%20I%20am%20interested%20in%20your%20services.%20Can%20we%20discuss%3F"
-                  target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 w-full py-3 px-6 rounded-xl bg-green-600 hover:bg-green-500 text-white font-semibold transition-all shadow-lg mb-8">
-                  <i className="fab fa-whatsapp text-xl"></i> Chat on WhatsApp
-                </a>
-
-                {/* Social */}
-                <div>
-                  <h3 className="text-lg font-semibold mb-4 text-white">Follow Us</h3>
-                  <div className="flex space-x-3">
-                    <a href="https://www.linkedin.com/company/aarmbh/" target="_blank" rel="noopener noreferrer"
-                      className="p-2.5 rounded-full bg-blue-600 hover:bg-blue-500 transition-colors shadow-md flex items-center justify-center w-10 h-10" aria-label="LinkedIn">
-                      <Linkedin className="w-5 h-5 text-white" />
-                    </a>
-                    <a href="https://github.com/aarmbh15" target="_blank" rel="noopener noreferrer"
-                      className="p-2.5 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors shadow-md flex items-center justify-center w-10 h-10" aria-label="GitHub">
-                      <Github className="w-5 h-5 text-white" />
-                    </a>
-                    <a href="https://www.instagram.com/aarmbh15" target="_blank" rel="noopener noreferrer"
-                      className="p-2.5 rounded-full bg-pink-600 hover:bg-pink-500 transition-colors shadow-md flex items-center justify-center w-10 h-10" aria-label="Instagram">
-                      <InstagramIcon className="w-5 h-5 text-white" />
-                    </a>
-                    <a href="https://www.facebook.com/share/17ErcqKUyV/" target="_blank" rel="noopener noreferrer"
-                      className="p-2.5 rounded-full bg-blue-800 hover:bg-blue-700 transition-colors shadow-md flex items-center justify-center w-10 h-10" aria-label="Facebook">
-                      <FacebookIcon className="w-5 h-5 text-white" />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Trust signals */}
-                <div className="mt-8 p-4 bg-gray-800/50 rounded-xl border border-gray-700">
-                  <p className="text-gray-400 text-xs leading-relaxed">
-                    🔒 Your information is safe with us. We never share your data and respond within 24 business hours.
-                    We sign NDAs upon request.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* ─── RIGHT: Form ──────────────────────────────────────── */}
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>
-              <div className="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800">
-                <h2 className="text-2xl font-bold text-white mb-2">Request a Free Consultation</h2>
-                <p className="text-gray-500 text-sm mb-6">All fields marked <span className="text-red-400">*</span> are required.</p>
-
-                <form ref={formRef} className="space-y-5" onSubmit={handleSubmit} noValidate>
-                  {/* Honeypot */}
-                  <input type="text" name="honeypot" value={formData.honeypot} onChange={handleChange}
-                    style={{ display: 'none' }} tabIndex="-1" autoComplete="off" aria-hidden="true" />
-
-                  {/* Name */}
-                  <div>
-                    <label htmlFor="name" className={labelClass}>Full Name <span className="text-red-400">*</span></label>
-                    <input id="name" name="name" type="text" value={formData.name} onChange={handleChange}
-                      autoComplete="name" className={inputClass} placeholder="Your full name" required />
-                    {errors.name && <p className={errorClass}>{errors.name}</p>}
-                  </div>
-
-                  {/* Email */}
-                  <div>
-                    <label htmlFor="email" className={labelClass}>Email Address <span className="text-red-400">*</span></label>
-                    <input id="email" name="email" type="email" value={formData.email} onChange={handleChange}
-                      autoComplete="email" className={inputClass} placeholder="your@email.com" required />
-                    {errors.email && <p className={errorClass}>{errors.email}</p>}
-                  </div>
-
-                  {/* Phone */}
-                  <div>
-                    <label htmlFor="phone" className={labelClass}>Phone Number <span className="text-red-400">*</span></label>
-                    <div className="flex gap-2">
-                      <select name="countryCode" value={formData.countryCode} onChange={handleChange}
-                        className="w-28 px-3 py-3 rounded-lg bg-gray-800 border border-gray-600 text-white focus:outline-none focus:border-amber-400">
-                        {countryCodes.map(c => (
-                          <option key={c.code + c.country} value={c.code} className="text-gray-700">
-                            {c.flag} {c.code}
-                          </option>
-                        ))}
-                      </select>
-                      <input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange}
-                        autoComplete="tel" className={`${inputClass} flex-1`} placeholder="9876543210" required />
-                    </div>
-                    {errors.phone && <p className={errorClass}>{errors.phone}</p>}
-                  </div>
-
-                  {/* Subject */}
-                  <div>
-                    <label htmlFor="subject" className={labelClass}>Subject <span className="text-red-400">*</span></label>
-                    <input id="subject" name="subject" type="text" value={formData.subject} onChange={handleChange}
-                      autoComplete="off" className={inputClass} placeholder="e.g. E-commerce Website Project" required />
-                    {errors.subject && <p className={errorClass}>{errors.subject}</p>}
-                  </div>
-
-                  {/* Service + Budget (2 columns) */}
-                  <div className="grid grid-cols-1 ">
-                    <div>
-                      <label htmlFor="service" className={labelClass}>Service Needed <span className="text-red-400">*</span></label>
-                      <select id="service" name="service" value={formData.service} onChange={handleChange}
-                        className={`${inputClass} appearance-none`} required>
-                        <option value="">Select service</option>
-                        <option value="web">Web Development</option>
-                        <option value="software">Software Development</option>
-                        <option value="mobile">Mobile App (Flutter)</option>
-                        <option value="ai">AI / Machine Learning</option>
-                        <option value="ui">UI/UX Design</option>
-                        <option value="hosting">Web Hosting & Domain</option>
-                        <option value="other">Other</option>
-                      </select>
-                      {errors.service && <p className={errorClass}>{errors.service}</p>}
-                    </div>
-                    {/* <div>
-                      <label htmlFor="budget" className={labelClass}>Estimated Budget</label>
-                      <select id="budget" name="budget" value={formData.budget} onChange={handleChange} className={`${inputClass} appearance-none`}>
-                        <option value="">Select range</option>
-                        <option value="under50k">Under ₹50,000</option>
-                        <option value="50k-1L">₹50,000 – ₹1,00,000</option>
-                        <option value="1L-3L">₹1,00,000 – ₹3,00,000</option>
-                        <option value="3L+">₹3,00,000+</option>
-                        <option value="flexible">Flexible / TBD</option>
-                      </select>
-                    </div> */}
-                  </div>
-
-                  {/* Message */}
-                  <div className="relative">
-                    <label htmlFor="message" className={labelClass}>Project Details</label>
-                    <textarea id="message" name="message" rows="4" value={formData.message}
-                      onChange={(e) => { if (e.target.value.length <= 500) handleChange(e); }}
-                      autoComplete="off" className={inputClass}
-                      placeholder="Tell us about your project — what you need, timeline, any specific requirements..."></textarea>
-                    <div className="absolute bottom-3 right-3 text-xs text-gray-500">{formData.message.length}/500</div>
-                    {errors.message && <p className={errorClass}>{errors.message}</p>}
-                  </div>
-
-                  {/* Submit */}
-                  <motion.button type="submit" disabled={isSubmitting}
-                    whileHover={{ scale: isSubmitting ? 1 : 1.02 }} whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                    className="w-full py-4 rounded-xl font-bold text-gray-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 shadow-lg transition-all text-base disabled:opacity-70 flex items-center justify-center gap-2">
-                    {isSubmitting ? (
-                      <><span className="animate-spin rounded-full h-4 w-4 border-2 border-gray-900 border-t-transparent"></span> Sending...</>
-                    ) : (
-                      <><i className="fas fa-paper-plane"></i> Send Message — It's Free!</>
-                    )}
-                  </motion.button>
-                </form>
-              </div>
-            </motion.div>
+      <div className="space-y-5 mb-8">
+        <a href="tel:+919881033442" className="flex items-center gap-4 group">
+          <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
+            <PhoneIcon className="text-amber-500" />
           </div>
+          <div>
+            <p className="font-semibold text-white text-sm">Call Us</p>
+            <p className="text-gray-400 group-hover:text-amber-400 transition-colors">+91 98810 33442</p>
+          </div>
+        </a>
+        <a href="mailto:contact@aarmbhinfotech.com" className="flex items-center gap-4 group">
+          <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
+            <MailIcon className="text-amber-500" />
+          </div>
+          <div className="min-w-0">
+            <p className="font-semibold text-white text-sm">Email Us</p>
+            <p className="text-gray-400 group-hover:text-amber-400 transition-colors break-words">contact@aarmbhinfotech.com</p>
+          </div>
+        </a>
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+            <MapPinIcon className="text-amber-500" />
+          </div>
+          <div>
+            <p className="font-semibold text-white text-sm">Location</p>
+            <p className="text-gray-400">Pune, Maharashtra, India</p>
+          </div>
+        </div>
+      </div>
+
+      {/* WhatsApp CTA */}
+      <a href="https://wa.me/919881033442?text=Hi%20Aarmbh%2C%20I%20am%20interested%20in%20your%20services.%20Can%20we%20discuss%3F"
+        target="_blank" rel="noopener noreferrer"
+        className="flex items-center justify-center gap-3 w-full py-3 px-6 rounded-xl bg-green-600 hover:bg-green-500 text-white font-semibold transition-all shadow-lg mb-8">
+        <i className="fab fa-whatsapp text-xl"></i> Chat on WhatsApp
+      </a>
+
+      {/* Social */}
+      <div>
+        <h3 className="text-lg font-semibold mb-4 text-white">Follow Us</h3>
+        <div className="flex space-x-3">
+          <a href="https://www.linkedin.com/company/aarmbh/" target="_blank" rel="noopener noreferrer"
+            className="p-2.5 rounded-full bg-blue-600 hover:bg-blue-500 transition-colors shadow-md flex items-center justify-center w-10 h-10" aria-label="LinkedIn">
+            <Linkedin className="w-5 h-5 text-white" />
+          </a>
+          <a href="https://github.com/aarmbh15" target="_blank" rel="noopener noreferrer"
+            className="p-2.5 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors shadow-md flex items-center justify-center w-10 h-10" aria-label="GitHub">
+            <Github className="w-5 h-5 text-white" />
+          </a>
+          <a href="https://www.instagram.com/aarmbh15" target="_blank" rel="noopener noreferrer"
+            className="p-2.5 rounded-full bg-pink-600 hover:bg-pink-500 transition-colors shadow-md flex items-center justify-center w-10 h-10" aria-label="Instagram">
+            <InstagramIcon className="w-5 h-5 text-white" />
+          </a>
+          <a href="https://www.facebook.com/share/17ErcqKUyV/" target="_blank" rel="noopener noreferrer"
+            className="p-2.5 rounded-full bg-blue-800 hover:bg-blue-700 transition-colors shadow-md flex items-center justify-center w-10 h-10" aria-label="Facebook">
+            <FacebookIcon className="w-5 h-5 text-white" />
+          </a>
+        </div>
+      </div>
+
+      {/* Trust signals */}
+      <div className="mt-8 p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+        <p className="text-gray-400 text-xs leading-relaxed">
+          🔒 Your information is safe with us. We never share your data and respond within 24 business hours.
+          We sign NDAs upon request.
+        </p>
+      </div>
+    </div>
+  </motion.div>
+
+  {/* ─── RIGHT: Form ──────────────────────────────────────── */}
+  <motion.div 
+    initial={{ opacity: 0, x: 30 }} 
+    whileInView={{ opacity: 1, x: 0 }} 
+    transition={{ duration: 0.6, delay: 0.1 }} 
+    viewport={{ once: true }}
+  >
+    <div className="bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-800">
+      <h2 className="text-2xl font-bold text-white mb-2">Request a Free Consultation</h2>
+      <p className="text-gray-500 text-sm mb-6">All fields marked <span className="text-red-400">*</span> are required.</p>
+
+      <form ref={formRef} className="space-y-5" onSubmit={handleSubmit} noValidate>
+        {/* Honeypot */}
+        <input type="text" name="honeypot" value={formData.honeypot} onChange={handleChange}
+          style={{ display: 'none' }} tabIndex="-1" autoComplete="off" aria-hidden="true" />
+
+        {/* Name */}
+        <div>
+          <label htmlFor="name" className={labelClass}>Full Name <span className="text-red-400">*</span></label>
+          <input id="name" name="name" type="text" value={formData.name} onChange={handleChange}
+            autoComplete="name" className={inputClass} placeholder="Your full name" required />
+          {errors.name && <p className={errorClass}>{errors.name}</p>}
+        </div>
+
+        {/* Email */}
+        <div>
+          <label htmlFor="email" className={labelClass}>Email Address <span className="text-red-400">*</span></label>
+          <input id="email" name="email" type="email" value={formData.email} onChange={handleChange}
+            autoComplete="email" className={inputClass} placeholder="your@email.com" required />
+          {errors.email && <p className={errorClass}>{errors.email}</p>}
+        </div>
+
+        {/* Phone */}
+        <div>
+          <label htmlFor="phone" className={labelClass}>Phone Number <span className="text-red-400">*</span></label>
+          <div className="flex flex-row gap-2">
+            <select name="countryCode" value={formData.countryCode} onChange={handleChange}
+              className="w-24 sm:w-28 px-2 sm:px-3 py-3 rounded-lg bg-gray-800 border border-gray-600 text-white focus:outline-none focus:border-amber-400 text-sm sm:text-base">
+              {countryCodes.map(c => (
+                <option key={c.code + c.country} value={c.code} className="text-gray-700">
+                  {c.flag} {c.code}
+                </option>
+              ))}
+            </select>
+            <input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange}
+              autoComplete="tel" className={`${inputClass} flex-1`} placeholder="9876543210" required />
+          </div>
+          {errors.phone && <p className={errorClass}>{errors.phone}</p>}
+        </div>
+
+        {/* Subject */}
+        <div>
+          <label htmlFor="subject" className={labelClass}>Subject <span className="text-red-400">*</span></label>
+          <input id="subject" name="subject" type="text" value={formData.subject} onChange={handleChange}
+            autoComplete="off" className={inputClass} placeholder="e.g. E-commerce Website Project" required />
+          {errors.subject && <p className={errorClass}>{errors.subject}</p>}
+        </div>
+
+        {/* Service */}
+        <div>
+          <label htmlFor="service" className={labelClass}>Service Needed <span className="text-red-400">*</span></label>
+          <select id="service" name="service" value={formData.service} onChange={handleChange}
+            className={`${inputClass} appearance-none`} required>
+            <option value="">Select service</option>
+            <option value="web">Web Development</option>
+            <option value="software">Software Development</option>
+            <option value="mobile">Mobile App (Flutter)</option>
+            <option value="ai">AI / Machine Learning</option>
+            <option value="ui">UI/UX Design</option>
+            <option value="hosting">Web Hosting & Domain</option>
+            <option value="other">Other</option>
+          </select>
+          {errors.service && <p className={errorClass}>{errors.service}</p>}
+        </div>
+
+        {/* Message */}
+        <div className="relative">
+          <label htmlFor="message" className={labelClass}>Project Details</label>
+          <textarea id="message" name="message" rows="4" value={formData.message}
+            onChange={(e) => { if (e.target.value.length <= 500) handleChange(e); }}
+            autoComplete="off" className={inputClass}
+            placeholder="Tell us about your project..."></textarea>
+          <div className="absolute bottom-3 right-3 text-xs text-gray-500">{formData.message.length}/500</div>
+          {errors.message && <p className={errorClass}>{errors.message}</p>}
+        </div>
+
+        {/* Submit */}
+        <motion.button type="submit" disabled={isSubmitting}
+          whileHover={{ scale: isSubmitting ? 1 : 1.02 }} whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+          className="w-full py-4 rounded-xl font-bold text-gray-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 shadow-lg transition-all text-base disabled:opacity-70 flex items-center justify-center gap-2">
+          {isSubmitting ? (
+            <><span className="animate-spin rounded-full h-4 w-4 border-2 border-gray-900 border-t-transparent"></span> Sending...</>
+          ) : (
+            <><i className="fas fa-paper-plane"></i> Send Message — It's Free!</>
+          )}
+        </motion.button>
+      </form>
+    </div>
+  </motion.div>
+</div>
         </div>
       </section>
 

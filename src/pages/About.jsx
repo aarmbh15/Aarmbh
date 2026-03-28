@@ -162,7 +162,7 @@ const AboutPageComponent = () => {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-3 mb-8"
+        className="flex items-center gap-3 mb-8 mt-14 md:mt-0"
       >
         <div className="w-10 h-px bg-amber-500" />
         <span className="text-[10px] uppercase tracking-[0.6em] text-amber-500 font-bold">
