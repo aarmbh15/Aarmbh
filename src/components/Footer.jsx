@@ -66,7 +66,7 @@ function Footer() {
                   <span className="hidden md:inline">•</span>
                   <a href="mailto:contact@aarmbhinfotech.com" className="hover:text-amber-500 transition-colors">contact@aarmbhinfotech.com</a>
                   <span className="hidden md:inline">•</span>
-                  <a href="tel:9423512942" className="hover:text-amber-500 transition-colors">+91 94235 12942</a>
+                  <a href="tel:9881033442" className="hover:text-amber-500 transition-colors">+91 98810 33442</a>
                 </div>
               </div>
       
@@ -202,8 +202,8 @@ function Footer() {
             </div>
             <div className="group cursor-default">
               <p className="text-[9px] font-mono text-slate-600 uppercase tracking-widest mb-1">Direct_Sync</p>
-              <a href="tel:+919423512942" className="text-slate-300 text-sm font-light hover:text-amber-400 transition-colors block break-all">
-                +919423512942
+              <a href="tel:+919881033442" className="text-slate-300 text-sm font-light hover:text-amber-400 transition-colors block break-all">
+                +91 98810 33442
               </a>
             </div>
 

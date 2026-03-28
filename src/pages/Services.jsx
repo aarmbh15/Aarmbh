@@ -36,7 +36,7 @@ const services = [
       'Responsive Design – reach customers on every device',
       'SEO Optimization – rank higher, attract organic traffic',
       'Custom Web Applications – tailored features and functionality',
-      'CMS Integration – easy content updates',
+      // 'CMS Integration – easy content updates',
       'Website Maintenance & Updates – keep your site fresh and secure',
       'Sub-second load times – lower bounce rates, higher conversions',
     ],
@@ -108,24 +108,24 @@ const services = [
     benefit: 'Cut costs & unlock new revenue streams',
     cta: 'Explore AI Solutions',
   },
-  {
-    icon: 'fas fa-hospital',
-    title: 'Healthcare IT Services',
-    description: 'Specialized technology solutions for healthcare — secure, compliant (HIPAA/GDPR), and seamlessly integrated with EHR systems.',
-    features: [
-      'HIPAA/GDPR Compliance – ensuring patient data protection',
-      'EHR/EMR Integration – unified patient data',
-      'Telemedicine Platform Development',
-      'Secure data infrastructure – cloud and on-premise',
-    ],
-    benefit: 'Improve patient care & maintain compliance',
-    cta: 'Explore Healthcare IT',
-  },
+  // {
+  //   icon: 'fas fa-hospital',
+  //   title: 'Healthcare IT Services',
+  //   description: 'Specialized technology solutions for healthcare — secure, compliant (HIPAA/GDPR), and seamlessly integrated with EHR systems.',
+  //   features: [
+  //     'HIPAA/GDPR Compliance – ensuring patient data protection',
+  //     'EHR/EMR Integration – unified patient data',
+  //     'Telemedicine Platform Development',
+  //     'Secure data infrastructure – cloud and on-premise',
+  //   ],
+  //   benefit: 'Improve patient care & maintain compliance',
+  //   cta: 'Explore Healthcare IT',
+  // },
 ];
 
 // ─── FAQ Data ─────────────────────────────────────────────────────────
 const faqs = [
-  { q: 'How long does a typical web project take?', a: 'From 4–12 weeks depending on scope. We provide a detailed timeline after the Discovery phase.' },
+  { q: 'How long does a typical web project take?', a: 'From 2–12 weeks depending on scope. We provide a detailed timeline after the Discovery phase.' },
   { q: 'Do you offer post-launch support?', a: 'Yes — every project includes 2 months of free support, bug fixes, and performance monitoring. Extended plans are available.' },
   { q: 'Can you work with existing codebases?', a: 'Absolutely. We perform a thorough audit, document improvements, and integrate seamlessly with your stack.' },
   { q: 'What is your pricing model?', a: 'We offer fixed-price and time & materials models. All quotes are transparent — no hidden fees. Contact us for a free estimate.' },

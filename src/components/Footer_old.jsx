@@ -98,7 +98,7 @@ function Footer() {
             <span className="hidden md:inline">•</span>
             <a href="mailto:contact@aarmbhinfotech.com" className="hover:text-amber-500 transition-colors">contact@aarmbhinfotech.com</a>
             <span className="hidden md:inline">•</span>
-            <a href="tel:9423512942" className="hover:text-amber-500 transition-colors">+91 94235 12942</a>
+            <a href="tel:9881033442" className="hover:text-amber-500 transition-colors">+91 98810 33442</a>
           </div>
         </div>
 
@@ -241,7 +241,7 @@ function Footer() {
                 
                 {/* Email Icon (SocialIcon) */}
                 {/* <SocialIcon
-                  url="https://mail.google.com/mail/?view=cm&fs=1&to=aarmbh15@gmail.com"
+                  url="https://mail.google.com/mail/?view=cm&fs=1&to=contact@aarmbhinfotech.com"
                   aria-label="Email"
                   {...socialIconProps}
                   network="email"
@@ -259,7 +259,7 @@ function Footer() {
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
-                      const phoneNumber = "+919423512942";
+                      const phoneNumber = "+919881033442";
                       // Simple check: if it's a mobile device, use tel:, otherwise open WhatsApp Web
                       if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
                         window.location.href = `tel:${phoneNumber}`;
@@ -269,7 +269,7 @@ function Footer() {
                     }}
                     className="hover:text-amber-400 transition-colors" // Changed hover color to amber for consistency
                   >
-                    +91 94235 12942
+                    +91 98810 33442
                   </a>
                 </p>
 

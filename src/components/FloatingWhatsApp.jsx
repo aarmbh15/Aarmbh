@@ -15,7 +15,7 @@ const tooltipSide = {
 };
 
 export default function FloatingWhatsApp({
-  phone = "9423512942",
+  phone = "9881033442",
   message = "Hi! I’d like to know more about your services.",
   label = "Chat on WhatsApp",
   position = "br",

@@ -209,13 +209,15 @@ function Tech() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { label: 'Primary OS', val: 'macOS / Linux' },
-                  { label: 'Terminal', val: 'iTerm2 / ZSH' },
+                  { label: 'Primary OS', val: 'Windows / macOS' },
                   { label: 'Editor', val: 'VS Code / Neovim' },
-                  { label: 'Versioning', val: 'Git / GitHub' }
+                  { label: 'Versioning', val: 'Git / GitHub' },
+                  { label: 'CI/CD', val: 'GitHub / Vercel Pipelines' },
+                  { label: 'Workflow', val: 'Agile / Rapid Iteration' },
+                  { label: 'API Style', val: 'REST / WebSockets' }
                 ].map((item, i) => (
                   <div key={i} className="p-4 border border-white/5 rounded-xl bg-white/[0.02]">
-                    <p className="font-mono text-[8px] text-amber-500/50 uppercase mb-1">{item.label}</p>
+                    <p className="font-mono text-[12px] text-amber-500/50 uppercase mb-1">{item.label}</p>
                     <p className="text-white text-sm font-medium">{item.val}</p>
                   </div>
                 ))}

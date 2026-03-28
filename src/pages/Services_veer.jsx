@@ -107,19 +107,19 @@ const services = [
     benefit: 'Cut costs & unlock new revenue streams',
     cta: 'Explore AI Solutions',
   },
-  {
-    icon: 'fas fa-hospital',
-    title: 'Healthcare IT Services',
-    description: 'Specialized technology solutions for healthcare — secure, compliant (HIPAA/GDPR), and seamlessly integrated with EHR systems.',
-    features: [
-      'HIPAA/GDPR Compliance – ensuring patient data protection',
-      'EHR/EMR Integration – unified patient data',
-      'Telemedicine Platform Development',
-      'Secure data infrastructure – cloud and on-premise',
-    ],
-    benefit: 'Improve patient care & maintain compliance',
-    cta: 'Explore Healthcare IT',
-  },
+  // {
+  //   icon: 'fas fa-hospital',
+  //   title: 'Healthcare IT Services',
+  //   description: 'Specialized technology solutions for healthcare — secure, compliant (HIPAA/GDPR), and seamlessly integrated with EHR systems.',
+  //   features: [
+  //     'HIPAA/GDPR Compliance – ensuring patient data protection',
+  //     'EHR/EMR Integration – unified patient data',
+  //     'Telemedicine Platform Development',
+  //     'Secure data infrastructure – cloud and on-premise',
+  //   ],
+  //   benefit: 'Improve patient care & maintain compliance',
+  //   cta: 'Explore Healthcare IT',
+  // },
 ];
 
 // ─── FAQ Data ─────────────────────────────────────────────────────────

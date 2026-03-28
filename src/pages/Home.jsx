@@ -943,13 +943,13 @@ function HomeComponent() {
           {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-25">
             <div className="space-y-1">
               <p className="text-[9px] uppercase tracking-widest text-slate-600">Email us</p>
-              <a href="mailto:aarmbh15@gmail.com" className="text-white text-sm hover:text-amber-500 transition-colors">
+              <a href="mailto:contact@aarmbhinfotech.com" className="text-white text-sm hover:text-amber-500 transition-colors">
                 contact@aarmbhinfotech.com
               </a>
             </div>
             <div className="space-y-1">
               <p className="text-[9px] uppercase tracking-widest text-slate-600">Call us</p>
-              <p className="text-white text-sm">+91 94235 12942</p>
+              <p className="text-white text-sm">+91 98810 33442</p>
             </div>
           </div>
         </div>

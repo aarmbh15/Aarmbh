@@ -138,38 +138,47 @@ function Contact() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
 
-      {/* ─── HERO ──────────────────────────────────────────────────── */}
-      <section className="relative h-[55vh] flex items-center justify-center text-center overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1920&q=80')" }} />
-        <div className="absolute inset-0 bg-black/75" />
-        <div className="relative z-10 max-w-4xl px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 mb-4 text-green-400 text-sm font-medium">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block"></span>
-              Available for new projects · Reply within 24h
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-amber-400 mb-4">Get in Touch</h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-              Have a project in mind? Let's discuss it — free consultation, no commitment required.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      {/* ═══════════════════════════════════════ CONTACT HERO (REFINED) ═══════════════════════════════════════ */}
+<section className="relative h-[85vh] -mt-20 sm:mt-0 flex items-center justify-center overflow-hidden bg-[#050505] pt-20">
+  {/* The Blueprint background (Uniform across all pages) */}
+  <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#050505_90%)]" />
+  </div>
+
+  <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+      {/* Uniform Tag System */}
+      <div className="inline-flex items-center gap-3 bg-amber-500/5 border border-amber-500/20 rounded-full px-4 py-1.5 mb-8">
+        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-amber-500/80">Link_Status: Ready</span>
+      </div>
+
+      {/* Uniform Typographic System (Light Weight + Serif Italic) */}
+      <h1 className="text-6xl md:text-8xl font-light text-white tracking-tighter leading-none mb-8">
+        Initiate <span className="text-amber-500 italic font-serif">Contact.</span>
+      </h1>
+      
+      <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+        Specify your technical requirements below to begin our engagement lifecycle.
+      </p>
+    </motion.div>
+  </div>
+</section>
 
       <AnimatedDivider />
 
       {/* ─── QUICK CONTACT STRIP ───────────────────────────────────── */}
-      <div className="bg-gray-900 py-6">
+      {/* <div className="bg-gray-900 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-300">
-            <a href="tel:+919881033442" className="flex items-center gap-2 hover:text-amber-400 transition-colors">
-              <i className="fas fa-phone text-amber-500"></i> +91 98810 33442
+            <a href="tel:+91 98810 33442" className="flex items-center gap-2 hover:text-amber-400 transition-colors">
+              <i className="fas fa-phone text-amber-500"></i> +91  98810 33442
             </a>
             <a href="mailto:contact@aarmbhinfotech.com" className="flex items-center gap-2 hover:text-amber-400 transition-colors">
               <i className="fas fa-envelope text-amber-500"></i> contact@aarmbhinfotech.com
             </a>
-            <a href="https://wa.me/919881033442?text=Hi%20Aarmbh%2C%20I%20am%20interested%20in%20your%20services." target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/91 98810 33442?text=Hi%20Aarmbh%2C%20I%20am%20interested%20in%20your%20services." target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors">
               <i className="fab fa-whatsapp text-green-500"></i> WhatsApp Us
             </a>
@@ -178,7 +187,58 @@ function Contact() {
             </span>
           </div>
         </div>
+      </div> */}
+      {/* ─── SYSTEM COORDINATES STRIP (ENHANCED) ─── */}
+<div className="bg-[#050505] border-y border-white/5 py-5 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="flex flex-wrap justify-center md:justify-between items-center gap-8 md:gap-4">
+      
+      {/* 1. Direct Voice Link */}
+      <a href="tel:+91881033442" className="group flex items-center gap-3">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-500/50 group-hover:text-amber-500 transition-colors">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.83 19.83 0 0 1-7.05-7.05 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.74A17 17 0 0 0 13.3 9.4l.8.8c.2.2.45.33.7.38a.92.92 0 0 0 .9-.38l.8-.8a2 2 0 0 1 1.74-2h3A2 2 0 0 1 22 6.08z"/>
+        </svg>
+        <span className="font-mono text-[10px] tracking-[0.2em] text-white group-hover:text-white transition-colors">
+          VOICE // <span className="text-slate-300">+91 98810 33442</span>
+        </span>
+      </a>
+
+      {/* 2. Network Path (Email) */}
+      <a href="mailto:contact@aarmbhinfotech.com" className="group flex items-center gap-3">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-500/50 group-hover:text-amber-500 transition-colors">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span className="font-mono text-[10px] tracking-[0.2em] text-white group-hover:text-white transition-colors">
+          NETWORK // <span className="text-slate-300">contact@aarmbhinfotech.com</span>
+        </span>
+      </a>
+
+      {/* 3. Real-time Sync (WhatsApp) */}
+      <a 
+        href="https://wa.me/919881033442?text=Protocol_Initiated" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="group flex items-center gap-3 bg-white/[0.03] px-4 py-1.5 rounded-full border border-white/5 hover:border-green-500/30 transition-all"
+      >
+        <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+        <span className="font-mono text-[10px] tracking-[0.2em] text-green-500/80 group-hover:text-green-400 uppercase">
+          Live_Sync Ready
+        </span>
+      </a>
+
+      {/* 4. Physical Base (Location) */}
+      <div className="hidden lg:flex items-center gap-3">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-500/50">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span className="font-mono text-[10px] tracking-[0.2em] text-white">
+          BASE // <span className="text-slate-300">PUNE, IN </span>
+        </span>
       </div>
+
+    </div>
+  </div>
+</div>
 
       <AnimatedDivider />
 
@@ -194,13 +254,13 @@ function Contact() {
                 <p className="text-gray-400 mb-8 text-sm">Fill in the form or reach us directly. We respond within 24 hours on business days.</p>
 
                 <div className="space-y-5 mb-8">
-                  <a href="tel:+91 98810 33442" className="flex items-center gap-4 group">
+                  <a href="tel:+919881033442" className="flex items-center gap-4 group">
                     <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
                       <PhoneIcon className="text-amber-500" />
                     </div>
                     <div>
                       <p className="font-semibold text-white text-sm">Call Us</p>
-                      <p className="text-gray-400 group-hover:text-amber-400 transition-colors">+91  98810 33442</p>
+                      <p className="text-gray-400 group-hover:text-amber-400 transition-colors">+91 98810 33442</p>
                     </div>
                   </a>
                   <a href="mailto:contact@aarmbhinfotech.com" className="flex items-center gap-4 group">
@@ -224,7 +284,7 @@ function Contact() {
                 </div>
 
                 {/* WhatsApp CTA */}
-                <a href="https://wa.me/91 98810 33442?text=Hi%20Aarmbh%2C%20I%20am%20interested%20in%20your%20services.%20Can%20we%20discuss%3F"
+                <a href="https://wa.me/919881033442?text=Hi%20Aarmbh%2C%20I%20am%20interested%20in%20your%20services.%20Can%20we%20discuss%3F"
                   target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full py-3 px-6 rounded-xl bg-green-600 hover:bg-green-500 text-white font-semibold transition-all shadow-lg mb-8">
                   <i className="fab fa-whatsapp text-xl"></i> Chat on WhatsApp
@@ -378,7 +438,7 @@ function Contact() {
       <AnimatedDivider />
 
       {/* ─── WHY CONTACT US ──────────────────────────────────────────── */}
-      <section className="py-16 bg-gray-900">
+      {/* <section className="py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white text-center mb-10">What Happens Next?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -397,7 +457,82 @@ function Contact() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+      {/* ─── SYSTEM PROTOCOL SECTION (ENHANCED) ─── */}
+<section className="py-24 bg-[#050505] border-t border-white/5">
+  <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    
+    {/* Section Header */}
+    <div className="mb-20 border-l border-amber-500/50 pl-6">
+      <h2 className="text-[10px] uppercase tracking-[0.8em] text-amber-500 font-bold mb-2">Protocol</h2>
+      <p className="text-3xl font-light text-white tracking-tight">What Happens Next?</p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+      {[
+        { 
+          step: '01', 
+          title: 'We Review Your Request', 
+          desc: 'Our team reviews your message within 24 business hours and schedules a free discovery call.',
+          icon: <path d="M19 4H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z M16 2v4 M8 2v4 M3 10h18 M9 16l2 2 4-4" /> 
+        },
+        { 
+          step: '02', 
+          title: 'Free Consultation Call', 
+          desc: 'We discuss your project in detail — goals, timeline, tech stack, and budget. No obligations.',
+          icon: <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /> 
+        },
+        { 
+          step: '03', 
+          title: 'Receive a Custom Proposal', 
+          desc: 'You receive a clear, itemized proposal with pricing, timeline, and our recommended approach.',
+          icon: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8" /> 
+        },
+      ].map((item, i) => (
+        <motion.div 
+          key={i} 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          transition={{ delay: i * 0.15 }} 
+          viewport={{ once: true }}
+          className="group relative p-10 rounded-[2rem] bg-[#080808] border border-white/5 hover:border-amber-500/20 transition-all duration-500 overflow-hidden"
+        >
+          {/* Large Background Identifier */}
+          <span className="absolute -top-6 -left-2 font-mono text-[6rem] font-bold text-white/[0.02] group-hover:text-amber-500/[0.04] transition-colors pointer-events-none select-none">
+            {item.step}
+          </span>
+
+          <div className="relative z-10">
+            {/* Step Counter */}
+            <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 font-mono text-xs flex items-center justify-center mb-8 group-hover:bg-amber-500 group-hover:text-black transition-all duration-500">
+              {item.step}
+            </div>
+
+            {/* Technical Icon */}
+            <svg 
+              className="w-8 h-8 text-amber-500/40 mb-6 transition-colors group-hover:text-amber-500" 
+              fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" 
+              viewBox="0 0 24 24"
+            >
+              {item.icon}
+            </svg>
+
+            <h3 className="text-xl font-light text-white mb-4 tracking-tight group-hover:text-amber-200 transition-colors">
+              {item.title}
+            </h3>
+            
+            <p className="text-slate-500 text-sm font-light leading-relaxed group-hover:text-slate-300 transition-colors">
+              {item.desc}
+            </p>
+          </div>
+
+          {/* Bottom Accent Line */}
+          <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-amber-500 group-hover:w-full transition-all duration-700" />
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
     </div>
   );
 }

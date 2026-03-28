@@ -490,7 +490,7 @@ function HomeComponent() {
             className="bg-gradient-to-r from-amber-500/10 via-amber-400/5 to-amber-500/10 border border-amber-500/30 rounded-3xl p-10 md:p-14">
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">Ready to Build Something Great?</h2>
             <p className="text-gray-400 text-lg mb-2">Free consultation · No commitment · 24-hour response</p>
-            <p className="text-gray-500 text-sm mb-8">📍 Pune, India &nbsp;|&nbsp; 📞 +91 9423512942 &nbsp;|&nbsp; ✉️ aarmbh15@gmail.com</p>
+            <p className="text-gray-500 text-sm mb-8">📍 Pune, India &nbsp;|&nbsp; 📞 +91 9881033442&nbsp;|&nbsp; ✉️ contact@aarmbhinfotech.com</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button onClick={() => setShowLeadModal(true)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
                 className="px-8 py-4 rounded-2xl font-bold text-gray-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 shadow-lg shadow-amber-500/25 transition-all text-base">

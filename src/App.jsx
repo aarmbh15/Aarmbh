@@ -60,7 +60,7 @@ const SEO = {
   services: {
     title: `Web, App, AI & Software Development Services | ${SITE_NAME}`,
     description:
-      "Aarmbh InfoTech offers web development, mobile apps, AI/ML, UI/UX design, backend, hosting, and healthcare IT. Scalable solutions. Free consultation.",
+      "Aarmbh InfoTech offers web development, mobile apps, AI/ML, UI/UX design, backend, hosting. Scalable solutions. Free consultation.",
     keywords:
       "web development services, mobile app development, AI machine learning, UI UX design, backend development, software development pune, healthcare IT, custom software india, ERP solutions, flutter app",
     ogImage: `${SITE_URL}/images/og-services.jpg`,
@@ -133,7 +133,7 @@ function WhatsAppFab() {
   if (hideOn.includes(pathname)) return null;
   return (
     <FloatingWhatsApp
-      phone="9423512942"
+      phone="9881033442"
       message="Hello! I'm interested in your services. Can we discuss?"
       label="WhatsApp us"
       position="br"
