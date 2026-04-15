@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://aarmbh15.42web.io/sitemap.xml
+Sitemap: https://aarmbhinfotech.com/sitemap.xml
